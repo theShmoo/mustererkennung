@@ -1,0 +1,151 @@
+%
+% Einführung in die Mustererkennung - WS2013
+% Abgabeprotokoll Exercise 1
+%
+%
+
+%{{{ misc
+\documentclass[12pt,a4paper,DIV=calc]{scrartcl} % koma klasse
+
+\typearea[current]{calc}        % neuberechnung des textsatzes
+\usepackage[a4paper,left=25mm,right=25mm,top=23mm,bottom=23mm]{geometry} % rand einstellungen
+
+%\usepackage{ngerman}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{fancyhdr}
+\usepackage{calc}
+\usepackage[usenames]{color}
+\usepackage{moreverb}
+\usepackage{amssymb}
+\usepackage[final]{graphicx}
+\usepackage{multicol}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{comment}
+\usepackage{lastpage}
+\usepackage{listings}
+\usepackage[pdftitle={Einführung in die Mustererkennung, Exercise 1},
+            pdfauthor={David Pfahler},
+						pdfauthor={Matthias Gusenbauer},
+						pdfauthor={Matthias Vigele},
+            pdfsubject={Mustererkennung},
+            pdfborder={0 0 0}]{hyperref}
+\def\pdfBorderAttrs{/Border [0 0 0]} % no borders
+
+\definecolor{dgreen}{RGB}{30,71,21}
+\definecolor{codegray}{RGB}{240,240,240}
+
+\lstset{
+	language=C,
+	backgroundcolor=\color{codegray},
+	basicstyle=\linespread{1.0}\ttfamily\scriptsize,
+	keywordstyle=\bfseries\ttfamily\scriptsize\color[rgb]{0,0,1},
+        identifierstyle=\color{dgreen},
+	commentstyle=\textit,
+	tabsize=2,
+	float=ph,
+	extendedchars,
+	breaklines,
+        breakatwhitespace=true,
+	prebreak={\space\hbox{\ensuremath\hookleftarrow}},,
+	numbers=left,
+	numberstyle=\tiny,
+        numbersep=5pt,
+	stringstyle=\textsl,
+	showstringspaces=false,
+	captionpos=b,
+	aboveskip=24pt
+}
+
+%}}}
+
+%-------------------------------------------------------------------------------
+% FOR STUDENTS - CHANGE
+\newcommand{\group}{AG\_C\_3}
+\newcommand{\datum}{11.10.2013}
+\newcommand{\lab}{Exercise 1}
+%-------------------------------------------------------------------------------
+% DON'T CHANGE
+% <variablen>
+\newcommand{\dokumenttyp}{Abgabedokument \lab}
+\newcommand{\lvaname}{Einführung in die Mustererkennung}
+\newcommand{\lvanr}{186.840}
+\newcommand{\semester}{WS 2013}
+% </variablen>
+%-------------------------------------------------------------------------------
+
+%{{{
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[C]{}
+\renewcommand{\headrulewidth}{0.0pt}
+ 
+\fancyfoot[L]{\group}
+\fancyfoot[C]{}
+\fancyfoot[R]{Seite \thepage}
+\renewcommand{\footrulewidth}{0.5pt}
+ 
+\fancypagestyle{plain}
+{
+}
+
+\fancypagestyle{firstpage}
+{
+}
+
+
+\newcommand{\punkte}[1]{\mbox{\textbf{(\qquad/#1)}} }
+\newcommand{\abgabe}{\vspace{4cm}}
+\newcommand{\frage}[1]{\item #1}
+
+
+\title{\lvaname \dokumenttyp}
+\author{David Pfahler\\ Matthias Gusenbauer\\ Matthias Vigele}
+\date{\datum}
+
+\begin{document}
+
+\thispagestyle{firstpage}
+\begin{center}
+\vspace{1.5cm}
+{\LARGE\bf \dokumenttyp\\}
+\vspace{0.3cm}
+{\LARGE\bf \lvaname\\\lvanr\\\semester\\}
+\vspace{1.0cm}
+{\LARGE \datum}
+\vspace{1.5cm}
+\end{center}
+
+
+
+\begin{tabular}{|p{5.0cm}|p{2cm}|p{7.4cm}|}\hline
+ \textbf{Name} &  \textbf{Martikelnr.} & \textbf{Emailaddresse}\\\hline
+  David Pfahler & 1126287 & e1126287@student.tuwien.ac.at\\ \hline
+	Matthias Gusenbauer & 1125577 & e1125577@student.tuwien.ac.at\\ \hline
+	Matthias Vigele & 1126171 & e1126171@student.tuwien.ac.at\\ \hline
+
+\end{tabular}
+
+\vspace{1.5cm}
+%}}}
+
+
+\vspace{0.3cm}
+\rule{\textwidth}{0.1mm}
+\vspace{0.3cm}
+
+
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INHALT AB HIER
+\section{Aufgabe}
+Test Test test
+\end{document}
+
+% vim:foldmethod=marker
