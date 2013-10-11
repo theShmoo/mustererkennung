@@ -7,4 +7,4 @@ Einführung in die Mustererkennung UE
 bestehend aus:
 * David Pfahler - 1126287
 * Matthias Gusenbauer
-* Matthias Vigele
+* Matthias Vigele - 1126171
