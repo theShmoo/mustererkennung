@@ -11,6 +11,7 @@
 % vec = getFeatures( inputImage );
 function [ featureVector ] = getFeatures( inputImage )
 
+    featureVector = [1,1,1];
 
 end
 
