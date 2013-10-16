@@ -10,9 +10,7 @@ function main()
 images = getInput();
 
 %% Get Features from Images
-features = arrayfun(@getFeatures,images,'UniformOutput',0);
-
-features
+features = arrayfun(getFeatures,images);
 
 end
 
