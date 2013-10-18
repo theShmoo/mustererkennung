@@ -6,8 +6,6 @@
 % MPEG7 CE Shape-1 Part B Database
 %% INPUT
 %   inputImage ... a bw image of the MPEG7 CE Shape-1 Part B Database
-%   featureCount ... the length of the feature vector and number of
-%   features to extract
 %% OUTPUT
 %   featureVector ... a vector with the values of the extracted Features
 %% Example
