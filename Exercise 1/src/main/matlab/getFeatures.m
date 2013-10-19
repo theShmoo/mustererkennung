@@ -15,11 +15,30 @@ function [ featureVector ] = getFeatures( inputImage )
 
     inputImage = inputImage{1};
 
-    properties = {'Area'; 'BoundingBox'; 'Centroid'; 'ConvexArea'; 
-        'ConvexHull'; 'ConvexImage'; 'Eccentricity'; 'EquivDiameter';
-        'EulerNumber'; 'Extent'; 'Extrema'; 'FilledArea'; 'FilledImage';
-        'Image'; 'MajorAxisLength'; 'MinorAxisLength'; 'Orientation';
-        'Perimeter'; 'PixelIdxList'; 'PixelList'; 'Solidity'; 'SubarrayIdx'};
+    properties = {
+        'Area';             %1
+        'BoundingBox';      %2
+        'Centroid';         %1
+        'ConvexArea';       %3
+        'ConvexHull';       %4
+        'ConvexImage';      %5
+        'Eccentricity';     %6
+        'EquivDiameter';    %7
+        'EulerNumber';      %8
+        'Extent';           %9
+        'Extrema';          %10
+        'FilledArea';       %11
+        'FilledImage';      %12
+        'Image';            %13
+        'MajorAxisLength';  %14
+        'MinorAxisLength';  %15
+        'Orientation';      %16
+        'Perimeter';        %17
+        'PixelIdxList';     %18
+        'PixelList';        %19
+        'Solidity';         %20
+        'SubarrayIdx'       %21
+        };
     
     %needs to be length = featureCount
     propertySelectionVec = [9, 15, 16];
