@@ -6,12 +6,13 @@
 % MPEG7 CE Shape-1 Part B Database
 %% INPUT
 %   inputImage ... a bw image of the MPEG7 CE Shape-1 Part B Database
+%   class ... the class of the image
 %% OUTPUT
 %   featureVector ... a vector with the values of the extracted Features
 %% Example
 % vec = getFeatures( inputImage );
 
-function [ featureVector ] = getFeatures( inputImage )
+function [ featureVector ] = getFeatures( inputImage)
 
     inputImage = inputImage{1};
 
@@ -43,13 +44,13 @@ function [ featureVector ] = getFeatures( inputImage )
     %needs to be length = featureCount
     propertySelectionVec = [9, 15, 16];
     featureCount = length(propertySelectionVec);
-    featureVector = cell( featureCount, 1 );
-    
+    featureVector = zeros(1,featureCount+1);
     for i = 1 : featureCount
-        
-       featureVector{i} = regionprops(inputImage, properties{propertySelectionVec(i)});
-        
+       propname = properties{propertySelectionVec(i)};
+       feature = regionprops(inputImage, propname);
+       featureVector(1,i) =  feature.(propname);
     end
+    featureVector(1,featureCount+1) = class;
 
 end
 
