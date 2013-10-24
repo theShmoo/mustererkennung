@@ -1,17 +1,27 @@
-%% GETINPUT 
+%% GETINPUT
 % Loads the classes
 % OUTPUT:
 %   Images ... The loaded BW images
-function [ Images ] = getInput()
+%   classnames ... The name of the class of the BW image
+function [ Images, classnames ] = getInput()
 disp('Loading Images...');
-res = '../resources/';
-%This are just examples! This classes are not obligatory
-bats = loadClass('bat' , res);
-apples = loadClass('apple' , res);
-beetles = loadClass('beetle' , res);
-bells = loadClass('bell' , res);
-chicken = loadClass('chicken' , res);
 
-Images = [bats;apples;beetles;bells;chicken];
+
+%This are just examples! This classes are not obligatory
+
+classes = {'bat';'apple';'beetle';'bell';'chicken'};
+
+Images = cell(length(classes),1);
+
+for i = 1:length(classes)
+   Images{i} = loadClass( classes{i},'../resources/');
+end
+
+classnames = ones(length(classes)*20,1);
+for i = 1:length(classes)
+    classnames(1+(i-1)*20:i*20) = i;
+end
+
+Images = vertcat(Images{:});
 end
 

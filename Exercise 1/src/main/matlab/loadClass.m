@@ -16,14 +16,13 @@ currentDir = pwd;
 D = dir(directory);
 cd(directory);
 
-I = cell( 20 , 2 ) ;
+I = cell( 20 , 1 ) ;
 j = 1 ;
 for i = 1 : size( D, 1 )
     if D( i ).isdir == 0 && strcmp( D( i ).name( 1 : length(className) ) , className)
         disp( D( i ).name ) ;
         I_temp = imread ( [D( i ).name ] ) ;
-        I{j,1} = im2bw( I_temp , graythresh ( I_temp ) ) ;
-        I{j,2} = className;
+        I{j} = im2bw( I_temp , graythresh ( I_temp ) ) ;
         j = j +1;
     end
 end

@@ -12,7 +12,7 @@
 %% Example
 % vec = getFeatures( inputImage );
 
-function [ featureVector ] = getFeatures( inputImage)
+function [ featureVector ] = getFeatures( inputImage, class)
 
     inputImage = inputImage{1};
 
