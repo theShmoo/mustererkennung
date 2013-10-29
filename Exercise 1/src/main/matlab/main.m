@@ -1,27 +1,32 @@
 %% EFME 2013 LU Exercise 1
 % Authors:
-% * David Pfahler
-% * Matthias Gusenbauer
-% * Matthias Vigele
+%
+% * _David Pfahler_
+% * _Matthias Gusenbauer_
+% * _Matthias Vigele_
 
 function main()
-
 %% Get Input Images
 [images,classnames] = getInput();
-
-%% Classnames to numbers
-% This is for numbers... meh.
-[~,~,class ] = unique(classnames,'stable');
+% Classnames to numbers
+% This is for numbers
+[ ~,~,class ] = unique(classnames,'stable');
 
 %% Get Features from Images
-features = cell(100,1);
-featureNames = selectFeatureNames([4, 15, 16]);
+features = cell(length(images),1);
+%Choose your Features here! (Choose wisely :P)
+propertiesSelection = [4, 15, 16]; 
+featureNames = selectFeatureNames(propertiesSelection);
+
+disp('Starting Feature Detection...');
+fprintf('Features: %s',featureNames{:});
+fprintf('\n');
 for i = 1:length(images)
     features{i,1} = getFeatures(images{i},featureNames);
 end
 
 mat = cell2mat(features);
-
+disp('Feature Detection finished');
 %% Scatter Plot Features
 figure('name','The Dependency Of The Features');
 

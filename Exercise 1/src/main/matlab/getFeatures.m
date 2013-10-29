@@ -12,7 +12,7 @@
 %% Example
 % vec = getFeatures( inputImage );
 
-function [ featureVector ] = getFeatures( inputImage , featureNames)   
+function [ featureVector ] = getFeatures( inputImage , featureNames)
     featureCount = length(featureNames);
     featureVector = zeros(1,featureCount);
     for i = 1 : featureCount

@@ -29,5 +29,7 @@ for i = 1:length(classes)
      classnames(1+(i-1)*20:i*20) = classes(i);
 end
 Images = vertcat(Images{:});
+
+disp('Loading Images finished');
 end
 

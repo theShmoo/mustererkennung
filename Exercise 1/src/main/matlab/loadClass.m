@@ -20,7 +20,6 @@ I = cell( 20 , 1 ) ;
 j = 1 ;
 for i = 1 : size( D, 1 )
     if D( i ).isdir == 0 && strcmp( D( i ).name( 1 : length(className) ) , className)
-        disp( D( i ).name ) ;
         I_temp = imread ( [D( i ).name ] ) ;
         I{j} = im2bw( I_temp , graythresh ( I_temp ) ) ;
         j = j +1;
@@ -29,5 +28,7 @@ end
 
 %navigate back
 cd(currentDir);
+
+fprintf('\tLoading \"%s\" Images finished\n',className);
 end
 
