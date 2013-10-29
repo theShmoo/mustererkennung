@@ -6,51 +6,20 @@
 % MPEG7 CE Shape-1 Part B Database
 %% INPUT
 %   inputImage ... a bw image of the MPEG7 CE Shape-1 Part B Database
-%   class ... the class of the image
+%   featureNames ... a vector countaining the names of the features to use
 %% OUTPUT
 %   featureVector ... a vector with the values of the extracted Features
 %% Example
 % vec = getFeatures( inputImage );
 
-function [ featureVector ] = getFeatures( inputImage, class)
-
-    inputImage = inputImage{1};
-
-    properties = {
-        'Area';             %1
-        'BoundingBox';      %2
-        'Centroid';         %1
-        'ConvexArea';       %3
-        'ConvexHull';       %4
-        'ConvexImage';      %5
-        'Eccentricity';     %6
-        'EquivDiameter';    %7
-        'EulerNumber';      %8
-        'Extent';           %9
-        'Extrema';          %10
-        'FilledArea';       %11
-        'FilledImage';      %12
-        'Image';            %13
-        'MajorAxisLength';  %14
-        'MinorAxisLength';  %15
-        'Orientation';      %16
-        'Perimeter';        %17
-        'PixelIdxList';     %18
-        'PixelList';        %19
-        'Solidity';         %20
-        'SubarrayIdx'       %21
-        };
-    
-    %needs to be length = featureCount
-    propertySelectionVec = [9, 15, 16];
-    featureCount = length(propertySelectionVec);
-    featureVector = zeros(1,featureCount+1);
+function [ featureVector ] = getFeatures( inputImage , featureNames)   
+    featureCount = length(featureNames);
+    featureVector = zeros(1,featureCount);
     for i = 1 : featureCount
-       propname = properties{propertySelectionVec(i)};
+       propname = featureNames{i};
        feature = regionprops(inputImage, propname);
        featureVector(1,i) =  feature.(propname);
     end
-    featureVector(1,featureCount+1) = class;
 
 end
 
