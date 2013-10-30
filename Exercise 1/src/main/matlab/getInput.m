@@ -1,15 +1,14 @@
 %% GETINPUT
 % Loads the classes
+% INPUT:
+%   classes ... Load this classes from the database
 % OUTPUT:
 %   Images ... The loaded BW images
 %   classnames ... The name of the class of the BW image
-function [ Images, classnames ] = getInput()
+function [ Images, classnames ] = getInput(classes)
 disp('Loading Images...');
 
-
 %This are just examples! This classes are not obligatory
-
-classes = {'bat';'apple';'beetle';'bell';'chicken'};
 
 Images = cell(length(classes),1);
 

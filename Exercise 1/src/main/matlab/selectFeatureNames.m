@@ -2,28 +2,28 @@
 % Author _Matthias Gusenbauer_
 % Author _David Pfahler_
 % Select the features you want
-% * 'Area'=             %1
-% * 'BoundingBox'=      %2
-% * 'Centroid'=         %1
-% * 'ConvexArea'=       %3
-% * 'ConvexHull'=       %4
-% * 'ConvexImage'=      %5
-% * 'Eccentricity'=     %6
-% * 'EquivDiameter'=    %7
-% * 'EulerNumber'=      %8
-% * 'Extent'=           %9
-% * 'Extrema'=          %10
-% * 'FilledArea'=       %11
-% * 'FilledImage'=      %12
-% * 'Image'=            %13
-% * 'MajorAxisLength'=  %14
-% * 'MinorAxisLength'=  %15
-% * 'Orientation'=      %16
-% * 'Perimeter'=        %17
-% * 'PixelIdxList'=     %18
-% * 'PixelList'=        %19
-% * 'Solidity'=         %20
-% * 'SubarrayIdx'=      %21
+% * 'Area'=             1
+% * 'BoundingBox'=      2
+% * 'Centroid'=         3
+% * 'ConvexArea'=       4
+% * 'ConvexHull'=       5
+% * 'ConvexImage'=      6
+% * 'Eccentricity'=     7
+% * 'EquivDiameter'=    8
+% * 'EulerNumber'=      9
+% * 'Extent'=           10
+% * 'Extrema'=          11
+% * 'FilledArea'=       12
+% * 'FilledImage'=      13
+% * 'Image'=            14
+% * 'MajorAxisLength'=  15
+% * 'MinorAxisLength'=  16
+% * 'Orientation'=      17
+% * 'Perimeter'=        18
+% * 'PixelIdxList'=     19
+% * 'PixelList'=        20
+% * 'Solidity'=         21
+% * 'SubarrayIdx'=      22
 %% INPUT
 %   propertySelectionVec ... a vector with the numbers representing the
 %   features
@@ -35,26 +35,26 @@ function [featureNames] = selectFeatureNames (propertySelectionVec)
     properties = {
         'Area';             %1
         'BoundingBox';      %2
-        'Centroid';         %1
-        'ConvexArea';       %3
-        'ConvexHull';       %4
-        'ConvexImage';      %5
-        'Eccentricity';     %6
-        'EquivDiameter';    %7
-        'EulerNumber';      %8
-        'Extent';           %9
-        'Extrema';          %10
-        'FilledArea';       %11
-        'FilledImage';      %12
-        'Image';            %13
-        'MajorAxisLength';  %14
-        'MinorAxisLength';  %15
-        'Orientation';      %16
-        'Perimeter';        %17
-        'PixelIdxList';     %18
-        'PixelList';        %19
-        'Solidity';         %20
-        'SubarrayIdx'       %21
+        'Centroid';         %3
+        'ConvexArea';       %4
+        'ConvexHull';       %5
+        'ConvexImage';      %6
+        'Eccentricity';     %7
+        'EquivDiameter';    %8
+        'EulerNumber';      %9
+        'Extent';           %10
+        'Extrema';          %11
+        'FilledArea';       %12
+        'FilledImage';      %13
+        'Image';            %14
+        'MajorAxisLength';  %15
+        'MinorAxisLength';  %16
+        'Orientation';      %17
+        'Perimeter';        %18
+        'PixelIdxList';     %19
+        'PixelList';        %20
+        'Solidity';         %21
+        'SubarrayIdx'       %22
         };
     
     featureNames = cell(length(propertySelectionVec),1);
