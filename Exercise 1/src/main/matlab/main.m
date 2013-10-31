@@ -8,6 +8,7 @@
 function main()
 %% Get Input Images
 classes = {'bat';'apple';'beetle';'bell';'chicken'};
+classSize = 20;
 [images,classnames] = getInput(classes);
 % Classnames to numbers
 % This is for numbers
@@ -15,19 +16,31 @@ classes = {'bat';'apple';'beetle';'bell';'chicken'};
 [ ~,~,class ] = unique(classnames);
 
 %% Get Features from Images
-features = cell(length(images),1);
 %Choose your Features here! (Choose wisely :P)
-propertiesSelection = [4, 8, 16]; 
+% possible Scalar Features:
+
+%   'ConvexArea' = 4
+%   'Eccentricity' = 7
+%   'EquivDiameter' = 8
+%   'EulerNumber' = 9
+%   'Extent' = 10
+%   'FilledArea' = 12
+%   'MajorAxisLength' = 15
+%   'MinorAxisLength' = 16
+%   'Orientation' = 17
+%   'Solidity' = 21
+
+
+propertiesSelection = [4, 8, 21]; 
 featureNames = selectFeatureNames(propertiesSelection);
+features = zeros(length(images),length(featureNames));
 
 disp('Starting Feature Detection...');
 fprintf(' %s',featureNames{:});
 fprintf('\n');
 for i = 1:length(images)
-    features{i,1} = getFeatures(images{i},featureNames);
+    features(i,:) = getFeatures(images{i},featureNames);
 end
-
-mat = cell2mat(features);
 disp('Feature Detection finished');
 %% Scatter Plot Features
 figure('name','The Dependency Of The Features');
@@ -35,8 +48,8 @@ figure('name','The Dependency Of The Features');
 plot = 1;
 for i = 1 : length(featureNames) 
     for j = i+1 : length(featureNames)
-            subplot(length(featureNames),plot);
-            scatter(mat(:,i),mat(:,j),40,class,'filled');
+            subplot(length(featureNames),1,plot);
+            scatter(features(:,i),features(:,j),40,class,'filled');
             xlabel(featureNames{i});
             ylabel(featureNames{j});
             plot = plot + 1;
@@ -48,7 +61,24 @@ figure('name','The Features');
 
 for i = 1 : length(featureNames)
     subplot(length(featureNames),1,i);
-    boxplot(mat(:,i),classnames);
+    boxplot(features(:,i),classnames);
+    title(featureNames{i});
+end
+
+%% Norm Distribution abstraction plot
+figure('name','Features as PDF')
+cc=hsv(length(classes));
+
+for i = 1 : length(featureNames)
+    subplot(length(featureNames),1,i);
+    
+    for j = 1 : length(classes)
+        f = features(1+(j-1)*classSize:j*classSize,3);
+        h = histfit(f,9);
+        set(h(1),'FaceColor',cc(j,:))
+        set(h(2),'color',cc(j,:)/2);
+        hold on;
+    end
     title(featureNames{i});
 end
 
