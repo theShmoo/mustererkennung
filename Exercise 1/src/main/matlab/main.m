@@ -34,14 +34,12 @@ figure('name','The Dependency Of The Features');
 
 plot = 1;
 for i = 1 : length(featureNames) 
-    for j = i : length(featureNames)
-        if i ~= j
-            subplot(3,1,plot);
+    for j = i+1 : length(featureNames)
+            subplot(length(featureNames),plot);
             scatter(mat(:,i),mat(:,j),40,class,'filled');
             xlabel(featureNames{i});
             ylabel(featureNames{j});
-            plot = plot +1;
-        end
+            plot = plot + 1;
     end
 end
 
@@ -49,7 +47,7 @@ end
 figure('name','The Features');
 
 for i = 1 : length(featureNames)
-    subplot(3,1,i);
+    subplot(length(featureNames),1,i);
     boxplot(mat(:,i),classnames);
     title(featureNames{i});
 end
