@@ -34,6 +34,7 @@ classSize = 20;
 propertiesSelection = [4, 8, 21]; 
 featureNames = selectFeatureNames(propertiesSelection);
 features = zeros(length(images),length(featureNames));
+%features = cell(length(images), length(featureNames));
 
 disp('Starting Feature Detection...');
 fprintf(' %s',featureNames{:});
@@ -50,6 +51,7 @@ for i = 1 : length(featureNames)
     for j = i+1 : length(featureNames)
             subplot(length(featureNames),1,plot);
             scatter(features(:,i),features(:,j),40,class,'filled');
+            %scatter([features{:,i}],[features{:,j}],40,class,'filled');
             xlabel(featureNames{i});
             ylabel(featureNames{j});
             plot = plot + 1;

@@ -15,7 +15,12 @@
 function [ featureVector ] = getFeatures( inputImage , featureNames)
     featureCount = length(featureNames);
     featureVector = zeros(1,featureCount);
+    %featureVector = cell(featureCount, 1);
     for i = 1 : featureCount
+        
+        %propName = featureNames{i};
+        %featureVector{i} = regionprops(inputImage, propName);
+        
        propname = featureNames{i};
        feature = regionprops(inputImage, propname);
        featureVector(1,i) =  feature.(propname);
