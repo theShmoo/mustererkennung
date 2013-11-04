@@ -75,7 +75,7 @@ for i = 1 : length(featureNames)
     subplot(length(featureNames),1,i);
     
     for j = 1 : length(classes)
-        f = features(1+(j-1)*classSize:j*classSize,3);
+        f = features(1+(j-1)*classSize:j*classSize,i);
         h = histfit(f,9);
         set(h(1),'FaceColor',cc(j,:))
         set(h(2),'color',cc(j,:)/2);
