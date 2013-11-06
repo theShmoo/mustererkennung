@@ -5,10 +5,10 @@
 % OUTPUT:
 %   Images ... The loaded BW images
 %   classnames ... The name of the class of the BW image
-function [ Images, classnames ] = getInput(classes)
-disp('Loading Images...');
 
-%This are just examples! This classes are not obligatory
+function [ Images, classnames ] = getInput(classes)
+
+disp('Loading Images...');
 
 Images = cell(length(classes),1);
 
@@ -23,12 +23,16 @@ end
 % end
 
 % This is with names
+
 classnames = cell(length(classes)*20,1);
+
 for i = 1:length(classes)
      classnames(1+(i-1)*20:i*20) = classes(i);
 end
+
 Images = vertcat(Images{:});
 
 disp('Loading Images finished');
+
 end
 
