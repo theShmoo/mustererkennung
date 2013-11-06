@@ -11,10 +11,6 @@ classes = {'Heart';'device4';'rat';'device1';'Bone'};
 classSize = 20;
 [images,classnames] = getInput(classes);
 imageCount = length(images);
-% Classnames to numbers
-% This is for numbers
-% [ ~,~,class ] = unique(classnames,'stable'); geht bei matlab 2011/b ned...
-[ ~,~,class ] = unique(classnames);
 
 %% Get Features from Images
 %Choose your Features here! (Choose wisely :P)
@@ -30,9 +26,11 @@ imageCount = length(images);
 %   'MinorAxisLength' = 16
 %   'Orientation' = 17
 %   'Solidity' = 21
+%   'AspectRatio' = 23
+%   'Formfactor' = 24
 
 
-propertiesSelection = [4, 7, 17]; 
+propertiesSelection = [23, 7, 24]; 
 featureNames = selectFeatureNames(propertiesSelection);
 featureCount = length(featureNames);
 features = zeros(imageCount,featureCount );
@@ -118,7 +116,7 @@ axis([0 100 0 100]);
 title('Grand Canion');
 xlabel('k from k-NN');
 ylabel('% of correct classification');
-text(imax,correct(imax),['Maximum =  ',num2str(correct(imax))],...
+text(imax,correct(imax),['Maximum =  ',num2str(correct(imax)), '% matches at k = ', num2str(imax)],...
     'VerticalAlignment','bottom',...
     'HorizontalAlignment','left',...
     'FontSize',11);

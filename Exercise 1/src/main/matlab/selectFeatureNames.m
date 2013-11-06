@@ -24,6 +24,7 @@
 % * 'PixelList'=        20
 % * 'Solidity'=         21
 % * 'SubarrayIdx'=      22
+% * 
 %% INPUT
 %   propertySelectionVec ... a vector with the numbers representing the
 %   features
@@ -54,7 +55,9 @@ function [featureNames] = selectFeatureNames (propertySelectionVec)
         'PixelIdxList';     %19
         'PixelList';        %20
         'Solidity';         %21
-        'SubarrayIdx'       %22
+        'SubarrayIdx';      %22
+        'AspectRatio';      %23
+        'Formfactor'        %24 
         };
     
     featureNames = cell(length(propertySelectionVec),1);

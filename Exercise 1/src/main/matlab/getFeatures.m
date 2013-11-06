@@ -22,7 +22,21 @@ function [ featureVector ] = getFeatures( inputImage , featureNames)
        % In case of multiple blobs in the image only the first one gets
        % stored
        propname = featureNames{i};
-       feature = regionprops(inputImage, propname);
+       
+       if strcmp(propname,'AspectRatio')
+            minor = regionprops(inputImage, 'MinorAxisLength');
+            major = regionprops(inputImage, 'MajorAxisLength');
+            aspectRatio = minor.('MinorAxisLength')/major.('MajorAxisLength');
+            feature = struct('AspectRatio',aspectRatio);
+       elseif strcmp(propname,'Formfactor')
+            A = regionprops(inputImage, 'Area');
+            U = regionprops(inputImage, 'Perimeter');
+            formfactor = 4*pi*A.('Area')/(U.('Perimeter')*U.('Perimeter'));
+            feature = struct('Formfactor',formfactor);
+       else
+            feature = regionprops(inputImage, propname);
+            
+       end
        featureVector(1,i) =  feature.(propname);
        
     end
