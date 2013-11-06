@@ -15,15 +15,16 @@
 function [ featureVector ] = getFeatures( inputImage , featureNames)
     featureCount = length(featureNames);
     featureVector = zeros(1,featureCount);
-    %featureVector = cell(featureCount, 1);
+    
+    % Extract every feature given in the featureNames vector
     for i = 1 : featureCount
-        
-        %propName = featureNames{i};
-        %featureVector{i} = regionprops(inputImage, propName);
-        
+       
+       % In case of multiple blobs in the image only the first one gets
+       % stored
        propname = featureNames{i};
        feature = regionprops(inputImage, propname);
        featureVector(1,i) =  feature.(propname);
+       
     end
 
 end
