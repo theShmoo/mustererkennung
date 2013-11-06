@@ -36,16 +36,21 @@ propertiesSelection = [4, 8, 21];
 featureNames = selectFeatureNames(propertiesSelection);
 featureCount = length(featureNames);
 features = zeros(imageCount,featureCount );
-%features = cell(imageCount, featureCount );
 
+%% Logging
 disp('Starting Feature Detection...');
 fprintf(' %s',featureNames{:});
 fprintf('\n');
+
+%% Retrieves features for every image
 for i = 1:imageCount
     features(i,:) = getFeatures(images{i},featureNames);
 end
 disp('Feature Detection finished');
-%% Scatter Plot Features
+
+%% Plotting image features
+
+% Scatter Plot Features
 figure('name','The Dependency Of The Features');
 
 plot = 1;
@@ -53,14 +58,13 @@ for i = 1 : featureCount
     for j = i+1 : featureCount 
             subplot(featureCount ,1,plot);
             scatter(features(:,i),features(:,j),40,class,'filled');
-            %scatter([features{:,i}],[features{:,j}],40,class,'filled');
             xlabel(featureNames{i});
             ylabel(featureNames{j});
             plot = plot + 1;
     end
 end
 
-%% BoxPlot Features
+% BoxPlot Features
 figure('name','The Features');
 
 for i = 1 : featureCount 
@@ -69,7 +73,7 @@ for i = 1 : featureCount
     title(featureNames{i});
 end
 
-%% Norm Distribution abstraction plot
+% Norm Distribution abstraction plot
 figure('name','Features as PDF')
 cc=hsv(length(classes));
 
@@ -85,6 +89,7 @@ for i = 1 : featureCount
     end
     title(featureNames{i});
 end
+
 %% k-NN
 result = cell(imageCount);
 for k = 1:imageCount-1

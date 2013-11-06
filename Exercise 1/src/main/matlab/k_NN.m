@@ -22,37 +22,40 @@
 % vec = k_NN(featureSet, trainingSet,trainingLabels,1);
 
 function [classNames]= k_NN(featureSet,trainingSet,trainingLabels,k)
-classNames = cell(size(featureSet,1),1);
-for i = 1:size(featureSet,1)
-    feature=featureSet(i,:);
-    distances= zeros([length(feature) 1]);
-    trainingLabelsC=trainingLabels;
-    %%Compute Euclidean distance between feature and each member of the training
-    %set
-    for j = 1:size(trainingSet,1)
-        training=trainingSet(j,:);
-        distances(j)=norm(feature-training);
-    end
+
+    classNames = cell(size(featureSet,1),1);
     
-    
-    %%Select the k Nearest Neighbours
-    classes=unique(trainingLabelsC);
-    classesCount= zeros([length(classes) 1]);
-    mcClass=0;
-    for j = 1:k
-        nn=find(distances==min(distances));
-        ci=find(not(cellfun('isempty', strfind(classes,trainingLabelsC{nn}))));
-        classesCount(ci)=classesCount(ci)+1;
-        %feature gets labeled with the class name, that is most common among the
-        %k Nearest Neighbours
-        if (classesCount(ci)>mcClass)
-            classNames{i}=trainingLabelsC{nn};
-            mcClass=classesCount(ci);
+    for i = 1:size(featureSet,1)
+        feature=featureSet(i,:);
+        distances= zeros([length(feature) 1]);
+        trainingLabelsC=trainingLabels;
+        
+        %%Compute Euclidean distance between feature and each member of the training
+        %set
+        for j = 1:size(trainingSet,1)
+            training=trainingSet(j,:);
+            distances(j)=norm(feature-training);
         end
-        distances(nn)=[];
-        trainingLabelsC(nn)=[];
+
+
+        %%Select the k Nearest Neighbours
+        classes=unique(trainingLabelsC);
+        classesCount= zeros([length(classes) 1]);
+        mcClass=0;
+        
+        for j = 1:k
+            nn=find(distances==min(distances));
+            ci=find(not(cellfun('isempty', strfind(classes,trainingLabelsC{nn}))));
+            classesCount(ci)=classesCount(ci)+1;
+            %feature gets labeled with the class name, that is most common among the
+            %k Nearest Neighbours
+            if (classesCount(ci)>mcClass)
+                classNames{i}=trainingLabelsC{nn};
+                mcClass=classesCount(ci);
+            end
+            distances(nn)=[];
+            trainingLabelsC(nn)=[];
+        end
+        
     end
-    
-    
-end
 end
