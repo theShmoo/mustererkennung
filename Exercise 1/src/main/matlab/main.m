@@ -52,15 +52,15 @@ disp('Feature Detection finished');
 
 % Scatter Plot Features
 figure('name','The Dependency Of The Features');
-plot = 1;
+p = 1; %the plot
 for i = 1 : featureCount  
     for j = i+1 : featureCount 
-            subplot(featureCount ,1,plot);
+            subplot(featureCount ,1,p);
             gscatter(features(:,i),features(:,j),classnames);
             %scatter([features{:,i}],[features{:,j}],40,class,'filled');
             xlabel(featureNames{i});
             ylabel(featureNames{j});
-            plot = plot + 1;
+            p = p + 1;
     end
 end
 legend(classes);
@@ -98,7 +98,6 @@ for k = 1: imageCount-1
     fprintf('k = %d\n',k);
     for i = 1:imageCount
         bufferCell = k_NN(features(i,:),[features(1:i-1,:);features(1+i:end,:)],[classnames(1:i-1,:);classnames(1+i:end,:)],k);
-%         bufferCell = knnclassify(features(i,:),[features(1:i-1,:);features(1+i:end,:)],[classnames(1:i-1,:);classnames(1+i:end,:)],k);
         result{i,k} = bufferCell{1};
     end
 end
