@@ -7,7 +7,7 @@
 
 function main()
 %% Get Input Images
-classes = {'Heart';'octopus';'rat';'device1';'watch'};
+classes = {'Heart';'device4';'rat';'device1';'Bone'};
 classSize = 20;
 [images,classnames] = getInput(classes);
 imageCount = length(images);
@@ -32,7 +32,7 @@ imageCount = length(images);
 %   'Solidity' = 21
 
 
-propertiesSelection = [4, 8, 21]; 
+propertiesSelection = [4, 7, 17]; 
 featureNames = selectFeatureNames(propertiesSelection);
 featureCount = length(featureNames);
 features = zeros(imageCount,featureCount );
@@ -47,18 +47,19 @@ end
 disp('Feature Detection finished');
 %% Scatter Plot Features
 figure('name','The Dependency Of The Features');
-
 plot = 1;
 for i = 1 : featureCount  
     for j = i+1 : featureCount 
             subplot(featureCount ,1,plot);
-            scatter(features(:,i),features(:,j),40,class,'filled');
+            gscatter(features(:,i),features(:,j),class);
             %scatter([features{:,i}],[features{:,j}],40,class,'filled');
             xlabel(featureNames{i});
             ylabel(featureNames{j});
             plot = plot + 1;
     end
 end
+legend(classes);
+
 
 %% BoxPlot Features
 figure('name','The Features');
@@ -90,7 +91,8 @@ result = cell(imageCount);
 for k = 1:imageCount-1
     fprintf('k = %d\n',k);
     for i = 1:imageCount
-        bufferCell = k_NN(features(i,:),[features(1:i-1,:);features(1+i:end,:)],classnames,k);
+%         bufferCell = k_NN(features(i,:),[features(1:i-1,:);features(1+i:end,:)],classnames,k);
+        bufferCell = knnclassify(features(i,:),[features(1:i-1,:);features(1+i:end,:)],[classnames(1:i-1,:);classnames(1+i:end,:)],k);
         result{i,k} = bufferCell{1};
     end
 end
