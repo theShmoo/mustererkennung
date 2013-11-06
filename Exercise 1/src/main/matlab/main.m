@@ -56,7 +56,7 @@ plot = 1;
 for i = 1 : featureCount  
     for j = i+1 : featureCount 
             subplot(featureCount ,1,plot);
-            gscatter(features(:,i),features(:,j),class);
+            gscatter(features(:,i),features(:,j),classnames);
             %scatter([features{:,i}],[features{:,j}],40,class,'filled');
             xlabel(featureNames{i});
             ylabel(featureNames{j});
@@ -93,13 +93,37 @@ for i = 1 : featureCount
 end
 
 %% k-NN
-result = cell(imageCount);
-for k = 1:imageCount-1
+result = cell(imageCount,imageCount-1);
+for k = 1: imageCount-1
     fprintf('k = %d\n',k);
     for i = 1:imageCount
-%         bufferCell = k_NN(features(i,:),[features(1:i-1,:);features(1+i:end,:)],classnames,k);
-        bufferCell = knnclassify(features(i,:),[features(1:i-1,:);features(1+i:end,:)],[classnames(1:i-1,:);classnames(1+i:end,:)],k);
+        bufferCell = k_NN(features(i,:),[features(1:i-1,:);features(1+i:end,:)],[classnames(1:i-1,:);classnames(1+i:end,:)],k);
+%         bufferCell = knnclassify(features(i,:),[features(1:i-1,:);features(1+i:end,:)],[classnames(1:i-1,:);classnames(1+i:end,:)],k);
         result{i,k} = bufferCell{1};
     end
 end
+
+%% Plot Results
+correct = zeros(imageCount-1,1);
+for k = 1 : imageCount-1
+    eval = cellfun(@strcmp, classnames, result(:,k));
+    correct(k,1) = sum(eval);
+end
+
+xmax = find(max(correct) == correct);
+imax = xmax(1);
+figure('name','k-Error');
+hold on;
+plot(correct, 'LineWidth', 2);
+axis([0 100 0 100]);
+title('Grand Canion');
+xlabel('k from k-NN');
+ylabel('% of correct classification');
+text(imax,correct(imax),['Maximum =  ',num2str(correct(imax))],...
+    'VerticalAlignment','bottom',...
+    'HorizontalAlignment','left',...
+    'FontSize',11);
+plot(imax,correct(imax),'ro');
+hold off;
+
 end
