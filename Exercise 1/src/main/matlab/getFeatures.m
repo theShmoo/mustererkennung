@@ -27,6 +27,10 @@ function [ featureVector ] = getFeatures( inputImage , featureNames)
             feature = calculateAspectRatio(inputImage);
        elseif strcmp(propname,'Formfactor')
             feature = calculateFormfactor(inputImage);
+       elseif strcmp(propname,'Roundness')
+            feature = calculateRoundness(inputImage);
+       elseif strcmp(propname,'Compactness')
+            feature = calculateCompactness(inputImage);
        else
             feature = regionprops(inputImage, propname);
             
