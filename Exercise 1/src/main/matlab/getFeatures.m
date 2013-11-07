@@ -24,10 +24,7 @@ function [ featureVector ] = getFeatures( inputImage , featureNames)
        propname = featureNames{i};
        
        if strcmp(propname,'AspectRatio')
-            minor = regionprops(inputImage, 'MinorAxisLength');
-            major = regionprops(inputImage, 'MajorAxisLength');
-            aspectRatio = minor.('MinorAxisLength')/major.('MajorAxisLength');
-            feature = struct('AspectRatio',aspectRatio);
+            feature = calculateAspectRatio(inputImage);
        elseif strcmp(propname,'Formfactor')
             feature = calculateFormfactor(inputImage);
        else
