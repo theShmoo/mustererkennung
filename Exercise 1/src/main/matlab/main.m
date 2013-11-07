@@ -28,6 +28,8 @@ imageCount = length(images);
 %   'Solidity' = 21
 %   'AspectRatio' = 23
 %   'Formfactor' = 24
+%   'Roundness'=        %25
+%   'Compactness'=      %26
 
 
 propertiesSelection = [23, 7, 24]; 
