@@ -4,7 +4,7 @@ function [ feature ] = calculateCompactness( inputImage )
 
     roundness = calculateRoundness(inputImage);
     compactness = sqrt(roundness.('Roundness'));
-    feature = struct('Roundness',compactness);
+    feature = struct('Compactness',compactness);
 
 end
 

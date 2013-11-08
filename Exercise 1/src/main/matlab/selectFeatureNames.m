@@ -28,6 +28,7 @@
 % * 'Formfactor'=       %24 
 % * 'Roundness'=        %25
 % * 'Compactness'=      %26
+% * 'Convexity'=        %27
 %% INPUT
 %   propertySelectionVec ... a vector with the numbers representing the
 %   features
@@ -63,7 +64,7 @@ function [featureNames] = selectFeatureNames (propertySelectionVec)
         'Formfactor';       %24 
         'Roundness';        %25
         'Compactness'       %26
-        
+        'Convexity'         %26
         };
     
     featureNames = cell(length(propertySelectionVec),1);

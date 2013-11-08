@@ -9,10 +9,14 @@ function main()
 %% Get Input Images
 classes = {'Heart';'device4';'rat';'device1';'Bone'};
 classSize = 20;
+tic;
 [images,classnames] = getInput(classes);
 imageCount = length(images);
+toc;
 
 %% Get Features from Images
+disp('################################');
+disp('Starting Feature Detection...');
 %Choose your Features here! (Choose wisely :P)
 % possible Scalar Features:
 
@@ -30,23 +34,38 @@ imageCount = length(images);
 %   'Formfactor' = 24
 %   'Roundness'=        %25
 %   'Compactness'=      %26
+%   'Convexity'= 27
 
 
-propertiesSelection = [23, 7, 24]; 
+propertiesSelection = [23, 25, 27]; 
 featureNames = selectFeatureNames(propertiesSelection);
 featureCount = length(featureNames);
 features = zeros(imageCount,featureCount );
 
-%% Logging
-disp('Starting Feature Detection...');
-fprintf(' %s',featureNames{:});
+% Retrieves features for every image
+fprintf('\t');
+fprintf('%s ',featureNames{:});
 fprintf('\n');
-
-%% Retrieves features for every image
+tic;
 for i = 1:imageCount
     features(i,:) = getFeatures(images{i},featureNames);
 end
 disp('Feature Detection finished');
+toc;
+%% k-NN
+disp('################################');
+disp('Starting k-NN classifier...');
+result = cell(imageCount,imageCount-1);
+tic;
+for k = 1: imageCount-1
+    fprintf('\tk = %d\n',k);
+    for i = 1:imageCount
+        bufferCell = k_NN(features(i,:),[features(1:i-1,:);features(1+i:end,:)],[classnames(1:i-1,:);classnames(1+i:end,:)],k);
+        result{i,k} = bufferCell{1};
+    end
+end
+disp('k-NN classification finished');
+toc;
 
 %% Plotting image features
 
@@ -90,16 +109,6 @@ for i = 1 : featureCount
         hold on;
     end
     title(featureNames{i});
-end
-
-%% k-NN
-result = cell(imageCount,imageCount-1);
-for k = 1: imageCount-1
-    fprintf('k = %d\n',k);
-    for i = 1:imageCount
-        bufferCell = k_NN(features(i,:),[features(1:i-1,:);features(1+i:end,:)],[classnames(1:i-1,:);classnames(1+i:end,:)],k);
-        result{i,k} = bufferCell{1};
-    end
 end
 
 %% Plot Results

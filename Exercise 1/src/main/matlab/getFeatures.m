@@ -31,6 +31,8 @@ function [ featureVector ] = getFeatures( inputImage , featureNames)
             feature = calculateRoundness(inputImage);
        elseif strcmp(propname,'Compactness')
             feature = calculateCompactness(inputImage);
+       elseif strcmp(propname,'Convexity')
+            feature = calculateConvexity(inputImage);
        else
             feature = regionprops(inputImage, propname);
             
