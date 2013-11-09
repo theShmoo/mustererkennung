@@ -58,6 +58,16 @@ for i = 1:imageCount
 end
 disp('Feature Detection finished');
 toc;
+%% customClassifier
+disp('################################');
+disp('Starting Custom classifier...');
+bufferCell = customClassifier(features);
+eval = cellfun(@strcmp, classnames, bufferCell);
+correctC = sum(eval);
+fprintf('%d',correctC);
+disp('% of correct classification');
+disp('Custom classification finished');
+
 %% k-NN
 disp('################################');
 disp('Starting k-NN classifier...');
