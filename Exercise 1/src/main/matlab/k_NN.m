@@ -44,7 +44,8 @@ function [classNames]= k_NN(featureSet,trainingSet,trainingLabels,k)
         mcClass=0;
         
         for j = 1:k
-            nn=find(distances==min(distances));
+            [~,nn]=min(distances);
+            nn = nn(1);
             ci=find(not(cellfun('isempty', strfind(classes,trainingLabelsC{nn}))));
             classesCount(ci)=classesCount(ci)+1;
             %feature gets labeled with the class name, that is most common among the

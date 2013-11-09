@@ -7,7 +7,7 @@
 
 function main()
 %% Get Input Images
-classes = {'Heart';'device4';'rat';'device1';'Bone'};
+classes = {'Heart';'device4';'bat';'device1';'Bone'};
 classSize = 20;
 tic;
 [images,classnames] = getInput(classes);
@@ -37,7 +37,13 @@ disp('Starting Feature Detection...');
 %   'Convexity'= 27
 
 
-propertiesSelection = [23, 25, 27]; 
+% propertiesSelection = [7, 25];      % 99 Prozent!
+% propertiesSelection = [21, 24, 25]; % 96 Prozent!
+% propertiesSelection = [7, 26, 21];  % 99 Prozent!
+  propertiesSelection = [7, 25, 21];  % 99 Prozent
+% propertiesSelection = [7,21,23,25];  % 99 Prozent
+% propertiesSelection = [7,21,23,24,25,26,27];  % 99 Prozent
+
 featureNames = selectFeatureNames(propertiesSelection);
 featureCount = length(featureNames);
 features = zeros(imageCount,featureCount );
@@ -74,7 +80,7 @@ figure('name','The Dependency Of The Features');
 p = 1; %the plot
 for i = 1 : featureCount  
     for j = i+1 : featureCount 
-            subplot(featureCount ,1,p);
+            subplot(sum(1:featureCount-1) ,1,p);
             gscatter(features(:,i),features(:,j),classnames);
             %scatter([features{:,i}],[features{:,j}],40,class,'filled');
             xlabel(featureNames{i});
