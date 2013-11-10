@@ -5,147 +5,165 @@
 %
 
 %{{{ misc
-\documentclass[12pt,a4paper,DIV=calc]{scrartcl} % koma klasse
+\documentclass[a4paper,twocolumn,psfig,subfigure,epsfig,fleqn,amssmb,float,caption,fontenc,ausarbeitung]{article}
 
-\typearea[current]{calc}        % neuberechnung des textsatzes
-\usepackage[a4paper,left=25mm,right=25mm,top=23mm,bottom=23mm]{geometry} % rand einstellungen
+%Zitieren:
 
-%\usepackage{ngerman}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[ngerman]{babel}
-\usepackage{fancyhdr}
-\usepackage{calc}
-\usepackage[usenames]{color}
-\usepackage{moreverb}
-\usepackage{amssymb}
-\usepackage[final]{graphicx}
-\usepackage{multicol}
+\usepackage[english]{babel}
+%\usepackage[german]{babel}
+\usepackage{babelbib} % für das Erstellen des Bibtex-Literaturverzeichnisses
+\usepackage{cite}
+%\selectbiblanguage{english}
+%\selectbiblanguage{german}
+
 \usepackage{url}
-\usepackage{enumitem}
-\usepackage{comment}
-\usepackage{lastpage}
-\usepackage{listings}
+
+\usepackage[]{mcode}
+
 \usepackage[pdftitle={Einführung in die Mustererkennung, Exercise 1},
             pdfauthor={David Pfahler},
 						pdfauthor={Matthias Gusenbauer},
 						pdfauthor={Matthias Vigele},
             pdfsubject={Mustererkennung},
             pdfborder={0 0 0}]{hyperref}
-\def\pdfBorderAttrs{/Border [0 0 0]} % no borders
-
-\definecolor{dgreen}{RGB}{30,71,21}
-\definecolor{codegray}{RGB}{240,240,240}
-
-\lstset{
-	language=C,
-	backgroundcolor=\color{codegray},
-	basicstyle=\linespread{1.0}\ttfamily\scriptsize,
-	keywordstyle=\bfseries\ttfamily\scriptsize\color[rgb]{0,0,1},
-        identifierstyle=\color{dgreen},
-	commentstyle=\textit,
-	tabsize=2,
-	float=ph,
-	extendedchars,
-	breaklines,
-        breakatwhitespace=true,
-	prebreak={\space\hbox{\ensuremath\hookleftarrow}},,
-	numbers=left,
-	numberstyle=\tiny,
-        numbersep=5pt,
-	stringstyle=\textsl,
-	showstringspaces=false,
-	captionpos=b,
-	aboveskip=24pt
-}
-
-%}}}
-
-%-------------------------------------------------------------------------------
-% FOR STUDENTS - CHANGE
-\newcommand{\group}{AG\_C\_3}
-\newcommand{\datum}{11.10.2013}
-\newcommand{\lab}{Exercise 1}
-%-------------------------------------------------------------------------------
-% DON'T CHANGE
-% <variablen>
-\newcommand{\dokumenttyp}{Abgabedokument \lab}
-\newcommand{\lvaname}{Einführung in die Mustererkennung}
-\newcommand{\lvanr}{186.840}
-\newcommand{\semester}{WS 2013}
-% </variablen>
-%-------------------------------------------------------------------------------
-
-%{{{
-
-\pagestyle{fancy}
-\fancyhf{}
-
-\fancyhead[C]{}
-\renewcommand{\headrulewidth}{0.0pt}
- 
-\fancyfoot[L]{\group}
-\fancyfoot[C]{}
-\fancyfoot[R]{Seite \thepage}
-\renewcommand{\footrulewidth}{0.5pt}
- 
-\fancypagestyle{plain}
-{
-}
-
-\fancypagestyle{firstpage}
-{
-}
 
 
-\newcommand{\punkte}[1]{\mbox{\textbf{(\qquad/#1)}} }
-\newcommand{\abgabe}{\vspace{4cm}}
-\newcommand{\frage}[1]{\item #1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Titlepage
+
+\pagestyle{empty}
 
 
-\title{\lvaname \dokumenttyp}
-\author{David Pfahler\\ Matthias Gusenbauer\\ Matthias Vigele}
-\date{\datum}
+%set dimensions of columns, gap between columns, and paragraph indent
+
+\setlength{\textheight}{24.7 cm}
+\setlength{\columnsep}{1 cm}
+\setlength{\textwidth}{16 cm}
+%\setlength{\footheight}{0.0 cm}
+\setlength{\topmargin}{0.0 cm}
+\setlength{\headheight}{0.0 cm}
+\setlength{\headsep}{-0.3 cm}
+\setlength{\oddsidemargin}{0.0 cm}
+\setlength{\parindent}{0.7 cm}
+\setlength{\mathindent}{0mm}
+
+% set page counter if document is part of proceedings
+\setcounter{page}{1}
+\renewcommand{\floatpagefraction}{0.9}
+\renewcommand{\textfraction}{0.1}
+
+%\renewcommand{\captionlabelfont}{\fontfamily{phv}\fontseries{bx}\fontsize{10}{10pt}\selectfont}
+%\renewcommand{\captionfont}{\fontfamily{phv}\fontsize{10}{12pt}\selectfont}
+%\setlength{\captionmargin}{0.5 cm}
+
+\makeatletter
+\makeatother
+\def\RR{\hbox{I\kern-.2em\hbox{R}}}
+
 
 \begin{document}
 
-\thispagestyle{firstpage}
-\begin{center}
-\vspace{1.5cm}
-{\LARGE\bf \dokumenttyp\\}
-\vspace{0.3cm}
-{\LARGE\bf \lvaname\\\lvanr\\\semester\\}
-\vspace{1.0cm}
-{\LARGE \datum}
-\vspace{1.5cm}
-\end{center}
+%don't want date printed
+\date{}
 
+%make title bold and 14 pt font (Latex default is non-bold, 16pt) 
+\title{~\\
+  ~\\
+  \fontsize{14}{14pt} \bf Abgabedokument Exercise 1
+	 ~\\
+  \fontsize{12}{12pt} \bf Einführung in die Mustererkennung 186.840 WS 2013}
 
+%for single author 
+\author{~\\
+  ~\\
+  \fontsize{12}{12pt}
+  {\bf David Pfahler, Matthias Gusenbauer, Matthias Vigele}\\
+  1126287, 1125577, 1126171
+  ~\\ ~\\ ~\\
+  \normalsize
+  {\bf ABSTRACT} \\ 
+  \noindent
+  \hspace{0.2cm}
+  \begin{minipage}[c]{15cm}
+  \normalsize This is my abstract.  This is my abstract.  This is my
+    abstract.  This is my abstract.  This is my abstract.  This is my
+    abstract.  This is my abstract.  This is my abstract.  This is my
+    abstract.  This is my abstract.  This is my abstract.  This is my
+    abstract.\\
+  \end{minipage}
+  ~\\ ~\\ ~\\
+  \normalsize
+  {\bf KEYWORDS} \\ 
+  \normalsize
+  Keyword1, Keyword2, Keyword3, Keyword4, Keyword5, Keyword6.
+  }
 
-\begin{tabular}{|p{5.0cm}|p{2cm}|p{7.4cm}|}\hline
- \textbf{Name} &  \textbf{Martikelnr.} & \textbf{Emailaddresse}\\\hline
-  David Pfahler & 1126287 & e1126287@student.tuwien.ac.at\\ \hline
-	Matthias Gusenbauer & 1125577 & e1125577@student.tuwien.ac.at\\ \hline
-	Matthias Vigele & 1126171 & e1126171@student.tuwien.ac.at\\ \hline
+\maketitle
 
-\end{tabular}
-
-\vspace{1.5cm}
-%}}}
-
-
-\vspace{0.3cm}
-\rule{\textwidth}{0.1mm}
-\vspace{0.3cm}
-
-
-\newpage
-
+%I don't know why I have to reset thispagestyle, but otherwise get page numbers 
+\normalfont
+\thispagestyle{empty}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% INHALT AB HIER
-\section{Aufgabe}
-Test Test test
+% CONTENT
+
+\section{Feature Extraction}
+\label{sec:featureExtraction}
+
+\subsection{Input Images}
+\label{sec:input}
+
+\subsection{Features}
+\label{sec:features}
+
+\begin{lstlisting}
+a = 1;    % MATLAB comment
+b = 2;
+c = a^2 + b^2;
+feature = regionprops(inputImage, propname);
+\end{lstlisting}
+
+\subsubsection{Eccentricity}
+\label{sec:eccentricity}
+
+\subsubsection{Roundness}
+\label{sec:roundness}
+
+\subsubsection{Solidity}
+\label{sec:solidity}
+
+\section{Classification}
+\label{sec:classification}
+
+\subsection{Own Implementation}
+\label{sec:own}
+
+\subsubsection{Methods}
+\label{sec:ownMethods}
+
+\subsubsection{Results}
+\label{sec:ownResults}
+
+\subsection{k-NN Classifier}
+\label{sec:kNN}
+
+\subsubsection{Methods}
+\label{sec:kNNMethods}
+
+\subsubsection{Results}
+\label{sec:kNNResults}
+
+\section{Paper Summary}
+\label{sec:paperSummary}
+\cite{beyer1999nearest}
+
+% Biblography
+
+
+\fontsize{9}{10pt}
+\bibliographystyle{plain}
+\bibliography{literatur}
+
 \end{document}
 
 % vim:foldmethod=marker
