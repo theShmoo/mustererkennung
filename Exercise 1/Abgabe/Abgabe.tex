@@ -285,6 +285,7 @@ ans =
 \end{lstlisting}
 
 \subsection{Results}
+\label{sec:fResults}
 
 With the {\tt matlab} function {\tt getFeatures} all features for all input 
 images (see Section \ref{sec:input}) are calculated. In Figure \ref{fig:boxplot} 
@@ -317,28 +318,56 @@ The Figure \ref{fig:gscatter} shows the dependencies of all features and display
 
 
 
+
+
 \section{Classification}
 \label{sec:classification}
-This section describes the two classification algorithms, one is hand-tuned (see Section \ref{sec:own}) and the other k-NN-based (see Section \ref{sec:kNN}), that are used to classify the images. 
+This section describes the two classification algorithms, one is hand-tuned (see Section \ref{sec:own}) and the other k-NN-based (see Section \ref{sec:kNN}), that are used to classify the images. Both of these algorithms use the feature values described in Section \ref{sec:features} to distinguish between the five classes mentioned in Section \ref{sec:input}.
 
 \subsection{Own Implementation}
 \label{sec:own}
-Our classification algorithm uses thresholds on the feature values described in Section \ref{sec:features} to determine the class of an image.
+Our classification algorithm uses thresholds on the feature values to determine the class of an image.
 
 \subsubsection{Methods}
 \label{sec:ownMethods}
+The {\tt matlab} function {\tt customClassifier} takes all the computed feature values (see Section \ref{sec:fResults}) as input to classify the images.
+Various thresholds are used to distinguish between the five classes. For example (see Listing \ref{lst:solidity}): An image with an eccentricity value greater than or equal to 0.8 could be a member of either the "bat" or the "heart" class. But it is possible to distinguish the two classes by taking another feature value into account: The image has to be a member of the  "heart" class, if its roundness value is also greater than or equal to 0.4.
+
+\begin{lstlisting}[caption=Example for two thresholds, label=lst:thresholdEx]
+       if(featureV(1)>=0.8)
+           %bat or heart
+           classNames{i}='bat';         
+           %roundness threshold
+           if(featureV(2)>=0.4)
+           %heart
+           classNames{i}='Heart';                     
+           end
+       end
+\end{lstlisting}
 
 \subsubsection{Results}
 \label{sec:ownResults}
+Our classifier classifies 100\% of the objects correctly.
 
 \subsection{k-NN Classifier}
 \label{sec:kNN}
+The k-NN Classifier uses a set of pre-classified feature vectors to classify another set of feature vectors.
 
 \subsubsection{Methods}
 \label{sec:kNNMethods}
+The {\tt matlab} function {\tt k\_NN} classifies an feature vector by computing its k nearest neighbours (using the Euclidean distance) in the training set, and labeling the image with the class name that is most common among these neighbours.
 
 \subsubsection{Results}
 \label{sec:kNNResults}
+As shown in Figure \ref{fig:results}, the number of correctly classified images drops significally with increasing k.
+\begin{figure}
+	\centering
+	\setlength\figureheight{7cm} 
+	\setlength\figurewidth{9cm}
+	\input{img/results.tikz}
+	\caption{\% of correct classifications with varying k}
+	\label{fig:results}
+\end{figure}
 
 \section{Paper Summary}
 \label{sec:paperSummary}
