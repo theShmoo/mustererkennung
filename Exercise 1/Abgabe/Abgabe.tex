@@ -5,10 +5,13 @@
 %
 
 %{{{ misc
-\documentclass[a4paper,twocolumn,psfig,subfigure,epsfig,fleqn,amssmb,float,caption,fontenc,ausarbeitung]{article}
+\documentclass[a4paper,psfig,subfigure,epsfig,fleqn,amssmb,float,caption,fontenc,ausarbeitung]{article}
+
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
 
 %Zitieren:
-
 \usepackage[english]{babel}
 %\usepackage[german]{babel}
 \usepackage{babelbib} % für das Erstellen des Bibtex-Literaturverzeichnisses
@@ -16,11 +19,12 @@
 %\selectbiblanguage{english}
 %\selectbiblanguage{german}
 
+
 \usepackage{url}
 
 \usepackage[]{mcode}
 
-\usepackage[pdftitle={Einführung in die Mustererkennung, Exercise 1},
+\usepackage[pdftitle={Einfuehrung in die Mustererkennung, Exercise 1},
             pdfauthor={David Pfahler},
 						pdfauthor={Matthias Gusenbauer},
 						pdfauthor={Matthias Vigele},
@@ -110,11 +114,7 @@
 \section{Feature Extraction}
 \label{sec:featureExtraction}
 
-\subsection{Input Images}
-\label{sec:input}
-
-\subsection{Features}
-\label{sec:features}
+Just an matlab example:
 
 \begin{lstlisting}
 a = 1;    % MATLAB comment
@@ -123,15 +123,129 @@ c = a^2 + b^2;
 feature = regionprops(inputImage, propname);
 \end{lstlisting}
 
+
+\subsection{Input Images}
+\label{sec:input}
+
+\subsection{Features}
+\label{sec:features}
+
+In the following section the used features are described. To evaluate scale, 
+transformation and rotation invariants a test image is used. Listing 
+\ref{lst:calcRot} shows the used matlab function. Figure \ref{fig:heart} 
+shows the test image. 
+
+\begin{lstlisting}[caption=Calculate rotated image, label=lst:calcRot]
+	rot = imresize(imrotate(image,45),0.5);
+\end{lstlisting}
+The calculation of the features of the two test images will differ, because 
+of the lost of accuracy by the size reduction.
+
 \subsubsection{Eccentricity}
 \label{sec:eccentricity}
+
+The Eccentricity is a scalar value that measures of how much the object 
+deviates from a circle. It is calculated by the ratio of the distance between 
+the foci of the ellipse and its major axis length. See Equation 
+\ref{eq:eccentricity}
+\begin{equation}
+	\frac{2*\sqrt{\frac{D_{max}}{2}^2-\frac{D_{min}}{2}^2}}{D_{max}}
+	\label{eq:eccentricity}
+\end{equation}
+$D_{max}$ is the major axis length and $D_{min}$ is the minor axis length of 
+the best-fit ellipse.
+
+\paragraph{Invariance:} The eccentricity feature is scale, transformation and 
+rotation invariant. The Listing \ref{lst:eccentricity} provides an example. 
+Figure \ref{fig:heart} shows the used binary images.
+
+\begin{lstlisting}[caption=Calculate eccentricity in matlab, label=lst:eccentricity]
+>> regionprops(image,'Eccentricity')
+
+ans = 
+
+    Eccentricity: 0.7073
+
+>> regionprops(rot,'Eccentricity')
+
+ans = 
+
+    Eccentricity: 0.7080
+\end{lstlisting}
 
 \subsubsection{Roundness}
 \label{sec:roundness}
 
+Roundness is a scalar value that describe how the shape of an object 
+approaches that of a circle. A value of 1 means that the object is a circle 
+and a value of 0 means the object is a line segment. See Equation \ref{eq:roundness}
+\begin{equation}
+  \frac{4A(R)}{\pi D^{2}_{max}}
+	\label{eq:roundness}
+\end{equation}
+$A(R)$ is the area of the labeled binary image and $D_{max}$ is the major axis 
+length of the best-fit ellipse.
+
+\paragraph{Invariance:} The Roundness feature is scale, transformation and 
+rotation invariant. The Listing \ref{lst:roundness} provides an example. 
+Figure \ref{fig:heart} shows the used binary images.
+
+\begin{lstlisting}[caption=Calculate roundness in matlab, label=lst:roundness]
+	>> calculateRoundness(image)
+
+	ans = 
+
+			Roundness: 0.6333
+	
+	>> calculateRoundness(rot)
+
+	ans = 
+
+			Roundness: 0.6326
+\end{lstlisting}
+
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{img/heart.jpg}
+	\end{subfigure}
+	~ 
+	\begin{subfigure}[b]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{img/invariance_rotation.jpg}
+	\end{subfigure}
+	\caption{A rotated, translated and scaled image}
+	\label{fig:heart}
+\end{figure}
+
+
 \subsubsection{Solidity}
 \label{sec:solidity}
 
+The solidity is a scalar value specifying the proportion of the pixels in the 
+convex hull that are also in the region. See Equation \ref{eq:solidity}
+
+\begin{equation}
+\frac{A(R)}{A(Co(R))}
+\label{eq:solidity}
+\end{equation}
+$A(R)$ is the area of the labeled binary image and $Co(R)$ is the convex hull of the binary image
+
+\paragraph{Invariance:} The solidity feature is scale, transformation and 
+rotation invariant. The Listing \ref{lst:solidity} provides an example. 
+Figure \ref{fig:heart} shows the used binary images.
+\begin{lstlisting}[caption=Calculate solidity in matlab, label=lst:solidity]
+>> regionprops(image,'Solidity')
+
+ans = 
+
+    Solidity: 0.9145
+
+>> regionprops(rot,'Solidity')
+
+ans = 
+
+    Solidity: 0.9113
+\end{lstlisting}
 \section{Classification}
 \label{sec:classification}
 
