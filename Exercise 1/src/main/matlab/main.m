@@ -110,13 +110,13 @@ for i = 1 : featureCount
     for j = i+1 : featureCount 
             subplot(sum(1:featureCount-1) ,1,p);
             gscatter(features(:,i),features(:,j),classnames);
+            legend('Location','EastOutside');
             %scatter([features{:,i}],[features{:,j}],40,class,'filled');
             xlabel(featureNames{i});
             ylabel(featureNames{j});
             p = p + 1;
     end
 end
-legend(classes);
 
 
 % BoxPlot Features

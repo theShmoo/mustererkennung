@@ -11,6 +11,8 @@
 \usepackage{caption}
 \usepackage{subcaption}
 
+\usepackage{pgfplots}
+
 %Zitieren:
 \usepackage[english]{babel}
 %\usepackage[german]{babel}
@@ -281,6 +283,40 @@ ans =
 
     Solidity: 0.9113
 \end{lstlisting}
+
+\subsection{Results}
+
+With the {\tt matlab} function {\tt getFeatures} all features for all input 
+images (see Section \ref{sec:input}) are calculated. In Figure \ref{fig:boxplot} 
+a boxplot  of this features is shown. The boxplot is a convenient way of 
+graphically depicting groups of numerical data through their quartiles. 
+\cite{tukey1977exploratory}
+The Figure \ref{fig:gscatter} shows the dependencies of all features and displays outliers.
+
+\begin{figure}
+	\centering
+	\newlength\figureheight 
+	\newlength\figurewidth 
+	\setlength\figureheight{6cm} 
+	\setlength\figurewidth{10cm}
+	\input{img/boxplot.tex}
+	\caption{Boxplot of all features}
+	\label{fig:boxplot}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\setlength\figureheight{4cm} 
+	\setlength\figurewidth{10cm}
+	\input{img/gscatter.tikz}
+	\caption{Scatterplot of all features in relation}
+	\label{fig:gscatter}
+\end{figure}
+
+
+
+
+
 \section{Classification}
 \label{sec:classification}
 
