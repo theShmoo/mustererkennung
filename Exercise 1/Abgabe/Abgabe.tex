@@ -103,7 +103,6 @@
   }
 
 \maketitle
-
 %I don't know why I have to reset thispagestyle, but otherwise get page numbers 
 \normalfont
 \thispagestyle{empty}
@@ -114,18 +113,54 @@
 \section{Feature Extraction}
 \label{sec:featureExtraction}
 
-Just an matlab example:
-
-\begin{lstlisting}
-a = 1;    % MATLAB comment
-b = 2;
-c = a^2 + b^2;
-feature = regionprops(inputImage, propname);
-\end{lstlisting}
-
+This section describes the used image classes and the features that are used for the classification (see Section \ref{sec:classification}. 
 
 \subsection{Input Images}
 \label{sec:input}
+
+5 Classes from the MPEG7 CE-Shape-1 database \cite{latecki2000shape} are used. We used:
+
+\begin{itemize}
+	\item Heart
+	\item device4
+	\item bat
+	\item device1
+	\item Bone
+\end{itemize}
+
+Figure \ref{fig:classes} shows example images of the used classes.
+
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]{img/Heart-1}
+		\caption{Heart}
+	\end{subfigure}
+	~ 
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]{img/Bone}
+		\caption{Bone}
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]{img/device1}
+		\caption{device1}
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]{img/device4}
+		\caption{device4}
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]{img/bat}
+		\caption{bat}
+	\end{subfigure}
+	~
+	\caption{5 used Classes from the MPEG7 CE-Shape-1 database \cite{latecki2000shape}}
+	\label{fig:classes}
+\end{figure}
+
 
 \subsection{Features}
 \label{sec:features}
