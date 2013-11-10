@@ -69,18 +69,36 @@ disp('% of correct classification');
 disp('Custom classification finished');
 
 %% k-NN
+
+%<Logging>
 disp('################################');
 disp('Starting k-NN classifier...');
+loaderSize = 32;
+blank = repmat(' ',1,loaderSize);
+hash = 0;
+fprintf('\tLoading [%s]',blank);
+ %</Logging>
+ 
 result = cell(imageCount,imageCount-1);
 tic;
 for k = 1: imageCount-1
-    fprintf('\tk = %d\n',k);
+    
+    %<Logging>
+    if mod(k,ceil((imageCount-1)/(loaderSize+1))) == 0
+        full = repmat('#',1,hash);
+        blank = repmat(' ',1,loaderSize-hash);
+        fprintf(repmat('\b',1,loaderSize+1));
+        fprintf('%s%s]',full,blank);
+        hash = hash+1;
+    end
+    %</Logging>
+    
     for i = 1:imageCount
         bufferCell = k_NN(features(i,:),[features(1:i-1,:);features(1+i:end,:)],[classnames(1:i-1,:);classnames(1+i:end,:)],k);
         result{i,k} = bufferCell{1};
     end
 end
-disp('k-NN classification finished');
+fprintf('\nk-NN classification finished\n');
 toc;
 
 %% Plotting image features
@@ -140,7 +158,7 @@ figure('name','k-Error');
 hold on;
 plot(correct, 'LineWidth', 2);
 axis([0 100 0 100]);
-title('Grand Canion');
+title('Results');
 xlabel('k from k-NN');
 ylabel('% of correct classification');
 text(imax,correct(imax),['Maximum =  ',num2str(correct(imax)), '% matches at k = ', num2str(imax)],...
