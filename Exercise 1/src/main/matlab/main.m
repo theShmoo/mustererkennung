@@ -161,11 +161,8 @@ axis([0 100 0 100]);
 title('Results');
 xlabel('k from k-NN');
 ylabel('% of correct classification');
-text(imax,correct(imax),['Maximum =  ',num2str(correct(imax)), '% matches at k = ', num2str(imax)],...
-    'VerticalAlignment','bottom',...
-    'HorizontalAlignment','left',...
-    'FontSize',11);
-plot(imax,correct(imax),'ro');
+l = plot(imax,correct(imax),'ro');
+legend(l,['Maximum =  ',num2str(correct(imax)), '% matches at k = ', num2str(imax)])
 hold off;
 
 end
