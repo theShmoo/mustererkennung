@@ -87,22 +87,7 @@
   1126287, 1125577, 1126171
   ~\\ ~\\ ~\\
   \normalsize
-  {\bf ABSTRACT} \\ 
-  \noindent
-  \hspace{0.2cm}
-  \begin{minipage}[c]{15cm}
-  \normalsize This is my abstract.  This is my abstract.  This is my
-    abstract.  This is my abstract.  This is my abstract.  This is my
-    abstract.  This is my abstract.  This is my abstract.  This is my
-    abstract.  This is my abstract.  This is my abstract.  This is my
-    abstract.\\
-  \end{minipage}
-  ~\\ ~\\ ~\\
-  \normalsize
-  {\bf KEYWORDS} \\ 
-  \normalsize
-  Keyword1, Keyword2, Keyword3, Keyword4, Keyword5, Keyword6.
-  }
+}
 
 \maketitle
 %I don't know why I have to reset thispagestyle, but otherwise get page numbers 
@@ -371,9 +356,9 @@ As shown in Figure \ref{fig:results}, the number of correctly classified images 
 
 \section{Paper Summary}
 \label{sec:paperSummary}
-\cite{beyer1999nearest}
+ \cite{beyer1999nearest}
 
-In the paper >When Is “Nearest Neighbor” Meaningful?< Kevin Beyer, Jonathan Goldstein, Raghu Ramakrishnan and Uri Shaft analyse that “Nearest Neighbor” or NN ist not a good general purpose tool for scientists to work with. Their biggest critic is that this method is used in almost all the database literature to evaluate high-dimensional indexing while it is not a good practice to use NN for high-dimensional indexing techniques. Furthermore it is said that most literature does not compare the described techniques with the simple linear scan. According to the shown evaluation in the paper this simple technique almost always outperforms the given methods in the literature. Lastly Beyer, Goldstein, Ramakrishnan and Shaft showed that the evaluated workload is not even meaningful for “Nearest Neighbor”.In the Introduction they summarize their three contributions in this paper. 
+In the paper "When Is 'Nearest Neighbor' Meaningful?" Kevin Beyer, Jonathan Goldstein, Raghu Ramakrishnan and Uri Shaft analyse that “Nearest Neighbor” or NN ist not a good general purpose tool for scientists to work with. Their biggest critic is that this method is used in almost all the database literature to evaluate high-dimensional indexing while it is not a good practice to use NN for high-dimensional indexing techniques. Furthermore it is said that most literature does not compare the described techniques with the simple linear scan. According to the shown evaluation in the paper this simple technique almost always outperforms the given methods in the literature. Lastly Beyer, Goldstein, Ramakrishnan and Shaft showed that the evaluated workload is not even meaningful for “Nearest Neighbor”.In the Introduction they summarize their three contributions in this paper. 
 \paragraph{}
 The first and presumably the most important statement is that with the increase in dimensionality the distance from a query point to the nearest data point converges against the distance to the farthest neighbor. Thus with increasing dimensions the significance of the result of the NN-algorithm is greatly reduced up to a point where the authors of the paper call the output unstable. In addition they not only show that this behaviour is not algorithm dependent but rather a general problem of NN. \\
 The second part is a practical application of their theoretical findings. The authors provide empirical results based on synthetic distributions and, to add real world perspectives, they examined results provided by experiments on real data gathered from a real image database. It is shown that the impact of the effect described above is not to be neglected. \\
@@ -389,7 +374,7 @@ The paper generalises this approach even more. If the data points are located cl
 The last stated case where NN results in an expressive outcome is when the underlying dimensionality of the data is much lower than the actual dimensionality. Such a case can be achieved by using the principle component analysis to find meaningful dimensions and only perform work on these to get good results. \\
 The experiments the authors ran on datasets showed that the difference in length of the closest and farthest datapoint are gets small within a few dimensions. For example the contrast of $ d_{max} / d_{min} $ at 10 dimensions gets reduced by the order of 6 in magnitude. When increased to 20 dimensions the farthest point has only 4 times $ d_min $. Based on these results the authors conclude that NN becomes already unstable at 10 to 20 dimensions.\\
 Lastly the paper continues to lament the fact that literature fails to evaluate their techniques using meaningful and stable datasets. Furthermore it is once again said that literature does not compare their techniques with simple linear scan algorithms. In most cases the linear scan algorithm outperforms the given NN solutions.
-
+ \pagebreak
 % Biblography
 
 
