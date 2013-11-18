@@ -6,3 +6,16 @@ Exercise 1/Abgabe/Abgabe.tps
 *.out
 *.asv
 Exercise 1/Abgabe/Abgabe.pdf
+Exercise 1/src/main/matlab/boxplot.tikz
+Exercise 1/src/main/matlab/cleanfigure.m
+Exercise 1/src/main/matlab/figure2dot.m
+Exercise 1/src/main/matlab/gscatter.tikz
+Exercise 1/src/main/matlab/html/main_03.png
+Exercise 1/src/main/matlab/html/main_04.png
+Exercise 1/src/main/matlab/matlab.mat
+Exercise 1/src/main/matlab/matlab2tikz.m
+Exercise 1/src/main/matlab/matlab2tikzInputParser.m
+Exercise 1/src/main/matlab/myfile.tex
+Exercise 1/src/main/matlab/myfile.tikz
+Exercise 1/src/main/matlab/results.tikz
+Exercise 1/src/main/matlab/updater.m
