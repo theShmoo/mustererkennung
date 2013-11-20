@@ -48,14 +48,51 @@ function main()
     test = vertcat(class1(ceil(class1size/2):end,:),class2(ceil(class2size/2):end,:),class3(ceil(class3size/2):end,:))
     
     featureCount = size(wines,2); % Attention the first is the class name!
-    
+
+%% Standardize data
+% standardize the data by dividing each column by its standard deviation.
+% This code is from the matlab tutorial (TODO)
+stdr = std(test);
+sr = test./repmat(stdr,size(test,1),1);
+
+%% Find principal components
+%
+[coefs,scores,variances,t2] = princomp(sr);
+plot(scores(:,1),scores(:,2),'+')
+xlabel('1st Principal Component')
+ylabel('2nd Principal Component')
+% Identify points (if you want to)
+% gname
+figure;
+% Calculate the percent of the total variability
+percent_explained = 100*variances/sum(variances);
+pareto(percent_explained)
+xlabel('Principal Component')
+ylabel('Variance Explained (%)')
+
+%The Variable t2 is the Hotelling's T^2, it can be used to find extreme
+%points
+figure;
+biplot(coefs(:,1:2), 'scores',scores(:,1:2),... 
+'varlabels',featureNames);
+
+%% k-NN
+% Sei n die Anzahl Trainingsstichproben pro Klasse, und d die Anzahl 
+% Merkmale. Das Verhältnis
+% n/d soll > 10
+fprintf('The trainingset of class 1 has %d values! That means We should use %d features\n',floor(class1size/2),floor(floor(class1size/2)/10));
+fprintf('The trainingset of class 2 has %d values! That means We should use %d features\n',floor(class2size/2),floor(floor(class2size/2)/10));
+fprintf('The trainingset of class 3 has %d values! That means We should use %d features\n',floor(class3size/2),floor(floor(class3size/2)/10));
+
 %% BoxPlot Features
 figure('name','The Features');
 
-for i = 2 : featureCount 
-    subplot(featureCount ,1,i);
-    boxplot(test(:,i),test(:,1));
-    title(featureNames{i});
-end
+boxplot(sr,'orientation','horizontal','labels',featureNames);
+
+% for i = 2 : featureCount 
+%     subplot(featureCount ,1,i);
+%     boxplot(test(:,i),test(:,1));
+%     title(featureNames{i});
+% end
 end
 
