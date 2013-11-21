@@ -44,8 +44,8 @@ function main()
     class3 = wines(class1size+class2size+1:class1size+class2size+class3size,1:end);
     
     % divide training and test dataset in half
-    training = vertcat(class1(1:floor(class1size/2),:),class2(1:floor(class2size/2),:),class3(1:floor(class3size/2),:))
-    test = vertcat(class1(ceil(class1size/2):end,:),class2(ceil(class2size/2):end,:),class3(ceil(class3size/2):end,:))
+    training = vertcat(class1(1:floor(class1size/2),:),class2(1:floor(class2size/2),:),class3(1:floor(class3size/2),:));
+    test = vertcat(class1(ceil(class1size/2):end,:),class2(ceil(class2size/2):end,:),class3(ceil(class3size/2):end,:));
     
     featureCount = size(wines,2); % Attention the first is the class name!
 
@@ -84,9 +84,40 @@ fprintf('The trainingset of class 1 has %d values! That means We should use %d f
 fprintf('The trainingset of class 2 has %d values! That means We should use %d features\n',floor(class2size/2),floor(floor(class2size/2)/10));
 fprintf('The trainingset of class 3 has %d values! That means We should use %d features\n',floor(class3size/2),floor(floor(class3size/2)/10));
 
+a=find(not(cellfun('isempty', strfind(featureNames,'Alcohol'))));
+b=find(not(cellfun('isempty', strfind(featureNames,'Flavanoids'))));
+c=find(not(cellfun('isempty', strfind(featureNames,'Proline'))));
+features = [a b];
+
+testSize = size(test,1);
+result = zeros(testSize,testSize);
+for k = 1:size(training,1)
+    result(:,k) = knnclassify(test(:,features),training(:,features),training(:,1),k);
+end
+
+%% Plot Results
+correct = zeros(testSize,1);
+for k = 1 : testSize
+    eval = result(:,k) == test(:,1);
+    correct(k,1) = sum(eval);
+end
+
+xmax = find(max(correct) == correct);
+imax = xmax(1);
+figure('name','k-Error');
+hold on;
+plot(correct, 'LineWidth', 2);
+axis([0 100 0 100]);
+title('Results');
+xlabel('k from k-NN');
+ylabel('% of correct classification');
+l = plot(imax,correct(imax),'ro');
+legend(l,['Maximum =  ',num2str(correct(imax)), '% matches at k = ', num2str(imax)])
+hold off;
+
 %% BoxPlot Features
 figure('name','The Features');
-
+    
 boxplot(sr,'orientation','horizontal','labels',featureNames);
 
 % for i = 2 : featureCount 
