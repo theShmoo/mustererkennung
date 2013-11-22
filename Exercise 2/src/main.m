@@ -20,7 +20,7 @@ function main()
 % 12)OD280/OD315 of diluted wines 
 % 13)Proline 
     featureNames = {
-            'Class index';
+%            'Class index';
             'Alcohol';
             'Malic acid';
             'Ash';
@@ -37,28 +37,39 @@ function main()
     };
 
     class1size = length(find(wines(:,1) == 1));
-    class1 = wines(1:class1size,1:end);
+    class1 = wines(1:class1size,:);
     class2size = length(find(wines(:,1) == 2));
-    class2 = wines(class1size+1:class1size+class2size,1:end);
+    class2 = wines(class1size+1:class1size+class2size,:);
     class3size = length(find(wines(:,1) == 3));
-    class3 = wines(class1size+class2size+1:class1size+class2size+class3size,1:end);
+    class3 = wines(class1size+class2size+1:class1size+class2size+class3size,:);
     
-    % divide training and test dataset in half
-    training = vertcat(class1(1:floor(class1size/2),:),class2(1:floor(class2size/2),:),class3(1:floor(class3size/2),:));
-    test = vertcat(class1(ceil(class1size/2):end,:),class2(ceil(class2size/2):end,:),class3(ceil(class3size/2):end,:));
+    thres = 0.50; % 0 < thres < 1
     
-    featureCount = size(wines,2); % Attention the first is the class name!
+    % divide training and test dataset
+    training = vertcat(class1(1:floor(class1size*thres),:),class2(1:floor(class2size*thres),:),class3(1:floor(class3size*thres),:));
+    trainingClasses = training(:,1);
+    training = training(:,2:end);
+    test = vertcat(class1(ceil(class1size*thres):end,:),class2(ceil(class2size*thres):end,:),class3(ceil(class3size*thres):end,:));
+    testClasses = test(:,1);
+    test = test(:,2:end);
+    
+    %featureCount = size(wines,2); % Attention the first is the class name!
 
 %% Standardize data
 % standardize the data by dividing each column by its standard deviation.
 % This code is from the matlab tutorial (TODO)
-stdr = std(test);
-sr = test./repmat(stdr,size(test,1),1);
+
+srTest = test./repmat(std(test),size(test,1),1);
+srTraining = training./repmat(std(training),size(training,1),1);
+
+% Normalize data
+srTest = srTest/norm(srTest);
+srTraining = srTraining/norm(srTraining);
 
 %% Find principal components
 %
-[coefs,scores,variances,t2] = princomp(sr);
-plot(scores(:,1),scores(:,2),'+')
+[coefs,scores,variances,t2] = princomp(srTraining);
+gscatter(scores(:,1),scores(:,2),trainingClasses);
 xlabel('1st Principal Component')
 ylabel('2nd Principal Component')
 % Identify points (if you want to)
@@ -72,33 +83,56 @@ ylabel('Variance Explained (%)')
 
 %The Variable t2 is the Hotelling's T^2, it can be used to find extreme
 %points
+
 figure;
-biplot(coefs(:,1:2), 'scores',scores(:,1:2),... 
-'varlabels',featureNames);
+% biplot(coefs(:,1:2), 'scores',scores(:,1:2),... 
+% 'varlabels',featureNames);
+% or in 3D
+ biplot(coefs(:,1:3), 'scores',scores(:,1:3),...
+ 'varlabels',featureNames);
 
 %% k-NN
 % Sei n die Anzahl Trainingsstichproben pro Klasse, und d die Anzahl 
 % Merkmale. Das Verhältnis
 % n/d soll > 10
-fprintf('The trainingset of class 1 has %d values! That means We should use %d features\n',floor(class1size/2),floor(floor(class1size/2)/10));
-fprintf('The trainingset of class 2 has %d values! That means We should use %d features\n',floor(class2size/2),floor(floor(class2size/2)/10));
-fprintf('The trainingset of class 3 has %d values! That means We should use %d features\n',floor(class3size/2),floor(floor(class3size/2)/10));
+fprintf('The trainingset of class 1 has %d values! That means We should use %d features\n',floor(class1size*thres),floor(floor(class1size*thres)/10));
+fprintf('The trainingset of class 2 has %d values! That means We should use %d features\n',floor(class2size*thres),floor(floor(class2size*thres)/10));
+fprintf('The trainingset of class 3 has %d values! That means We should use %d features\n',floor(class3size*thres),floor(floor(class3size*thres)/10));
 
-a=find(not(cellfun('isempty', strfind(featureNames,'Alcohol'))));
-b=find(not(cellfun('isempty', strfind(featureNames,'Flavanoids'))));
-c=find(not(cellfun('isempty', strfind(featureNames,'Proline'))));
-features = [a b];
+alc=find(not(cellfun('isempty', strfind(featureNames,'Alcohol'))));
+ash=find(not(cellfun('isempty', strfind(featureNames,'Ash'))));
+aash=find(not(cellfun('isempty', strfind(featureNames,'Alcanity of Ash'))));
+flav=find(not(cellfun('isempty', strfind(featureNames,'Flavanoids'))));
+pro=find(not(cellfun('isempty', strfind(featureNames,'Proline'))));
+prot=find(not(cellfun('isempty', strfind(featureNames,'Proanthocyanins'))));
+col=find(not(cellfun('isempty', strfind(featureNames,'Color Intensity'))));
+hue=find(not(cellfun('isempty', strfind(featureNames,'Hue'))));
+mal=find(not(cellfun('isempty', strfind(featureNames,'Malic acid'))));
+tphe=find(not(cellfun('isempty', strfind(featureNames,'Total phenols'))));
 
-testSize = size(test,1);
+% Prozente bei thres = 50
+% features = [pro hue]; 82
+% features = [alc hue flav]; 73
+% features = [col flav]; 77
+% features = [ash col]; 45
+% features = [hue alc]; 64
+% features = [pro mal]; 72
+% features = [pro mal ash]; 72
+% features = [pro mal]; 72
+% features = [pro hue ash]; % 83 Prozent bei k = 57
+% features = [pro col flav]; % 87 Prozent bei k = 38
+features = [pro col flav]; % 87 Prozent bei k = 38
+
+testSize = size(srTest,1);
 result = zeros(testSize,testSize);
-for k = 1:size(training,1)
-    result(:,k) = knnclassify(test(:,features),training(:,features),training(:,1),k);
+for k = 1:size(srTraining,1)
+    result(:,k) = knnclassify(srTest(:,features),srTraining(:,features),trainingClasses,k);
 end
 
 %% Plot Results
 correct = zeros(testSize,1);
 for k = 1 : testSize
-    eval = result(:,k) == test(:,1);
+    eval = result(:,k) == testClasses;
     correct(k,1) = sum(eval);
 end
 
@@ -107,7 +141,7 @@ imax = xmax(1);
 figure('name','k-Error');
 hold on;
 plot(correct, 'LineWidth', 2);
-axis([0 100 0 100]);
+axis([1 testSize 0 100]);
 title('Results');
 xlabel('k from k-NN');
 ylabel('% of correct classification');
@@ -118,7 +152,7 @@ hold off;
 %% BoxPlot Features
 figure('name','The Features');
     
-boxplot(sr,'orientation','horizontal','labels',featureNames);
+boxplot(srTest,'orientation','horizontal','labels',featureNames);
 
 % for i = 2 : featureCount 
 %     subplot(featureCount ,1,i);
