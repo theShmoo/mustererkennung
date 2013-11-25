@@ -36,20 +36,36 @@ function main()
             'Proline'
     };
 
+    thres = 0.50; % 0 < thres < 1
+
     class1size = length(find(wines(:,1) == 1));
     class1 = wines(1:class1size,:);
+    class1training = class1(1:floor(class1size*thres),:);
+    class1test = class1(floor(class1size*thres)+1:end,:);
+    
+    assert(isequal(class1,[class1training; class1test]), 'Class 1 is not splited correctly');
+    
     class2size = length(find(wines(:,1) == 2));
     class2 = wines(class1size+1:class1size+class2size,:);
+    class2training = class2(1:floor(class2size*thres),:);
+    class2test = class2(floor(class2size*thres)+1:end,:);
+    
+    assert(isequal(class2,[class2training; class2test]), 'Class 2 is not splited correctly');
+    
     class3size = length(find(wines(:,1) == 3));
     class3 = wines(class1size+class2size+1:class1size+class2size+class3size,:);
+    class3training = class3(1:floor(class3size*thres),:);
+    class3test = class3(floor(class3size*thres)+1:end,:);
     
-    thres = 0.50; % 0 < thres < 1
+    assert(isequal(class3,[class3training; class3test]), 'Class 3 is not splited correctly');
+
+    assert(isequal(wines,[class1; class2; class3]), 'Classes are not splited correctly');
     
     % divide training and test dataset
-    training = vertcat(class1(1:floor(class1size*thres),:),class2(1:floor(class2size*thres),:),class3(1:floor(class3size*thres),:));
+    training = vertcat(class1training,class2training,class3training);
     trainingClasses = training(:,1);
     training = training(:,2:end);
-    test = vertcat(class1(ceil(class1size*thres):end,:),class2(ceil(class2size*thres):end,:),class3(ceil(class3size*thres):end,:));
+    test = vertcat(class1test,class2test,class3test);
     testClasses = test(:,1);
     test = test(:,2:end);
     
@@ -63,8 +79,8 @@ srTest = test./repmat(std(test),size(test,1),1);
 srTraining = training./repmat(std(training),size(training,1),1);
 
 % Normalize data
-srTest = srTest/norm(srTest);
-srTraining = srTraining/norm(srTraining);
+% srTest = srTest/norm(srTest);
+% srTraining = srTraining/norm(srTraining);
 
 %% Find principal components
 %
@@ -111,17 +127,16 @@ mal=find(not(cellfun('isempty', strfind(featureNames,'Malic acid'))));
 tphe=find(not(cellfun('isempty', strfind(featureNames,'Total phenols'))));
 
 % Prozente bei thres = 50
-% features = [pro hue]; 82
-% features = [alc hue flav]; 73
-% features = [col flav]; 77
-% features = [ash col]; 45
-% features = [hue alc]; 64
-% features = [pro mal]; 72
-% features = [pro mal ash]; 72
-% features = [pro mal]; 72
-% features = [pro hue ash]; % 83 Prozent bei k = 57
-% features = [pro col flav]; % 87 Prozent bei k = 38
-features = [pro col flav]; % 87 Prozent bei k = 38
+% features = [pro hue]; % 88.888
+%  features = [alc hue flav]; % 78.888
+% features = [col flav]; % 84,4444
+% features = [ash col]; % 48.8888
+% features = [hue alc]; % 70
+% features = [pro mal]; 78
+% features = [pro mal ash]; 78,88
+% features = [pro mal]; 78
+% features = [pro hue ash]; % 91.1111 Prozent bei k = 55
+ features = [pro col flav]; % 95.5555 Prozent bei k = 38
 
 testSize = size(srTest,1);
 result = zeros(testSize,testSize);
@@ -129,11 +144,11 @@ for k = 1:size(srTraining,1)
     result(:,k) = knnclassify(srTest(:,features),srTraining(:,features),trainingClasses,k);
 end
 
-%% Plot Results
+% Plot Results
 correct = zeros(testSize,1);
 for k = 1 : testSize
     eval = result(:,k) == testClasses;
-    correct(k,1) = sum(eval);
+    correct(k,1) = sum(eval)/size(eval,1)*100;
 end
 
 xmax = find(max(correct) == correct);
