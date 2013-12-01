@@ -43,23 +43,23 @@ function main()
     class1training = class1(1:floor(class1size*thres),:);
     class1test = class1(floor(class1size*thres)+1:end,:);
     
-    assert(isequal(class1,[class1training; class1test]), 'Class 1 is not splited correctly');
+    assert(isequal(class1,[class1training; class1test]), 'Class 1 is not split correctly');
     
     class2size = length(find(wines(:,1) == 2));
     class2 = wines(class1size+1:class1size+class2size,:);
     class2training = class2(1:floor(class2size*thres),:);
     class2test = class2(floor(class2size*thres)+1:end,:);
     
-    assert(isequal(class2,[class2training; class2test]), 'Class 2 is not splited correctly');
+    assert(isequal(class2,[class2training; class2test]), 'Class 2 is not split correctly');
     
     class3size = length(find(wines(:,1) == 3));
     class3 = wines(class1size+class2size+1:class1size+class2size+class3size,:);
     class3training = class3(1:floor(class3size*thres),:);
     class3test = class3(floor(class3size*thres)+1:end,:);
     
-    assert(isequal(class3,[class3training; class3test]), 'Class 3 is not splited correctly');
+    assert(isequal(class3,[class3training; class3test]), 'Class 3 is not split correctly');
 
-    assert(isequal(wines,[class1; class2; class3]), 'Classes are not splited correctly');
+    assert(isequal(wines,[class1; class2; class3]), 'Classes are not split correctly');
     
     % divide training and test dataset
     training = vertcat(class1training,class2training,class3training);
@@ -109,7 +109,7 @@ figure;
 
 %% k-NN
 % Sei n die Anzahl Trainingsstichproben pro Klasse, und d die Anzahl 
-% Merkmale. Das Verhältnis
+% Merkmale. Das Verh?ltnis
 % n/d soll > 10
 fprintf('The trainingset of class 1 has %d values! That means We should use %d features\n',floor(class1size*thres),floor(floor(class1size*thres)/10));
 fprintf('The trainingset of class 2 has %d values! That means We should use %d features\n',floor(class2size*thres),floor(floor(class2size*thres)/10));
