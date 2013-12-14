@@ -10,18 +10,11 @@ function plotPrincipalComponents( data,labels,featureNames )
 % DESCRIPTION
 %  Plots the principal components of the data set
 
-[coefs,scores,variances,t2] = princomp(data);
+[coefs,scores] = princomp(data);
+figure('name','Principal Components');
 gscatter(scores(:,1),scores(:,2),labels);
 xlabel('1st Principal Component')
 ylabel('2nd Principal Component')
-% Identify points (if you want to)
-% gname
-figure;
-% Calculate the percent of the total variability
-percent_explained = 100*variances/sum(variances);
-pareto(percent_explained)
-xlabel('Principal Component')
-ylabel('Variance Explained (%)')
 
 %The Variable t2 is the Hotelling's T^2, it can be used to find extreme
 %points

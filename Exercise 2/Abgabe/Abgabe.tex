@@ -8,6 +8,7 @@
 \documentclass[a4paper,psfig,subfigure,epsfig,fleqn,amssmb,float,caption,fontenc,ausarbeitung]{article}
 
 \usepackage{graphicx}
+\usepackage{epstopdf}
 \usepackage{caption}
 \usepackage{subcaption}
 
@@ -70,7 +71,7 @@
 \begin{document}
 
 %don't want date printed
-\date{}
+\date{\today}
 
 %make title bold and 14 pt font (Latex default is non-bold, 16pt) 
 \title{~\\
@@ -100,19 +101,110 @@
 \section{Wine Classification - k-NN}
 \label{sec:kNN}
 
-TODO
+This section presents the classification of different types of wines using 
+the k-NN classification algorithm. The dataset\cite{data} contains the results of a 
+chemical analysis of wines made in the same region in Italy but derived from 
+three different cultivars. That means we have a three class problem. 
+Section~\ref{sec:features} presents a method, how to find the best features 
+for the classification. Section~\ref{sec:kNNtestset} shows how to separate 
+the data into a training and a test set. Section~\ref{sec:kNNperformance} 
+presents the performance of the classification and Section~\ref{sec:kNNResults}
+evaluates it.
 
 
 \subsection{Feature Extraction}
 \label{sec:features}
 
-TODO
+
+	\begin{figure}
+		\centering
+			\includegraphics{img/boxplot.eps}
+		\caption{Boxplots of all features of the dataset}
+		\label{fig:boxes}
+	\end{figure}
+
+\begin{figure}
+	\centering
+	\newlength\figureheight 
+	\newlength\figurewidth 
+	\setlength\figureheight{7cm} 
+	\setlength\figurewidth{9cm}
+	\input{img/scatter.tikz}
+	\caption{Scatterplot of the dataset with principal components}
+	\label{fig:scatter}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\setlength\figureheight{10cm} 
+	\setlength\figurewidth{10cm}
+	\input{img/inf.tikz}
+	\caption{The main influences of the features to the first three principal components represented in an interactive 3D-graph}
+	\label{fig:inf}
+\end{figure}
+
+In a chemical analysis of the wines, the following attributes were extracted:
+
+\begin{enumerate}
+	\item Alcohol 
+	\item Malic acid 
+	\item Ash 
+	\item Alcalinity of ash 
+	\item Magnesium 
+	\item Total phenols 
+	\item Flavanoids 
+	\item Nonflavanoid phenols 
+	\item Proanthocyanins 
+	\item Color intensity 
+	\item Hue 
+	\item OD280/OD315 of diluted wines 
+	\item Proline 
+\end{enumerate}
+
+This features vector could be represented by a 13-dimensional coordinate 
+system. But due to the rule of thumb (\ref{eq:ruleOfThumb})presented in the 
+lecture this are too many features for the size of the training set.
+\begin{equation}
+\label{eq:ruleOfThumb}
+	\frac{n}{d} > 10
+\end{equation}
+This rule of thumb says that the size $n$ of the training set divided by the 
+number of features $d$ should be greater than 10.
+
+To reduce the number of features we analyzed the data. Figure~\ref{fig:boxes} 
+shows a boxplot for each feature of the dataset. But first the dataset was 
+standardized by dividing each feature by its standard deviation.
+
+After that we decided to observe the dataset with the Principal Component 
+Analysis (PCA) Figure~\ref{fig:scatter} show a scatterplot of the dataset 
+with its two first principal components and the three classes are represented 
+with different colors. This figure shows that it is possible to separate the 
+three classes into three clusters. 
+
+To find this clusters we looked at the main influences of the features to the 
+first three principal components with an interactive \texttt{MATLAB} tool 
+shown in Figure~\ref{fig:inf}. After some tests we found out that the best feature vector for the classification contains:
+
+\begin{itemize}
+	\item \textbf{Flavanoids}
+	\item \textbf{Proline}
+	\item \textbf{Color Intensity}
+\end{itemize}
 
 
 \subsection{Test and Training Set}
 \label{sec:kNNtestset}
 
-TODO
+To determine a test and a training set we divided the smallest class (class 3)
+ into two parts by a threshold. In our case the threshold is $0.5$, which 
+means that the class with 48 samples gets divided into two 24 sample sets (a 
+test set and a training set). All other classes are divided into a set with 
+the same size as the previously calculated training set size and the rest 
+gets into the test set.
+
+To enhance the accuracy and reliability of the classification algorithm we 
+haven't used just one training set, but we randomly shuffled the dataset to 
+use 30 different training and test sets.
 
 
 \subsection{Classification Performance}

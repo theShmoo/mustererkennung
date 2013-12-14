@@ -10,9 +10,10 @@ wines = importfile('wine.data',1,178);
 
 %% Analyse Data:
 % BoxPlot Features
-figure('name','The Features');
+
 featureNames = getFeatureNames();
 srWine = wines(:,2:end)./repmat(std(wines(:,2:end)),size(wines(:,2:end),1),1);
+figure('name','The Features');
 boxplot( srWine, 'orientation','horizontal', 'labels',featureNames);
 plotPrincipalComponents(srWine,wines(:,1),featureNames);
 

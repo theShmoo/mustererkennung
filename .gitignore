@@ -21,3 +21,13 @@ Exercise 1/src/main/matlab/results.tikz
 Exercise 1/src/main/matlab/updater.m
 Exercise 2/Abgabe/Abgabe.tps
 Exercise 2/Abgabe/Abgabe.pdf
+Exercise 2/Abgabe/img/boxes-clean.tikz
+Exercise 2/Abgabe/img/boxes.tikz
+Exercise 2/Abgabe/img/boxplot-eps-converted-to.pdf
+Exercise 2/src/boxplot.eps.!sync
+Exercise 2/src/boxplottest.tex
+Exercise 2/src/cleanfigure.m
+Exercise 2/src/fig2texPS.m
+Exercise 2/src/matlab2tikz.m
+Exercise 2/src/matlab2tikzInputParser.m
+Exercise 2/src/updater.m

@@ -1,0 +1,1883 @@
+% This file was created by matlab2tikz v0.4.3.
+% Copyright (c) 2008--2013, Nico Schlömer <nico.schloemer@gmail.com>
+% All rights reserved.
+% 
+% The latest updates can be retrieved from
+%   http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz
+% where you can also make suggestions and rate matlab2tikz.
+% 
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=\figurewidth,
+height=\figureheight,
+unbounded coords=jump,
+view={-47.5}{32},
+scale only axis,
+xmin=-0.688846290956282,
+xmax=0.688846290956282,
+xlabel={Component 1},
+xmajorgrids,
+ymin=-0.688846290956282,
+ymax=0.688846290956282,
+ylabel={Component 2},
+ymajorgrids,
+zmin=-0.688846290956282,
+zmax=0.688846290956282,
+zlabel={Component 3},
+zmajorgrids,
+axis x line*=bottom,
+axis y line*=left,
+axis z line*=left
+]
+\addplot3 [
+color=blue,
+solid]
+table[row sep=crcr] {
+0 0 0\\
+0.144329395406011 0.483651547817214 -0.207382624116357\\
+};
+\addplot3 [
+color=blue,
+solid]
+table[row sep=crcr] {
+0 0 0\\
+-0.245187580257221 0.224930934627845 0.0890128856596569\\
+};
+\addplot3 [
+color=blue,
+solid]
+table[row sep=crcr] {
+0 0 0\\
+-0.00205106144437084 0.316068814025315 0.626223900869347\\
+};
+\addplot3 [
+color=blue,
+solid]
+table[row sep=crcr] {
+0 0 0\\
+-0.239320405487535 -0.0105905022881914 0.612080349945782\\
+};
+\addplot3 [
+color=blue,
+solid]
+table[row sep=crcr] {
+0 0 0\\
+0.141992041952987 0.299634003237862 0.130756934850279\\
+};
+\addplot3 [
+color=blue,
+solid]
+table[row sep=crcr] {
+0 0 0\\
+0.39466084506663 0.0650395118192793 0.146178963484672\\
+};
+\addplot3 [
+color=blue,
+solid]
+table[row sep=crcr] {
+0 0 0\\
+0.422934296710059 -0.00335981210030797 0.150681899899448\\
+};
+\addplot3 [
+color=blue,
+solid]
+table[row sep=crcr] {
+0 0 0\\
+-0.298533102954715 0.028779488112987 0.17036816235965\\
+};
+\addplot3 [
+color=blue,
+solid]
+table[row sep=crcr] {
+0 0 0\\
+0.313429488307689 0.0393017222897325 0.149454309462026\\
+};
+\addplot3 [
+color=blue,
+solid]
+table[row sep=crcr] {
+0 0 0\\
+-0.0886167047247227 0.529995672070044 -0.137306212490242\\
+};
+\addplot3 [
+color=blue,
+solid]
+table[row sep=crcr] {
+0 0 0\\
+0.296714563586381 -0.279235147924283 0.0852219225068911\\
+};
+\addplot3 [
+color=blue,
+solid]
+table[row sep=crcr] {
+0 0 0\\
+0.376167410738713 -0.164496192835785 0.166004588087527\\
+};
+\addplot3 [
+color=blue,
+solid]
+table[row sep=crcr] {
+0 0 0\\
+0.286752226896805 0.364902831798083 -0.126745917347702\\
+};
+\addplot3 [
+color=blue,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.144329395406011 0.483651547817214 -0.207382624116357\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=blue,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.245187580257221 0.224930934627845 0.0890128856596569\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=blue,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.00205106144437084 0.316068814025315 0.626223900869347\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=blue,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.239320405487535 -0.0105905022881914 0.612080349945782\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=blue,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.141992041952987 0.299634003237862 0.130756934850279\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=blue,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.39466084506663 0.0650395118192793 0.146178963484672\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=blue,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.422934296710059 -0.00335981210030797 0.150681899899448\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=blue,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.298533102954715 0.028779488112987 0.17036816235965\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=blue,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.313429488307689 0.0393017222897325 0.149454309462026\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=blue,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.0886167047247227 0.529995672070044 -0.137306212490242\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=blue,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.296714563586381 -0.279235147924283 0.0852219225068911\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=blue,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.376167410738713 -0.164496192835785 0.166004588087527\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=blue,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.286752226896805 0.364902831798083 -0.126745917347702\\
+NaN NaN NaN\\
+};
+\node[right, inner sep=0mm, text=black]
+at (axis cs:0.152329395406011,0.492651547817214,-0.187382624116357) {Alcohol};
+\node[right, inner sep=0mm, text=black]
+at (axis cs:-0.237187580257221,0.233930934627845,0.109012885659657) {Malic acid};
+\node[right, inner sep=0mm, text=black]
+at (axis cs:0.00594893855562916,0.325068814025315,0.646223900869347) {Ash};
+\node[right, inner sep=0mm, text=black]
+at (axis cs:-0.231320405487535,-0.00159050228819139,0.632080349945782) {Alcalinity of ash};
+\node[right, inner sep=0mm, text=black]
+at (axis cs:0.149992041952987,0.308634003237862,0.150756934850279) {Magnesium};
+\node[right, inner sep=0mm, text=black]
+at (axis cs:0.40266084506663,0.0740395118192793,0.166178963484672) {Total phenols};
+\node[right, inner sep=0mm, text=black]
+at (axis cs:0.430934296710059,0.00564018789969203,0.170681899899448) {Flavanoids};
+\node[right, inner sep=0mm, text=black]
+at (axis cs:-0.290533102954715,0.037779488112987,0.19036816235965) {Nonflavanoid phenols};
+\node[right, inner sep=0mm, text=black]
+at (axis cs:0.321429488307689,0.0483017222897325,0.169454309462026) {Proanthocyanins};
+\node[right, inner sep=0mm, text=black]
+at (axis cs:-0.0806167047247227,0.538995672070044,-0.117306212490242) {Color intensity};
+\node[right, inner sep=0mm, text=black]
+at (axis cs:0.304714563586381,-0.270235147924282,0.105221922506891) {Hue};
+\node[right, inner sep=0mm, text=black]
+at (axis cs:0.384167410738713,-0.155496192835785,0.186004588087527) {OD280/OD315 of diluted wines};
+\node[right, inner sep=0mm, text=black]
+at (axis cs:0.294752226896805,0.373902831798083,-0.106745917347702) {Proline};
+\addplot3 [
+color=black,
+solid]
+table[row sep=crcr] {
+-0.688846290956282 0 0\\
+0.688846290956282 0 0\\
+NaN NaN NaN\\
+0 -0.688846290956282 0\\
+0 0.688846290956282 0\\
+NaN NaN NaN\\
+0 0 -0.688846290956282\\
+0 0 0.688846290956282\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.435253888717558 0.189424156464101 -0.0217497689048848\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.289945869171817 -0.0437508148149286 -0.265929972496525\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.33026928995377 0.135316952333796 0.128974310201002\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.493035958805967 0.36171592685714 -0.0231214790677726\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.132398051631599 0.114147027914773 0.265960266110926\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.400281768657176 0.27852057355679 -0.0825949843004749\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.321391585579486 0.154174406644467 -0.128223184347523\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.270257838955079 0.211142612742895 0.0191964250726911\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.329499520434007 0.120477532658339 -0.2324024925421\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.361355870430801 0.103597115638233 -0.129161812728175\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.45664236134174 0.170903886953646 -0.0554751192754845\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.230274466569552 0.0803091590833936 -0.1562777697075\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.277347547151421 0.0886722664421511 -0.113524425603439\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.453810457471888 0.148371426786781 -0.158035980153369\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.565962314595689 0.275052776489748 -0.16586200520026\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.302507539891493 0.218174999160889 0.0285951421043095\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.285023516248221 0.305409949423972 0.10914707767606\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.249200086457377 0.214082904795597 0.104315741193124\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.464811156454052 0.330479718631928 -0.0637062339729053\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.27354976213034 0.139252076602314 -0.0216195416930695\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.410012216878732 0.103263719418956 -0.0478837666154519\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.142589502311723 0.0317237642341151 0.122956532733079\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.332694918015754 -0.0120521527163822 -0.0409346106132568\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.2158701732398 -0.0677507671505325 0.0188818969315744\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.231169838220148 -0.0416191369412291 0.116831294252099\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.129927089344852 0.12344283309715 0.501413932838788\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.232967905922861 0.0900460759484722 -0.0113776075485245\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.162123450064576 -0.0117852881327353 -0.182001045177111\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.287182372476245 0.0904915309974835 0.183007615685639\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.296066923043464 0.0251253583068155 -0.143388318053467\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.32810137103658 0.162833381965941 0.181885735544337\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.351353971423974 0.193152505098669 -0.0436023739904383\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.213716807093333 0.00691635228704872 -0.0219321328095321\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.249688217084814 0.214304886012761 0.153811163138519\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.185083874417854 0.0915892227229772 0.0629561969264579\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.249837210547575 0.023189601208514 0.0591626309771811\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.181734084118974 0.0864326486375227 0.0601604360264782\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.147266155040474 0.0149745096095069 -0.00513200877005377\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.19713148048273 -0.100971791932484 -0.1871558253679\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.331983264790846 0.236606144349542 -0.0450315444790372\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.339633171815834 0.102308267132317 -0.015547679271381\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.0877242228290543 0.0223038040911786 -0.102799882964868\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.402978927194526 0.15169008749585 -0.0410429302553767\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.060655242402818 0.0434029589046206 -0.0264395589074698\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.275758310199998 -0.00931842961041025 -0.0860664621712038\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.149097950075597 0.233208024134238 0.00376702496997846\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.357809114882896 0.156337658991103 -0.0708339046982559\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.370241528534893 0.0848078690016984 -0.15164198604664\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.26375071512163 0.163646427734903 -0.00751863268086083\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.355301373413701 0.229908928968883 -0.0843951554876159\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.421890401789618 0.0219141923292459 -0.258989835828611\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.375178435981157 0.0978021913556504 0.00061933554442136\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.460036950198833 0.211637449434125 -0.0683407202392019\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.291957145648608 0.246076419368847 0.0445587869416827\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.281747062756098 0.133427286439124 -0.125686248443061\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.324047636135261 0.174404430148291 0.0673778829642964\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.359766651381719 0.188516858744289 -0.0803742705783327\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.285257844945804 0.15907577157242 0.0343530738941157\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.411977714519302 0.227233393923428 -0.037487061204588\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.121856882186563 -0.403330512355944 -0.601693359591747\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.202418124333223 -0.181285448616541 -0.114783789208872\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.240969218206654 -0.108917985578965 -0.210714690456848\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.00401650419696906 -0.165714161541018 -0.234166076852467\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.269053778263796 -0.252620101575417 -0.000966997274800615\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.0800078046045301 -0.250392646850831 0.0891514621016737\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.118135998063551 -0.100247337936888 0.0752416296873743\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.29506934768816 -0.247313185098938 -0.266636354453083\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.024065302237742 -0.318511954838417 -0.140381638958667\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.106663590047614 -0.0289378297466166 -0.0927796103142226\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.259258700281432 -0.184151452843173 -0.162497748682066\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.206320360570051 -0.116135451107811 -0.0825427713247056\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.217535924282853 -0.125548383916594 0.256235672030745\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.0951898923181095 -0.139581121128822 0.0105419179413322\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.336238506912583 0.034145595319975 0.442818341589296\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.2404860076507 -0.169006966621963 0.0601396292156322\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.11390583974645 -0.320736951816075 -0.205154648034883\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.0485566198575143 -0.282655056092962 -0.321430518429271\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.191250130635989 -0.181535867794871 -0.0298292572375188\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.165733151101163 -0.101157812127451 -0.155404597898647\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.0493618367481789 -0.134777877658476 0.235486015408775\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.100004883240987 -0.442904932745519 -0.0469104375283894\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.135766630924395 -0.190375186657309 -0.0476376715844882\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.0649421812312626 -0.312488204176217 0.17528823982339\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.333187421024939 -0.0114751042403743 0.0622355355042934\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.109618226448613 -0.193388311182009 0.0800619691788866\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.10339593386088 -0.265952169705178 -0.0334270973016174\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.105879776114947 -0.293143325922946 0.101421092567345\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.0732313750109858 -0.311404502253557 0.302825534419486\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.14633490570346 -0.236507094748813 0.125881851268128\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.0729269506454376 -0.348746318405117 0.111430072737547\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.177065356857738 -0.277943212567651 -0.00625336636066508\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.205305486159166 -0.243064257456004 0.102498644550376\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.253607338119137 -0.204651027611939 -0.0117154263736676\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.0979842240865897 -0.303523712745919 0.0150493112475758\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.125645908892004 -0.291791410527106 0.0186928850523019\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.333828881481965 0.0222136605533092 0.103499916538069\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.0713823536790635 -0.0484138612864352 0.171765102813637\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.135303626568811 -0.336677097265914 -0.142565894934677\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.295515819102242 -0.188017217039387 -0.030209997374187\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.185061235938174 -0.28426717733939 0.0982769262720048\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.104683969805002 -0.311924611886377 -0.205781837655946\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.0721144983569432 -0.300924976222676 -0.196703781893016\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.0211506685438667 -0.152813980534547 0.131716265677192\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.0865842296824603 -0.351688623552395 -0.10037979981517\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.0514882762036615 -0.275414461119875 -0.0619204041338308\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.23260327956782 -0.225358046674199 0.124278215418111\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.0480648986383562 -0.284682061554073 -0.063163697475872\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.212679239286173 -0.177891850948316 0.037683588188994\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.0108310882419995 -0.302644856199522 -0.0608344817747948\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.207115457561487 -0.191861296274208 0.233541157052099\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.186419880272856 -0.186109837302775 0.018277027675955\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.0365738833545202 -0.253346517601886 0.0103238579200052\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.171010409354064 -0.100150338716377 0.262405048293118\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.0599810833590625 -0.297813138292452 0.139278450220296\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.0648515139826289 -0.254458940683608 0.173739067855504\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.0632621421941702 -0.508090318418515 0.176407366908048\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.0331863542496498 -0.370261619761466 -0.0397151159539922\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.0140713755545694 -0.253130508619565 0.0905674629630658\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.319281808165645 -0.164973360231497 -0.249732381177295\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.0723189285351113 -0.291612035722486 -0.0467475527713161\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.0970598452571514 -0.184895972964563 0.147677962342471\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.175364163296827 0.0332451518638944 0.701469939535858\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.154467948146396 -0.0871317036959324 0.395028404849169\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.0606717602630061 -0.0811373388310897 0.0634416577655439\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.128404173892378 -0.189700769422482 0.194381245375712\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.0127042434691006 -0.276892924339134 0.0570617958518793\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+0.00505062963375561 -0.166235923440642 0.0902301611782376\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.209593511212454 -0.158543471771222 0.441083703290762\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.0629328238494663 -0.254432118907574 0.170139383774008\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.235271741876422 -0.150951156402868 0.102726083072499\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.174154221785938 0.0223600083466677 -0.154851971316514\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.312915657441067 0.0491561003317307 -0.0949865145048496\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.385411709460395 0.0346263238101706 -0.0219992052288332\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.281723875937376 0.0483257286793426 -0.0594862759959486\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.310995600498928 -0.0603174158791343 -0.14453559165552\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.402064861878951 0.0463780125987979 -0.144236955859808\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.513860449010639 0.0202857092751702 0.0291102401033258\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.516578150005581 0.0865700952334136 0.224692315380076\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.406058757281969 0.0457782860761539 -0.134750058431742\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.31159953468117 0.0383162892363161 0.162975174628093\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.364660841273181 0.037637116350551 0.0800064000336196\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.300063148340305 0.0488838315438014 -0.12750774243362\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.391801693667178 0.0641995763607335 0.124267685254052\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.311694422462306 0.0632961708541023 -0.0331857133797291\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.289998440647457 0.152232528802486 -0.163396536913964\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.344557615960267 0.0739030233122157 -0.112326915870122\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.561743941626547 0.0852556702290763 -0.191357727487975\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.470146440697669 0.167015507755445 -0.0145380783525906\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.368368161860088 0.206099576626177 -0.0620093678104328\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.380519391449865 0.267845867867963 -0.0650843093962494\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.30454799016365 0.30922356115843 0.0574365370558353\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.334611762591672 0.268400452519997 -0.040978616854279\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.237857978291086 0.200471448216239 0.178811292961409\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.362211018203719 0.280689950715217 -0.126587257071477\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.359193520065927 0.053788964994361 -0.156215614973572\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.473063332769929 0.236525076522925 -0.0123403631736649\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.379228972590912 0.252644511282068 -0.102663405783305\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.445149246106231 0.172156225151744 0.21023226412497\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.137551860998644 0.46128170125411 0.152230699700624\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.211267177209436 0.315820716417136 0.0719869399107221\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.412469930205688 0.0968681348608122 -0.0119416714423105\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.293973546896543 0.154255133012118 -0.0133035933639318\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.373697378859575 0.0729690929921736 0.10553635797878\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.34086693841309 0.0915933187198594 -0.116129727452983\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.387033604219425 0.204101638377181 -0.129050692960112\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.463242600429487 0.115813107976249 -0.0611565359008127\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.315751477491392 0.340192305666377 0.0561956969498223\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.38438085643958 0.167244397136136 -0.159227791287576\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.286264615170879 0.272633141746244 0.100230419625133\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.312446769980429 0.339708235664622 0.186088498399751\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.421457312008772 -0.0329711684505524 -0.111167910580454\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.482649591822062 0.111249100915037 -0.175770776043814\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.323552419131127 0.287889955196789 -0.120570705653418\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.442310509405078 0.290841405116865 -0.0449550541708764\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.341452061561636 0.230599448582522 0.0272406934063627\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.351410191688264 0.362310029138378 -0.123478860507878\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.31324586326731 0.301478504925628 -0.0722673106367588\\
+NaN NaN NaN\\
+};
+\addplot3 [
+color=red,
+only marks,
+mark=*,
+mark options={solid}]
+table[row sep=crcr] {
+-0.421082121628785 0.363362542711965 0.133054875121719\\
+NaN NaN NaN\\
+};
+\end{axis}
+\end{tikzpicture}%
