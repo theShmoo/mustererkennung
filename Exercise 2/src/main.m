@@ -51,8 +51,8 @@ for i = 1:iterations
    srTraining = training./repmat(std(training),size(training,1),1);
 
    % plotPrincipalComponents(srTraining);
-
-   testSize = size(srTest,1);
+   
+   mahabRes = classifyWithMahalanobis(trainingClasses, srTraining, testClasses, srTest);
 
    result = classifyWithKNN(srTest,srTraining,trainingClasses,featureNames);
 

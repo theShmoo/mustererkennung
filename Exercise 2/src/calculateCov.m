@@ -3,27 +3,25 @@ function [ covMat ] = calculateCov( covType, data )
 %   Detailed explanation goes here
 %      
 
-    matSize = size(data, 1);
+    dataCount = size(data, 1);
+    finalSize = size(data, 2);
 
     if covType == 0 % identity
         
-        covMat = eye(matSize);
+        covMat = eye(finalSize);
         
     elseif covType == 1 % diagonal covMat
         
-        for i=1:matSize
-            
-            logic = logical(eye(matSize));
-            data = data - (sum(data,1)/m);
-            covMat = (data' * data) / matSize;
-            covMat(~logic) = 0;
-            
-        end
+        logic = logical(eye(finalSize));
+        % data = data - (sum(data,1)/matSize);
+        data = bsxfun(@minus, data,sum(data,1)/dataCount);
+        covMat = (data' * data) / dataCount;
+        covMat(~logic) = 0;
         
     elseif covType == 2 % full covMat
         
-        data = data - (sum(data,1)/m);
-        covMat = (data' * data) / matSize;
+        data = bsxfun(@minus, data,sum(data,1)/dataCount);
+        covMat = (data' * data) / dataCount;
         
     end
 end
