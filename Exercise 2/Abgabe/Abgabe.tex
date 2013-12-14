@@ -1,0 +1,182 @@
+%
+% Einführung in die Mustererkennung - WS2013
+% Abgabeprotokoll Exercise 1
+%
+%
+
+%{{{ misc
+\documentclass[a4paper,psfig,subfigure,epsfig,fleqn,amssmb,float,caption,fontenc,ausarbeitung]{article}
+
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{pgfplots}
+
+%Zitieren:
+\usepackage[english]{babel}
+%\usepackage[german]{babel}
+\usepackage{babelbib} % für das Erstellen des Bibtex-Literaturverzeichnisses
+\usepackage{cite}
+%\selectbiblanguage{english}
+%\selectbiblanguage{german}
+
+
+\usepackage{url}
+
+\usepackage[]{mcode}
+
+\usepackage[pdftitle={Einfuehrung in die Mustererkennung, Exercise 2},
+            pdfauthor={David Pfahler},
+						pdfauthor={Matthias Gusenbauer},
+						pdfauthor={Matthias Vigele},
+            pdfsubject={Mustererkennung},
+            pdfborder={0 0 0}]{hyperref}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Titlepage
+
+\pagestyle{empty}
+
+
+%set dimensions of columns, gap between columns, and paragraph indent
+
+\setlength{\textheight}{24.7 cm}
+\setlength{\columnsep}{1 cm}
+\setlength{\textwidth}{16 cm}
+%\setlength{\footheight}{0.0 cm}
+\setlength{\topmargin}{0.0 cm}
+\setlength{\headheight}{0.0 cm}
+\setlength{\headsep}{-0.3 cm}
+\setlength{\oddsidemargin}{0.0 cm}
+\setlength{\parindent}{0.7 cm}
+\setlength{\mathindent}{0mm}
+
+% set page counter if document is part of proceedings
+\setcounter{page}{1}
+\renewcommand{\floatpagefraction}{0.9}
+\renewcommand{\textfraction}{0.1}
+
+%\renewcommand{\captionlabelfont}{\fontfamily{phv}\fontseries{bx}\fontsize{10}{10pt}\selectfont}
+%\renewcommand{\captionfont}{\fontfamily{phv}\fontsize{10}{12pt}\selectfont}
+%\setlength{\captionmargin}{0.5 cm}
+
+\makeatletter
+\makeatother
+\def\RR{\hbox{I\kern-.2em\hbox{R}}}
+
+
+\begin{document}
+
+%don't want date printed
+\date{}
+
+%make title bold and 14 pt font (Latex default is non-bold, 16pt) 
+\title{~\\
+  ~\\
+  \fontsize{14}{14pt} \bf Abgabedokument Exercise 2
+	 ~\\
+  \fontsize{12}{12pt} \bf Einführung in die Mustererkennung 186.840 WS 2013}
+
+%for single author 
+\author{~\\
+  ~\\
+  \fontsize{12}{12pt}
+  {\bf David Pfahler, Matthias Gusenbauer, Matthias Vigele}\\
+  1126287, 1125577, 1126171
+  ~\\ ~\\ ~\\
+  \normalsize
+}
+
+\maketitle
+%I don't know why I have to reset thispagestyle, but otherwise get page numbers 
+\normalfont
+\thispagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CONTENT
+
+\section{Wine Classification - k-NN}
+\label{sec:kNN}
+
+TODO
+
+
+\subsection{Feature Extraction}
+\label{sec:features}
+
+TODO
+
+
+\subsection{Test and Training Set}
+\label{sec:kNNtestset}
+
+TODO
+
+
+\subsection{Classification Performance}
+\label{sec:kNNperformance}
+
+TODO
+
+
+\subsection{Evaluation of the Results}
+\label{sec:kNNResults}
+
+TODO
+
+
+\section{Wine Classification - Mahalanobis Distance}
+\label{sec:Mahalanobis}
+
+TODO
+
+
+\subsection{Test and Training Set}
+\label{sec:MahalanobisTestSet}
+
+TODO
+
+
+\subsection{Classification Performance}
+\label{sec:MahalanobisPerformance}
+
+TODO
+
+
+\subsection{Comparison with k-NN}
+\label{sec:MahalanobisComparison}
+
+TODO
+
+
+\section{Discriminant Functions for the Normal Density}
+\label{sec:DiscriminantFunctions}
+
+TODO
+
+
+\subsection{Computation of the Discriminate Function per Hand}
+\label{sec:Hand}
+
+TODO
+
+
+\subsection{Computation of the Discriminate Function in \texttt{MATLAB}}
+\label{sec:Matlab}
+
+TODO
+
+
+\pagebreak
+% Biblography
+
+
+\fontsize{9}{10pt}
+\bibliographystyle{plain}
+\bibliography{literatur}
+
+\end{document}
+
+% vim:foldmethod=marker

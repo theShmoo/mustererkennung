@@ -39,7 +39,7 @@ iterations = 30;
 %Data for the results:
 best = zeros (iterations,1);
 bestK = zeros (iterations,1);
-requiredData = [1 21 22];
+requiredData = [1 11 21];
 kData = zeros (iterations,size(requiredData,2));
 
 for i = 1:iterations
@@ -63,8 +63,8 @@ kData = 100 - kData;
 
 %Lineplot of best results
 figure('name','Lineplot of best results');
-meanB = mean(best);
-meanK = mean(bestK);
+meanB = median(best);
+meanK = median(bestK);
 L2 = plot(best);
 L1 = line([1 size(best,1)],[meanB meanB],'Color','r');
 line([1 size(best,1)],[meanK meanK],'Color','r');
@@ -90,10 +90,10 @@ title('Classification performance and best k');
 
 %Lineplot of errors with k = 1,21,22
 figure('name',['Lineplot of errors with k = ',num2str(requiredData)]);
-bar(mean(kData));
+bar(median(kData));
 set(gca, 'XTickLabel',requiredData)
 xlabel('k from k-NN');
-ylabel('% of classification error');
+ylabel('Median of classification error [%]');
 title(['Lineplot of errors with k = ',num2str(requiredData)]);
 
 end
