@@ -36,8 +36,11 @@ fprintf('The trainingset has %d values per class! That means We should use %d fe
 
 iterations = 30;
 
+%Data for the results:
 best = zeros (iterations,1);
 bestK = zeros (iterations,1);
+requiredData = [1 21 22];
+kData = zeros (iterations,size(requiredData,2));
 
 for i = 1:iterations
    [training, trainingClasses, test, testClasses] = getTrainingAndTestSet(wines,trainingSize,anz);
@@ -52,10 +55,14 @@ for i = 1:iterations
 
    result = classifyWithKNN(srTest,srTraining,trainingClasses,featureNames);
 
-   [best(i),bestK(i)] = plotResults(result, testSize, testClasses, 0);
+   [best(i),bestK(i),kData(i,:)] = plotResults(result, testSize, testClasses, requiredData, 0);
 
 end
+kData = 100 - kData;
 %% Plot results
+
+%Lineplot of best results
+figure('name','Lineplot of best results');
 meanB = mean(best);
 meanK = mean(bestK);
 L2 = plot(best);
@@ -70,13 +77,24 @@ legend([L1,L2,L3],{ ...
     'Performance of the classifier',...
     'best k from kNN classifier'}, ...
     'Location','NorthOutside');
+title('Best results');
 
-figure;
+%Boxplot
+figure('name','Boxplot');
 boxplot([best bestK],'orientation','horizontal','labels',{'Erfolg','k'});
 L1 = findobj(gca,'Tag','Median'); 
 
 legend(L1(1,1),['Median ',num2str(meanB),'% and Median k = ',num2str(meanK)], ...
     'Location','NorthOutside');
+title('Classification performance and best k');
+
+%Lineplot of errors with k = 1,21,22
+figure('name',['Lineplot of errors with k = ',num2str(requiredData)]);
+bar(mean(kData));
+set(gca, 'XTickLabel',requiredData)
+xlabel('k from k-NN');
+ylabel('% of classification error');
+title(['Lineplot of errors with k = ',num2str(requiredData)]);
 
 end
 
