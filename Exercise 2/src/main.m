@@ -56,7 +56,7 @@ for i = 1:iterations
 
    result = classifyWithKNN(srTest,srTraining,trainingClasses,featureNames);
 
-   [best(i),bestK(i),kData(i,:)] = plotResults(result, testSize, testClasses, requiredData, 0);
+   [best(i),bestK(i),kData(i,:)] = plotResults(result, testClasses, requiredData, 0);
 
 end
 kData = 100 - kData;
