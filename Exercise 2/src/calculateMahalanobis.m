@@ -8,9 +8,9 @@ function [ dist1, dist2, dist3 ] = calculateMahalanobis( class1, class2, class3,
     meanC3 = mean(class3(:,2:end));
     
     %calculate the covariance matrices
-    covMat1 = cov(class1(:, 2:end));
-    covMat2 = cov(class2(:, 2:end));
-    covMat3 = cov(class3(:, 2:end));
+    covMat1 = calculateCov(1, class1(:, 2:end));
+    covMat2 = calculateCov(1, class2(:, 2:end));
+    covMat3 = calculateCov(1, class3(:, 2:end));
    
     dist1 = ((sample - meanC1) * inv(covMat1) * transpose((sample - meanC1)));
     dist2 = ((sample - meanC2) * inv(covMat2) * transpose((sample - meanC2)));
