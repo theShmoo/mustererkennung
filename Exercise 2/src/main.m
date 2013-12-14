@@ -1,75 +1,82 @@
-function main()
 %% MAIN Summary of this function goes here
 %   Detailed explanation goes here
+function main()
+
 % Random Number generator with seedpoint
 rng(123401234);
 
 % Import data: 
-    wines = importfile('wine.data',1,178);
+wines = importfile('wine.data',1,178);
 
-    %Threshold from the smallest class. 
-    thres = 0.50; % 0 < thres < 1
-    %Number of classes in the dataset
-    anz = 3;
-   
-    %Calculate classsizes
-    classSize = zeros(anz,1);
-    for i = 1:anz
-        classSize(i) = length(find(wines(:,1) == i));
-    end    
-    
-    %Find smallest class and define trainingset size
-    trainingSize = ceil(min(classSize)*thres);
-    
-    fprintf('The trainingset has %d values per class! That means We should use %d features\n',trainingSize,floor(trainingSize/10));
-    
-    iterations = 100;
-    
-    best = zeros (iterations,1);
-    bestK = zeros (iterations,1);
-    
-    for i = 1:iterations
-       [training, trainingClasses, test, testClasses] = getTrainingAndTestSet(wines,trainingSize,anz);
-       
-       % standardize the data by dividing each column by its standard deviation.
-       srTest = test./repmat(std(test),size(test,1),1);
-       srTraining = training./repmat(std(training),size(training,1),1);
-       
-       % plotPrincipalComponents(srTraining);
-       
-       testSize = size(srTest,1);
-       
-       result = classifyWithKNN(srTest,srTraining,trainingClasses,trainingSize, testSize);
-       
-       [best(i),bestK(i)] = plotResults(result, testSize, testClasses, 0);
-       
-    end
-    %% Plot results
-    meanB = mean(best);
-    meanK = mean(bestK);
-    plot(best);
-    line([0 100],[meanB meanB],'Color','r');
-    line([0 100],[meanK meanK],'Color','r');
-    hold on;
-    plot(bestK);
-    
-    hold off;
-    figure;
-    boxplot([best bestK],'orientation','horizontal','labels',{'Erfolg','k'});
-    L1 = findobj(gca,'Tag','Median'); 
+%% Analyse Data:
+% BoxPlot Features
+figure('name','The Features');
+featureNames = getFeatureNames();
+srWine = wines(:,2:end)./repmat(std(wines(:,2:end)),size(wines(:,2:end),1),1);
+boxplot( srWine, 'orientation','horizontal', 'labels',featureNames);
+plotPrincipalComponents(srWine,wines(:,1),featureNames);
 
-    legend(L1(1,1),['Median ',num2str(meanB),'% und k = ',num2str(meanK)]);
-    
+%% Classify
 
-%% BoxPlot Features
-%figure('name','The Features');
-    
-%boxplot(srTest,'orientation','horizontal','labels',featureNames);
+%Threshold from the smallest class. 
+thres = 0.50; % 0 < thres < 1
+%Number of classes in the dataset
+anz = 3;
 
-% for i = 2 : featureCount 
-%     subplot(featureCount ,1,i);
-%     boxplot(test(:,i),test(:,1));
-%     title(featureNames{i});
-% end
+%Calculate classsizes
+classSize = zeros(anz,1);
+for i = 1:anz
+    classSize(i) = length(find(wines(:,1) == i));
+end    
+
+%Find smallest class and define trainingset size
+trainingSize = ceil(min(classSize)*thres);
+
+fprintf('The trainingset has %d values per class! That means We should use %d features\n',trainingSize,floor(trainingSize/10));
+
+iterations = 30;
+
+best = zeros (iterations,1);
+bestK = zeros (iterations,1);
+
+for i = 1:iterations
+   [training, trainingClasses, test, testClasses] = getTrainingAndTestSet(wines,trainingSize,anz);
+
+   % standardize the data by dividing each column by its standard deviation.
+   srTest = test./repmat(std(test),size(test,1),1);
+   srTraining = training./repmat(std(training),size(training,1),1);
+
+   % plotPrincipalComponents(srTraining);
+
+   testSize = size(srTest,1);
+
+   result = classifyWithKNN(srTest,srTraining,trainingClasses,featureNames);
+
+   [best(i),bestK(i)] = plotResults(result, testSize, testClasses, 0);
+
+end
+%% Plot results
+meanB = mean(best);
+meanK = mean(bestK);
+L2 = plot(best);
+L1 = line([1 size(best,1)],[meanB meanB],'Color','r');
+line([1 size(best,1)],[meanK meanK],'Color','r');
+hold on;
+L3 = plot(bestK,'Color','g');
+hold off;
+
+legend([L1,L2,L3],{ ...
+    ['Median ',num2str(meanB),'% and Median k = ',num2str(meanK)], ...
+    'Performance of the classifier',...
+    'best k from kNN classifier'}, ...
+    'Location','NorthOutside');
+
+figure;
+boxplot([best bestK],'orientation','horizontal','labels',{'Erfolg','k'});
+L1 = findobj(gca,'Tag','Median'); 
+
+legend(L1(1,1),['Median ',num2str(meanB),'% and Median k = ',num2str(meanK)], ...
+    'Location','NorthOutside');
+
 end
 
