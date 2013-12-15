@@ -60,7 +60,7 @@ for i = 1:iterations
 
    % plotPrincipalComponents(srTraining);
    
-   mahabResults(i) = classifyWithMahalanobis(trainingClasses, srTraining, testClasses, srTest);
+   mahabResults(i) = classifyWithMahalanobis(trainingClasses, srTraining, testClasses, srTest, covMatType);
 
    result = classifyWithKNN(srTest,srTraining,trainingClasses,featureNames);
 
