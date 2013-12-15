@@ -1,5 +1,6 @@
-function [best,imax,kData] = plotResults(result, testClasses, requiredData, doPlot)
-% plotResults This function plots the results of a classification
+function [best,imax,kData] = getResults(result, testClasses, requiredData, doPlot)
+% plotResults This function gets the results of a classification and can
+% plot them
 %
 % AUTHOR _David Pfahler_
 % INPUT
@@ -14,7 +15,8 @@ function [best,imax,kData] = plotResults(result, testClasses, requiredData, doPl
 %   kData ... the results from the requiredData k's
 %
 % DESCRIPTION
-%   This function plots the results of a classification
+%   This function plots the results of a classification and can
+% plot them
 
 correct = zeros(size(testClasses,1),1);
 for k = 1 : size(result,2)
@@ -32,7 +34,7 @@ if doPlot == 1
     figure('name','k-Error');
     hold on;
     plot(correct, 'LineWidth', 2);
-    axis([1 size(testClasses,1) 0 size(result,2)]);
+    axis([0 size(result,2) 1 size(testClasses,1)]);
     title('Results');
     xlabel('k from k-NN');
     ylabel('% of correct classification');

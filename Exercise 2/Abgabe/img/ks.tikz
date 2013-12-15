@@ -1,0 +1,44 @@
+% This file was created by matlab2tikz v0.4.3.
+% Copyright (c) 2008--2013, Nico Schlömer <nico.schloemer@gmail.com>
+% All rights reserved.
+% 
+% The latest updates can be retrieved from
+%   http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz
+% where you can also make suggestions and rate matlab2tikz.
+% 
+%
+% defining custom colors
+\definecolor{mycolor1}{rgb}{0,0,0.5625}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=\figurewidth,
+height=\figureheight,
+area legend,
+scale only axis,
+xmin=0.5,
+xmax=3.5,
+xtick={1,2,3},
+xticklabels={1,11,21},
+xlabel={k from k-NN},
+ymin=0,
+ymax=14,
+ylabel={Median of classification error [\%]},
+title={Lineplot of errors with k = 1  11  21}
+]
+\addplot[ybar,bar width=0.266666666666667\figurewidth,draw=black,fill=mycolor1] plot coordinates{(1,13.2075471698113)
+(2,11.3207547169811)
+(3,11.3207547169811)};
+
+\addplot [
+color=black,
+solid,
+forget plot
+]
+table[row sep=crcr]{
+0.5 0\\
+3.5 0\\
+};
+\end{axis}
+\end{tikzpicture}%
