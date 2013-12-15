@@ -1,12 +1,6 @@
-function [ result ] = classifyWithMahalanobis( trainingLabel, trainingData, testLabel, testData )
+function [ result ] = classifyWithMahalanobis( trainingLabel, trainingData, testLabel, testData, covMatType )
 %CLASSIFYWITHMAHALANOBIS Summary of this function goes here
 %   Detailed explanation goes here
-
-    % Type of covariance matrix you want
-    % 0 = identity
-    % 1 = diagonal covariance matrix
-    % 2 = full covariance matrix
-    covMatType = 1;
 
     [class1, class2, class3] = splitClasses(trainingLabel, trainingData);
     testSampleCount = size(testLabel, 1);
