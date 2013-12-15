@@ -265,25 +265,53 @@ given data. But with a low value of $k$ the classification error enhances. Figur
 \section{Wine Classification - Mahalanobis Distance}
 \label{sec:Mahalanobis}
 
-TODO
+In the year 1936 Prasanta Chandra Mahalanobis introduced the Mahalanobis Distance which is a statistical measurement of distances between data points from a sample point. Mahalanobis Distance measures the similarity of samples with a known data set. Mathematically it is a measurement tool that is scale invariant and pays attention to data correlations.
 
 
 \subsection{Test and Training Set}
 \label{sec:MahalanobisTestSet}
 
-TODO
+The Test- and Training Sets for the classification with Mahalanobis Distance are equal to the sets used for the k-NN classification to create the same data basis. With an equal data basis it is easier to directly compare the results to each other. As state before the smallest class is divided by a threshold and then the same amount of data is taken from the other classes to get a training set. The remaining data samples not in the training sets are then accumulated into a single testset. This procedure is repeated 30 times to get a descriptive result of high quality. 
 
 
 \subsection{Classification Performance}
 \label{sec:MahalanobisPerformance}
 
-TODO
+It was found that with our seed for trainings set randomisation the performance of the Mahalanobis Distance Classifier got worse if a full covariance matrix was used during distance calculation. Interestingly the simpler the covariance matrix got the more accurate the results were. The code was double checked and even a test with the built in Matlab function($mahal()$) was conducted. The results remained the same and it is not possible to fully explain these results. The figures \ref{mahal1}, \ref{mahal2}, \ref{mahal3} and \ref{mahal4} will show the performance of the Mahalanobis Distance classifier. 
+Another advantage of the Mahalanobis Distance classifier over kNN is the runtime performance. Compared to kNN the calculations done for the Mahalanobis classifier are fast which needs to be considered for the choice between kNN and the Mahalanobis Distance. \\
 
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.75]{img/mahalanobis_results_diag_identity.jpg}
+	\caption{Mahalanobis performance with the diagonal identity matrix.}
+	\label{mahal1}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.75]{img/mahalanobis_results_diag_covmat.jpg}
+	\caption{Mahalanobis performance with the diagonal covariance matrix.}
+	\label{mahal2}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.75]{img/mahalanobis_results_full_covmat.jpg}
+	\caption{Mahalanobis performance with the full covariance matrix.}
+	\label{mahal3}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.75]{img/mahalanobis_results_matlab_covmat.jpg}
+	\caption{Mahalanobis performance with the built in Matlab function mahal() to validate the custom implementation.}
+	\label{mahal4}
+\end{figure}
 
 \subsection{Comparison with k-NN}
 \label{sec:MahalanobisComparison}
 
-TODO
+Compared to the kNN classifier the results show that the Mahalanobis classifier has better top performance with a success rate of 99.056\%. As seen in the figures of the success rate the Mahalanobis classifier is more sensible to the choice of trainings samples than kNN. On the other hand the performance drop of kNN at $2*trainingsSetSize$ is not given for the Mahalanobis classifier. 
 
 
 \section{Discriminant Functions for the Normal Density}
