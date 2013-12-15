@@ -100,11 +100,11 @@ title(['Lineplot of errors with k = ',num2str(requiredData)]);
 
 %Barplot of Mahalanobis quality
 figure('name', 'Results of Testset 1...3 in %');
-axis([0 30 0 100]);
+bar((1:iterations), mahabResults)
+axis([0 31 0 100]);
 xlabel('# of Testrun');
 ylabel('Successrate in percent');
 title('Barplot of Mahalanobis results');
-bar((1:iterations), mahabResults)
 
 end
 
