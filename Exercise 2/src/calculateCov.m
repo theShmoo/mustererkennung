@@ -13,7 +13,6 @@ function [ covMat ] = calculateCov( covType, data )
     elseif covType == 1 % diagonal covMat
         
         logic = logical(eye(finalSize));
-        % data = data - (sum(data,1)/matSize);
         data = bsxfun(@minus, data,sum(data,1)/dataCount);
         covMat = (data' * data) / dataCount;
         covMat(~logic) = 0;

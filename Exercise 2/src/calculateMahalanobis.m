@@ -2,7 +2,7 @@ function [ distances ] = calculateMahalanobis( class1, class2, class3, sample, c
 %CALCULATEMAHALANOBIS Summary of this function goes here
 %   Detailed explanation goes here
     
-    if covOption ~= 4 
+    if covOption ~= 3 
         
         meanC1 = mean(class1);
         meanC2 = mean(class2);
@@ -19,7 +19,7 @@ function [ distances ] = calculateMahalanobis( class1, class2, class3, sample, c
 
         distances = [dist1, dist2, dist3];
     
-    elseif covOption == 4 
+    else%if  covOption == 4 
         
         dist1 = mahal(sample, class1);
         dist2 = mahal(sample, class2);
