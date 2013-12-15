@@ -5,7 +5,7 @@
 %
 
 %{{{ misc
-\documentclass[a4paper,psfig,subfigure,epsfig,fleqn,amssmb,float,caption,fontenc,ausarbeitung]{article}
+\documentclass[subfigure,epsfig,fleqn,amssmb,float,caption,ausarbeitung]{scrartcl}
 
 \usepackage{graphicx}
 \usepackage{epstopdf}
@@ -21,7 +21,6 @@
 \usepackage{cite}
 %\selectbiblanguage{english}
 %\selectbiblanguage{german}
-
 
 \usepackage{url}
 
@@ -51,7 +50,8 @@
 \setlength{\headheight}{0.0 cm}
 \setlength{\headsep}{-0.3 cm}
 \setlength{\oddsidemargin}{0.0 cm}
-\setlength{\parindent}{0.7 cm}
+\setlength{\parindent}{0 cm}
+\setlength{\parskip}{0.5em}
 \setlength{\mathindent}{0mm}
 
 % set page counter if document is part of proceedings
@@ -136,8 +136,8 @@ evaluates it.
 
 \begin{figure}
 	\centering
-	\setlength\figureheight{10cm} 
-	\setlength\figurewidth{10cm}
+	\setlength\figureheight{7cm} 
+	\setlength\figurewidth{7cm}
 	\input{img/inf.tikz}
 	\caption{The main influences of the features to the first three principal components represented in an interactive 3D-graph}
 	\label{fig:inf}
@@ -204,19 +204,62 @@ gets into the test set.
 
 To enhance the accuracy and reliability of the classification algorithm we 
 haven't used just one training set, but we randomly shuffled the dataset to 
-use 30 different training and test sets.
+use 30 different combinations of training and test sets. With every training 
+and test set we computed a new classification.
 
 
 \subsection{Classification Performance}
 \label{sec:kNNperformance}
 
-TODO
+\begin{figure}
+	\centering
+	\setlength\figureheight{6cm} 
+	\setlength\figurewidth{7cm}
+	\input{img/oneresult.tikz}
+	\caption{The best result from the k-NN classification}
+	\label{fig:bestresult}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\setlength\figureheight{6cm} 
+	\setlength\figurewidth{7cm}
+	\input{img/allresults.tikz}
+	\caption{All results from the k-NN classification with 30 different test and training sets}
+	\label{fig:allresults}
+\end{figure}
+
+\begin{figure}
+		\centering
+			\includegraphics[width=9cm]{img/boxresults.eps}
+		\caption{The upper Boxplot shows the derivation of the $k$ from the k-NN 
+classifier. The Boxplot below shows the derivation of the classification performance}
+		\label{fig:boxresults}
+	\end{figure}
+
+Figure~\ref{fig:bestresult} shows the best result of the k-NN classification 
+with one of the test and training sets. But not all results are that good. 
+Figure~\ref{fig:allresults} presents the performance of all 30 different test 
+and training sets and their used $k$. Also the Median of the results is shown, 
+which is $91,5094\%$ and the Median of the $k$ is $11$. But the median itself 
+gives not a good representation of the derivation of the data. 
+Figure~\ref{fig:boxresults} shows this information with boxplots.
 
 
 \subsection{Evaluation of the Results}
 \label{sec:kNNResults}
 
-TODO
+\begin{figure}
+	\centering
+	\setlength\figureheight{6cm} 
+	\setlength\figurewidth{7cm}
+	\input{img/ks.tikz}
+	\caption{The median of the classification error rates of all 30 test sets for different values of $k$}
+	\label{fig:ks}
+\end{figure}
+
+Our results show that the k-NN classifier is a powerful tool to classify the 
+given data. But with a low value of $k$ the classification error enhances. Figure~\ref{fig:ks} shows the median of the classification error rates of all 30 test sets for different values of $k$. The smaller the error rate, the better the performance. Like we mentioned above the minimum is at a $k=11$.
 
 
 \section{Wine Classification - Mahalanobis Distance}
