@@ -37,6 +37,13 @@ fprintf('The trainingset has %d values per class! That means We should use %d fe
 
 iterations = 30;
 
+% Type of covariance matrix you want
+% 0 = identity
+% 1 = diagonal covariance matrix
+% 2 = full covariance matrix
+% 3 = matlab implementation of mahab
+covMatType = 1;
+
 %Data for the results:
 best = zeros (iterations,1);
 bestK = zeros (iterations,1);
