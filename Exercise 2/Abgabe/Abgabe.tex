@@ -278,8 +278,9 @@ The Test- and Training Sets for the classification with Mahalanobis Distance are
 \label{sec:MahalanobisPerformance}
 
 It was found that with our seed for trainings set randomisation the performance of the Mahalanobis Distance Classifier got worse if a full covariance matrix was used during distance calculation. Interestingly the simpler the covariance matrix got the more accurate the results were. The code was double checked and even a test with the built in Matlab function($mahal()$) was conducted. The results remained the same and it is not possible to fully explain these results. The following will show the performance of the Mahalanobis Distance classifier. 
-Another advantage of the Mahalanobis Distance classifier over kNN is the runtime performance. Compared to kNN the calculations done for the Mahalanobis classifier are fast which needs to be considered for the choice between kNN and the Mahalanobis Distance.
-\begin{figure}
+Another advantage of the Mahalanobis Distance classifier over kNN is the runtime performance. Compared to kNN the calculations done for the Mahalanobis classifier are fast which needs to be considered for the choice between kNN and the Mahalanobis Distance. \\
+
+\begin{figure}[ht]
 	\centering
 	\includegraphics[scale=0.75]{img/mahalanobis_results_diag_identity.jpg}
 	\caption{Mahalanobis performance with the diagonal identity matrix.}
@@ -302,6 +303,7 @@ Another advantage of the Mahalanobis Distance classifier over kNN is the runtime
 	\includegraphics[scale=0.75]{img/mahalanobis_results_matlab_covmat.jpg}
 	\caption{Mahalanobis performance with the built in Matlab function mahal() to validate the custom implementation.}
 \end{figure}
+
 \subsection{Comparison with k-NN}
 \label{sec:MahalanobisComparison}
 
