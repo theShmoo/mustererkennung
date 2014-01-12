@@ -1,0 +1,293 @@
+%
+% Einführung in die Mustererkennung - WS2013
+% Abgabeprotokoll Exercise 1
+%
+%
+
+%{{{ misc
+\documentclass[subfigure,epsfig,fleqn,float,ausarbeitung]{scrartcl}
+
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath}
+
+\usepackage{pgfplots}
+
+%Zitieren:
+\usepackage[english]{babel}
+%\usepackage[german]{babel}
+\usepackage{babelbib} % für das Erstellen des Bibtex-Literaturverzeichnisses
+\usepackage{cite}
+%\selectbiblanguage{english}
+%\selectbiblanguage{german}
+
+%Peseudocode
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+
+%Fancy shit
+\usepackage{url}
+
+\usepackage[]{mcode}
+
+\usepackage[pdftitle={Einfuehrung in die Mustererkennung, Exercise 3},
+ 						pdfauthor={Matthias Gusenbauer},
+						pdfauthor={Matthias Vigele},
+						pdfauthor={David Pfahler},
+            pdfsubject={Mustererkennung},
+            pdfborder={0 0 0}]{hyperref}
+
+
+\usetikzlibrary{plotmarks}
+\pgfplotsset{compat=newest} 
+\pgfplotsset{plot coordinates/math parser=false}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Titlepage
+
+\pagestyle{empty}
+
+
+%set dimensions of columns, gap between columns, and paragraph indent
+
+\setlength{\textheight}{24.7 cm}
+\setlength{\columnsep}{1 cm}
+\setlength{\textwidth}{16 cm}
+%\setlength{\footheight}{0.0 cm}
+\setlength{\topmargin}{0.0 cm}
+\setlength{\headheight}{0.0 cm}
+\setlength{\headsep}{-0.3 cm}
+\setlength{\oddsidemargin}{0.0 cm}
+\setlength{\parindent}{0 cm}
+\setlength{\parskip}{0.5em}
+\setlength{\mathindent}{0mm}
+
+% set page counter if document is part of proceedings
+\setcounter{page}{1}
+\renewcommand{\floatpagefraction}{0.9}
+\renewcommand{\textfraction}{0.1}
+
+%\renewcommand{\captionlabelfont}{\fontfamily{phv}\fontseries{bx}\fontsize{10}{10pt}\selectfont}
+%\renewcommand{\captionfont}{\fontfamily{phv}\fontsize{10}{12pt}\selectfont}
+%\setlength{\captionmargin}{0.5 cm}
+
+\makeatletter
+\makeatother
+\def\RR{\hbox{I\kern-.2em\hbox{R}}}
+
+
+\begin{document}
+
+%don't want date printed
+\date{\today}
+
+%make title bold and 14 pt font (Latex default is non-bold, 16pt) 
+\title{~\\
+  ~\\
+  \fontsize{14}{14pt} \bf Abgabedokument Exercise 3
+	 ~\\
+  \fontsize{12}{12pt} \bf Einfuehrung in die Mustererkennung 186.840 WS 2013}
+
+%for single author 
+\author{~\\
+  ~\\
+  \fontsize{12}{12pt}
+  {\bf David Pfahler, Matthias Gusenbauer, Matthias Vigele}\\
+  1126287, 1125577, 1126171
+  ~\\ ~\\ ~\\
+  \normalsize
+}
+
+\maketitle
+%I don't know why I have to reset thispagestyle, but otherwise get page numbers 
+\normalfont
+\thispagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CONTENT
+
+\part{The first Report}
+\label{cha:firstReport}
+
+\section{Perceptron}
+\label{sec:perceptron}
+
+The following section describes how we implemented the online perceptron training algorithm to get the linear discriminant function and evaluates it.
+
+\subsection{Application}
+\label{sec:1app}
+
+The \texttt{matlab}-function \texttt{[ w ] = perco( X,t,maxEpoches )} calculates the perceptron weight vectors with the online perceptron training algorithm. The Listing~\ref{lst:perc} shows this algorithm.
+
+
+\begin{algorithmic}[1]
+\State Initialise $w,\gamma$
+\Repeat
+	\For {$i = 1 : N$}
+		\If{$w^T(x_iy_i)\leq 0$(misclassified $i$th pattern)}
+			\State $w\gets w + \gamma x_iy_i$
+		\EndIf
+	\EndFor
+\Until{all patterns correctly classified}
+\end{algorithmic}
+\label{lst:perc}
+
+The \texttt{matlab}-function \texttt{plot\_perco\_results(w,X,classLabel,titleName)} plots the linear discriminant function and the data from the training set labeled by the consigned classes.
+
+Instead of letting the algorithm run until all patterns are correctly classified (see Listing~\ref{lst:perc}) it stops after a given number of iterations. Because this number is not fixed by the exercise description, we used different values and compared the results in the next section.
+
+First we calculate the lineal discriminant function for the data provided by the Exercise (\texttt{perceptrondata.dat}) with the two different target data sets and plot the results (See Figure~\ref{fig:decisionBoundary1} and Figure~\ref{fig:decisionBoundary2} for 10 epochs and Figure~\ref{fig:decisionBoundary1100} and Figure~\ref{fig:decisionBoundary2100} for 100 epochs)
+
+\begin{figure}
+	\centering
+	\newlength\figureheight 
+	\newlength\figurewidth 
+	\setlength\figureheight{7cm} 
+	\setlength\figurewidth{9cm}
+	\input{img/decisionBoundary1.tikz}
+	\caption{Decision boundary for target data set 1 with 10 epochs}
+	\label{fig:decisionBoundary1}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\setlength\figureheight{7cm} 
+	\setlength\figurewidth{9cm}
+	\input{img/decisionBoundary2.tikz}
+	\caption{}
+	\label{fig:decisionBoundary2}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\setlength\figureheight{7cm} 
+	\setlength\figurewidth{9cm}
+	\input{img/decisionBoundary1100.tikz}
+	\caption{}
+	\label{fig:decisionBoundary1100}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\setlength\figureheight{7cm} 
+	\setlength\figurewidth{9cm}
+	\input{img/decisionBoundary2100.tikz}
+	\caption{}
+	\label{fig:decisionBoundary2100}
+\end{figure}
+
+
+
+\subsection{Discussion}
+
+This section discusses the results and the convergence of the algorithm that was introduced above. Furthermore it discusses the OR-, AND- and XOR-problems.
+
+\subsubsection{OR-, AND- and XOR-Problem}
+
+We used the same algorithm and evaluation techniques like above to solve this problems. But instead of the \texttt{perceptrondata.dat} we used our own data to demonstrate and visualize this problem. The data X is shown in the Equation~\ref{eq:X}. Each column represents an feature vector in homogeneous coordinates. Each problem is represented with a class label vector. Equation~\ref{eq:prob} shows the vectors for the different problems.
+
+\begin{equation}
+X = 
+	\begin{bmatrix}
+     1  &   1  &   1   &  1\\
+     0  &   1  &   0   &  1\\
+     0  &   0  &   1   &  1
+	\end{bmatrix}
+	\label{eq:X}
+\end{equation}
+
+\begin{equation}
+AND = 
+	\begin{bmatrix}
+     -1  &   -1  &   -1   &  1
+	\end{bmatrix}
+	\\
+OR = 
+	\begin{bmatrix}
+     -1  &   1  &   1   &  1
+	\end{bmatrix}
+	\\
+XOR = 
+	\begin{bmatrix}
+     -1  &   1  &   1   &  -1
+	\end{bmatrix}
+	\label{eq:prob}
+\end{equation}
+
+Figure~\ref{fig:and} shows the results for the AND-Problem and like the OR-Problem Figure~\ref{fig:or} the classification result is $100\%$. The only problem that cannot get solved with the perceptron is the XOR-Problem (see Figure~\ref{fig:xor}) 
+
+There is no linear function that could seperate the 2 classes at the XOR-Problem with a classification rate of $100\%$. So the calculated weight from the algorithm are all zero. (see Equation~\ref{eq:zero})
+\begin{equation}
+wXOR = 
+	\begin{bmatrix}
+    0\\0\\0
+	\end{bmatrix}
+	\label{eq:zero}
+\end{equation}
+\begin{figure}
+	\centering
+	\setlength\figureheight{6cm} 
+	\setlength\figurewidth{8cm}
+	\input{img/and.tikz}
+	\caption{}
+	\label{fig:and}
+\end{figure}
+\begin{figure}
+	\centering
+	\setlength\figureheight{6cm} 
+	\setlength\figurewidth{8cm}
+	\input{img/or.tikz}
+	\caption{}
+	\label{fig:or}
+\end{figure}
+\begin{figure}
+	\centering
+	\setlength\figureheight{6cm} 
+	\setlength\figurewidth{8cm}
+	\input{img/xor.tikz}
+	\caption{}
+	\label{fig:xor}
+\end{figure}
+
+
+\subsubsection{Results \& Convergence}
+
+The algorithm with the input from the first data set needs only 9 epochs to find a linear discriminant function that has a classification rate of $100\%$ (see Figure~\ref{fig:decisionBoundary1}). But the second data set has some values that could get compared with the XOR-Problem, because they are in the dynamic range of the other class. (see Figure~\ref{fig:decisionBoundary2})
+
+
+To demonstrate the convergence of the perceptron it is only useful to look at the data set with the XOR-Problem. Figure~\ref{fig:epochs} shows the development of the classification rate to the epochs. This does not converge (even with the maximum of epoches set to 1000 and more). 
+
+\begin{figure}
+	\centering
+	\setlength\figureheight{6cm} 
+	\setlength\figurewidth{8cm}
+	\input{img/epochs.tikz}
+	\caption{the development of the classification rate to the epochs of the data set 2}
+	\label{fig:epochs}
+\end{figure}
+
+\part{The second Report}
+\label{cha:secondReport}
+
+\section{Practical Application}
+
+\subsection{TODO}
+
+\section{Neural Network optional exercise}
+\label{sec:neuralNetwork}
+
+
+
+\pagebreak
+% Biblography
+
+
+\fontsize{9}{10pt}
+\bibliographystyle{plain}
+\bibliography{literatur}
+
+\end{document}
+
+% vim:foldmethod=marker

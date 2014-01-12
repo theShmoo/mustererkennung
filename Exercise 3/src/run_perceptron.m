@@ -3,7 +3,7 @@
 % Author
 %   * David Pfahler
 
-function run_perceptron( )
+function run_perceptron(maxEpoches)
 %RUN_PERCEPTRON Runs the code for the first report
 
 %% Load data
@@ -25,14 +25,27 @@ sTraining = size(training);
 X = ones(sTraining(2)+1,sTraining(1));
 X(2:size(X,1),:) = transpose(training);
 
-maxEpoches = 100; %TODO dont know which val is good? :/
-
 w1 = perco(X,transpose(classLabel1),maxEpoches);
 w2 = perco(X,transpose(classLabel2),maxEpoches);
 
-plot_perco_results(w1,X,classLabel1,'Decision boundary for class labels 1');
-plot_perco_results(w2,X,classLabel2,'Decision boundary for class labels 2');
+plot_perco_results(w1,X,classLabel1,['Decision boundary for target data set 1 with ',num2str(maxEpoches),' epochs']);
+plot_perco_results(w2,X,classLabel2,['Decision boundary for target data set 2 with ',num2str(maxEpoches),' epochs']);
 
+evaluate_perco(w1,X,classLabel1,['Decision boundary for target data set 1 with ',num2str(maxEpoches),' epochs'],1);
+evaluate_perco(w2,X,classLabel2,['Decision boundary for target data set 2 with ',num2str(maxEpoches),' epochs'],1);
+%% Evaluate
+eval = zeros(100,1);
+for maxE = 1:100
+    w2 = perco(X,transpose(classLabel2),maxE);
+    eval(maxE,1) = evaluate_perco(w2,X,classLabel2,['Decision boundary for target data set 2 with ',num2str(maxE),' epochs'],0);
+end
+
+figure;
+plot(eval);
+xlabel('epochs')
+ylabel('%')
+
+axis([0 100 0 50])
 %% Logical Problems
 
 X = [1,1,1,1;0,1,0,1;0,0,1,1];
@@ -57,11 +70,11 @@ yXOR = [-1 1 1 -1];
 
 % Result of perceptron classification
 
-result1 = sign(w1'*X);
-result2 = sign(w2'*X);
+%result1 = sign(w1'*X);
+%result2 = sign(w2'*X);
 
-plot_perco_results(w1,X,result1,'Result of perceptron classification for class label 1');
-plot_perco_results(w2,X,result2,'Result of perceptron classification for class label 2');
+% plot_perco_results(w1,X,result1,'Result of perceptron classification for class label 1');
+% plot_perco_results(w2,X,result2,'Result of perceptron classification for class label 2');
 
 wAND = perco(X,yAND, maxEpoches);
 plot_perco_results(wAND,X,yAND,'AND-Problem');

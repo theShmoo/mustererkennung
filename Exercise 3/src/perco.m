@@ -1,5 +1,5 @@
 function [ w ] = perco( X,t,maxEpoches )
-%PERCO calculates the perseptron weight vector w fort the training set (X;
+%PERCO calculates the perceptron weight vector w fort the training set (X;
 %t) usiing the training method described in the lectures. The training set
 %is in the format described in the lectures (the ith column X(:,i) contains
 %the ith training example and t(i) contains the ith target (class label), 
@@ -36,6 +36,10 @@ while n < maxEpoches && failClass == true
             failClass = true;
         end
     end
+end
+
+if failClass == false
+   fprintf('The algorithm classified all patterns correctly at the epoche %d!\n',n) 
 end
 
 

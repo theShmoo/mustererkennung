@@ -1,0 +1,49 @@
+% This file was created by matlab2tikz v0.4.4 running on MATLAB 8.0.
+% Copyright (c) 2008--2013, Nico Schlömer <nico.schloemer@gmail.com>
+% All rights reserved.
+% 
+% The latest updates can be retrieved from
+%   http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz
+% where you can also make suggestions and rate matlab2tikz.
+% 
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=\figurewidth,
+height=\figureheight,
+scale only axis,
+xmin=-0.1,
+xmax=1.1,
+xlabel={${\text{x}}$},
+ymin=-0.1,
+ymax=1.1,
+ylabel={${\text{y}}$},
+title={XOR-Problem},
+legend style={at={(0.5,-0.03)},anchor=north,draw=black,fill=white,legend cell align=left}
+]
+\addplot [
+color=green,
+only marks,
+mark=asterisk,
+mark options={solid}
+]
+table[row sep=crcr]{
+1 0\\
+0 1\\
+};
+\addlegendentry{decision boundary};
+
+\addplot [
+color=red,
+only marks,
+mark=+,
+mark options={solid}
+]
+table[row sep=crcr]{
+0 0\\
+1 1\\
+};
+\addlegendentry{class 1};
+
+\end{axis}
+\end{tikzpicture}%

@@ -4,7 +4,8 @@ function main()
 %   * David Pfahler
 %   * Matthias Gusenbauer
 %   * Matthias Vigele
-    run_perceptron();
+    run_perceptron(10);
+    run_perceptron(100);
     run_practical_application();
 
 end
