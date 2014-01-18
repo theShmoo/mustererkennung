@@ -1,4 +1,4 @@
-function [ errorRate, performance ] = classifyWithNN( input, target )
+function [ errorRate, performance, result ] = classifyWithNN( input, target )
 %classifyWithNN Summary of this function goes here
 %   For a in-depth Explanation please follow the link to the MATHWORKS 
 %   documentation at: http://www.mathworks.de/de/help/nnet/gs/classify-patterns-with-a-neural-network.html

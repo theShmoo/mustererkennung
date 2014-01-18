@@ -25,6 +25,11 @@ function main()
     load strokefeatures.mat;  
     strokefeatures=features_class;
     
+%% Get test and Trainingsdata
+
+    [training2C, trainingClasses2C, test2C, testClasses2C] = getSets(strokefeatures, 2);
+    [training6C, trainingClasses6C, test6C, testClasses6C] = getSets(strokefeatures, 6);
+    
 %% 2 Class Problem
     %"dry strokes"=1 (row 1-82) 82
     %"wet strokes"=2 (row 83-155)73
@@ -215,8 +220,8 @@ fprintf('The trainingset has %d values per class! That means We should use %d fe
     target2Classes(target2Classes > 3) = 2;
     target6Classes = features_class(:, end);
     
-    [error2C performance2C] = classifyWithNN(data, target2Classes);
-    [error6C performance6C] = classifyWithNN(data, target6Classes);
+    [error2C performance2C, result2C] = classifyWithNN(data, target2Classes);
+    [error6C performance6C, result6C] = classifyWithNN(data, target6Classes);
     
     %do NN plotting here
 
