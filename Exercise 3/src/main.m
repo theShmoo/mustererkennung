@@ -4,9 +4,8 @@ function main()
 %   * David Pfahler
 %   * Matthias Gusenbauer
 %   * Matthias Vigele
-    run_perceptron(10);
-    run_perceptron(100);
-    run_practical_application();
+%    run_perceptron(10);
+%    run_perceptron(100);
     
     %LOAD stroke data
     %strokefeatures.mat is a matrix consisting of 21 columns and 155 rows. 
@@ -224,6 +223,14 @@ fprintf('The trainingset has %d values per class! That means We should use %d fe
     [error6C performance6C, result6C] = classifyWithNN(test6C, testClasses6C, training6C, trainingClasses6C);
     
     %do NN plotting here
+    
+    %% Perceptron
+    % classify with the perceptron
+    resultPerceptron2C = classifyWithPerceptron( training2C, trainingClasses2C, test2C, testClasses2C, 20);
+    resultPerceptron6C = classifyWithPerceptron( training6C, trainingClasses6C, test6C, testClasses6C, 20);
+    
+    sum(resultPerceptron2C)
+    sum(resultPerceptron6C)
 
 end
 
