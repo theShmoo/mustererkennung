@@ -25,7 +25,7 @@ dataset = dataset(randperm(size(dataset,1)),:);
 classTraining = cell(anz,1);
 classTest = cell(anz,1);
 for i = 1:anz    
-    class = dataset(dataset(:,1)==i,:);
+    class = dataset(dataset(:,21)==i,:);
     classTraining{i} = class(1:trainingSize,:);
     classTest{i} = class(trainingSize+1:end,:);
 
