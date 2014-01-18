@@ -220,8 +220,8 @@ fprintf('The trainingset has %d values per class! That means We should use %d fe
     target2Classes(target2Classes > 3) = 2;
     target6Classes = features_class(:, end);
     
-    [error2C performance2C, result2C] = classifyWithNN(data, target2Classes);
-    [error6C performance6C, result6C] = classifyWithNN(data, target6Classes);
+    [error2C performance2C, result2C] = classifyWithNN(test2C, testClasses2C, training2C, trainingClasses2C);
+    [error6C performance6C, result6C] = classifyWithNN(test6C, testClasses6C, training6C, trainingClasses6C);
     
     %do NN plotting here
 

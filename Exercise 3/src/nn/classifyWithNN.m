@@ -1,4 +1,4 @@
-function [ errorRate, performance, result ] = classifyWithNN( input, target )
+function [ errorRate, performance, result ] = classifyWithNN( testData, testTarget, trainData, trainTarget )
 %classifyWithNN Summary of this function goes here
 %   For a in-depth Explanation please follow the link to the MATHWORKS 
 %   documentation at: http://www.mathworks.de/de/help/nnet/gs/classify-patterns-with-a-neural-network.html
@@ -19,12 +19,12 @@ function [ errorRate, performance, result ] = classifyWithNN( input, target )
       nnet.divideParam.testRatio = 15/100; %15percent for testing
       
       %train the network
-      [nnet, tr] = train(nnet, input, target);
+      [nnet, tr] = train(nnet, trainData, trainTarget);
       
       %test the network error rate and performance
-      out = nnet(input);
-      errorRate = gsubtract(target, out);
-      performance = perform(nnet, target, out);
+      result = nnet(testData);
+      errorRate = gsubtract(testTarget, result);
+      performance = perform(nnet, testTarget, result);
       
       %view the used network
       %view(nnet);
