@@ -206,9 +206,19 @@ fprintf('The trainingset has %d values per class! That means We should use %d fe
 
     result = classifyWithMahalanobis6(trainingClasses, srTraining, testClasses, srTest, covMatType);
     
-    %add run_kNN
-    %add run_mahal
-    %add run_neural
+    %% Neural Network
+    % defines data to use for the NN
+    % then runs classification with NN
+    data = features_class(:, 1:(end-1));
+    target2Classes = features_class(:, end);
+    target2Classes(target2Classes < 4) = 1;
+    target2Classes(target2Classes > 3) = 2;
+    target6Classes = features_class(:, end);
+    
+    [error2C performance2C] = classifyWithNN(data, target2Classes);
+    [error6C performance6C] = classifyWithNN(data, target6Classes);
+    
+    %do NN plotting here
 
 end
 

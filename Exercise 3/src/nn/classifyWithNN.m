@@ -1,6 +1,33 @@
-function [ output_args ] = classifyWithNN( input, target )
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+function [ errorRate, performance ] = classifyWithNN( input, target )
+%classifyWithNN Summary of this function goes here
+%   For a in-depth Explanation please follow the link to the MATHWORKS 
+%   documentation at: http://www.mathworks.de/de/help/nnet/gs/classify-patterns-with-a-neural-network.html
+
+      %size of hidden layer
+      hidden = 10;
+      
+      %create net(for pattern recognition) object
+      nnet = patternnet(hidden);
+      
+      %set trainings algorithm
+      nnet.trainFcn = 'trainrp' %resilient backpropagation for full list 
+                                %see: http://www.mathworks.de/de/help/nnet/ug/train-and-apply-multilayer-neural-networks.html#bss331l-2
+      
+      %set up the ammount of training-, validation- and testdata
+      nnet.divideParam.trainRatio = 70/100; %70percent of the data is used for training
+      nnet.divideParam.valRatio = 15/100; %15percent for validation
+      nnet.divideParam.testRatio = 15/100; %15percent for testing
+      
+      %train the network
+      [nnet, tr] = train(nnet, input, target);
+      
+      %test the network error rate and performance
+      out = nnet(input);
+      errorRate = gsubtract(target, out);
+      performance = perform(nnet, target, out);
+      
+      %view the used network
+      %view(nnet);
 
 %     %create NN object
 %     nnet = network;
@@ -44,30 +71,4 @@ function [ output_args ] = classifyWithNN( input, target )
 %     
 %     %set the train parameters
 
-      %size of hidden layer
-      hidden = 10;
-      
-      %create net(for pattern recognition) object
-      nnet = patternnet(hidden);
-      
-      %set up the ammount of training-, validation- and testdata
-      nnet.divideParam.trainRatio = 70/100; %70percent of the data is used for training
-      nnet.divideParam.valRatio = 15/100; %15percent for validation
-      nnet.divideParam.testRatio = 15/100; %15percent for testing
-      
-      %train the network
-      [nnet, tr] = train(nnet, input, target);
-      
-      %test the network error rate and performance
-      out = nnet(input);
-      error = gsubtract(target, out);
-      performance = perform(nnet, target, out);
-      
-      %view the used network
-      view(nnet);
-      
-      %plots should go here
-    
-    
-    
 end
