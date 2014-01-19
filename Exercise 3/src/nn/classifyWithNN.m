@@ -5,7 +5,7 @@ function [ result ] = classifyWithNN( testData, testTarget, trainData, trainTarg
 %   documentation at: http://www.mathworks.de/de/help/nnet/gs/classify-patterns-with-a-neural-network.html
 
       %size of hidden layer
-      hidden = 10;
+      hidden = 100;
       
       %create net(for pattern recognition) object
       nnet = patternnet(hidden);
