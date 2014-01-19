@@ -231,7 +231,8 @@ fprintf('The trainingset has %d values per class! That means We should use %d fe
     [error2C performance2C, percent2CError] = classifyWithNN(test2C, prepareTargets(testClasses2C, 2), training2C, prepareTargets(trainingClasses2C, 2));
     [error6C performance6C, percent6CError] = classifyWithNN(test6C, prepareTargets(testClasses6C, 6), training6C, prepareTargets(trainingClasses6C, 6));
     
-    %do NN plotting here
+    fprintf('The neural network has %d percent errors for the 2 class problem.', percent2CError);
+    fprintf('The neural network has %d percent errors for the 6 class problem.', percent6CError);
     
     %% Perceptron
     % classify with the perceptron
