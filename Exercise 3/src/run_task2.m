@@ -29,20 +29,23 @@ end
 
 function evaluateAll(strokeFeatures)
     maxI = 4;
-    result = zeros(8,1);
+    result = zeros(10,1);
     
     for i = 1:maxI
-        [resultMahalanobis2C, resultMahalanobis6C, resultkNN2C, ...
-            resultkNN6C, resultPerceptron2C, resultPerceptron6C,...
+        [resultMahalanobis2C, resultMahalanobis6C, result1NN2C, ...
+             result1NN6C, resultkNN2C, resultkNN6C, ...
+             resultPerceptron2C, resultPerceptron6C,...
             resultNN2C, resultNN6C] = classifyWithAll(strokeFeatures);
         result(1) = result(1) + resultMahalanobis2C;
         result(2) = result(2) + resultMahalanobis6C;
-        result(3) = result(3) + resultkNN2C;
-        result(4) = result(4) + resultkNN6C;
-        result(5) = result(5) + resultPerceptron2C;
-        result(6) = result(6) + resultPerceptron6C;
-        result(7) = result(7) + resultNN2C;
-        result(8) = result(8) + resultNN6C;
+        result(3) = result(3) + result1NN2C;
+        result(4) = result(4) + result1NN6C;        
+        result(5) = result(5) + resultkNN2C;
+        result(6) = result(6) + resultkNN6C;
+        result(7) = result(7) + resultPerceptron2C;
+        result(8) = result(8) + resultPerceptron6C;
+        result(9) = result(9) + resultNN2C;
+        result(10) = result(10) + resultNN6C;
     end
     
     result = result / maxI

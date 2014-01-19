@@ -1,4 +1,4 @@
-function [resultMahalanobis2C, resultMahalanobis6C, resultkNN2C, resultkNN6C, resultPerceptron2C, resultPerceptron6C, resultNN2C, resultNN6C] = classifyWithAll(strokefeatures)
+function [resultMahalanobis2C, resultMahalanobis6C, result1NN2C, result1NN6C, resultkNN2C, resultkNN6C, resultPerceptron2C, resultPerceptron6C, resultNN2C, resultNN6C] = classifyWithAll(strokefeatures)
     %LOAD stroke data
     %strokefeatures.mat is a matrix consisting of 21 columns and 155 rows. 
     %Columns 1 - 10 contain the mean of the reflected infrared light at the 
@@ -45,7 +45,9 @@ function [resultMahalanobis2C, resultMahalanobis6C, resultkNN2C, resultkNN6C, re
         end
     end
     
+    result1NN2C=max(successRate(1,1));
     resultkNN2C=max(successRate);
+    
     %maxk=find(successRate==maximum);
     %fprintf('k-NN: %3.2f%%(with k=1) were correctly classified!\n',  successRate(1,1));
     %fprintf(' %3.2f%%(with k=%d)!\n', maximum, maxk(1));   
@@ -67,7 +69,10 @@ function [resultMahalanobis2C, resultMahalanobis6C, resultkNN2C, resultkNN6C, re
         end
     end
     
+    result1NN6C=max(successRate(1,1));
     resultkNN6C=max(successRate);
+    
+    
     %maxk=find(successRate==maximum);
     %fprintf('k-NN: %3.2f%%(with k=1) were correctly classified!\n',  successRate(1,1));
     %fprintf(' %3.2f%%(with k=%d)!\n', maximum, maxk(1)); 
@@ -95,6 +100,7 @@ function [resultMahalanobis2C, resultMahalanobis6C, resultkNN2C, resultkNN6C, re
     
     resultNN2C = classifyWithNN(test2C, prepareTargets(testClasses2C, 2), training2C, prepareTargets(trainingClasses2C, 2));
     resultNN6C = classifyWithNN(test6C, prepareTargets(testClasses6C, 6), training6C, prepareTargets(trainingClasses6C, 6));
+
     
 %     fprintf('The neural network has %3.2f%% percent errors for the 2 class problem.\n', percent2CError);
 %     fprintf('The neural network has %3.2f%% percent errors for the 6 class problem.\n', percent6CError);
