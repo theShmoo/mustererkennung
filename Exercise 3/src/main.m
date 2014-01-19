@@ -4,7 +4,7 @@ function main()
 %   * David Pfahler
 %   * Matthias Gusenbauer
 %   * Matthias Vigele
-%    run_perceptron(10);
+    run_perceptron(10);
     run_perceptron(100);
     
     %LOAD stroke data
@@ -35,74 +35,29 @@ function main()
     test6C = test6C./repmat(std(test6C),size(test6C,1),1);
     training6C = training6C./repmat(std(training6C),size(training6C,1),1);
     
-    features=[12 17 19 20];
-    
 %% 2 Class Problem
-    %"dry strokes"=1 (row 1-82) 82
-    %"wet strokes"=2 (row 83-155)73
-    stroketraining= strokefeatures(1:41,1:end);
-    stroketraining=[stroketraining;strokefeatures(83:119,:)];
-    
-    training=stroketraining(:,1:20); 
-    trainingClasses=stroketraining(:,21);
-    trainingClasses(trainingClasses<4)=1;
-    trainingClasses(trainingClasses>3)=2;
-    
-    stroketest= strokefeatures(42:82,:);   
-    stroketest=[stroketest;strokefeatures(120:155,:)];  
-    
-    test=stroketest(:,1:20); 
-    testClasses=stroketest(:,21);
-    testClasses(testClasses<4)=1;
-    testClasses(testClasses>3)=2;
-    
-    %RUN methods
-    
-   % standardize the data by dividing each column by its standard deviation.
-   srTest = test./repmat(std(test),size(test,1),1);
-   srTraining = training./repmat(std(training),size(training,1),1);
 
 %% K-NN   
    
    %Calculate classsizes
 classSize = zeros(2,1);
 for i = 1:2
-    classSize(i) = length(find([trainingClasses;testClasses] == i));
+    classSize(i) = length(find([trainingClasses2C;testClasses2C] == i));
 end    
 
 %Find smallest class and define trainingset size
 trainingSize = ceil(min(classSize)*0.5);
 
-fprintf('The trainingset has %d values per class! That means We should use %d feature(s)\n',trainingSize,round(trainingSize/10));
-    
-%features=[1 2 3 4]; % 53.2468 Prozent bei k = 75
-%features=[1]; % 53.2468 Prozent bei k = 75
-
-%features=[19]; % 90.9091 Prozent (bei k = 29)
-%features=[20]; % 90.9091 Prozent (bei k von 1 bis 78)
-
-%features=[15 19]; % 90.9091 Prozent (bei k = 55)
-%features=[19 20]; % 90.9091 Prozent (bei k von 1 bis 78)
-
-%features=[15 17 19]; % 89.6104 Prozent (bei k von 1 bis 78)
-%features=[15 18 19]; % 89.6104 Prozent (bei k von 1 bis 78)
-%features=[12 19 20]; % 90.9091 Prozent (bei k von 1 bis 78)
+fprintf('The trainingset has %d values per class! That means We should use %d feature(s)\n',trainingSize,round(trainingSize/10));   
 
 features=[12 17 19 20]; % 92.2078 Prozent (bei k = 53)
 
-%features=[12 17 18 19 20]; % 92.2078 Prozent (bei k von 1 bis 78)
 
-%features=[2 12 17 18 19 20]; % 92.2078 Prozent (bei k von 1 bis 78)
-
-%features=[2 11 12 17 18 19 20]; % 87.0130 Prozent (bei k von 1 bis 78)
-
-
-   %result = zeros(size(srTest,1));
-    successRate=zeros(1,size(srTraining,1));
-    for k=1:size(srTraining,1)
+    successRate=zeros(1,size(training2C,1));
+    for k=1:size(training2C,1)
     %for features=1:20 % 57.1429 Prozent bei k = 23 und feature 3  
-    result = knnclassify(srTest(:, features),srTraining(:, features),trainingClasses,k);
-    eval = result == testClasses;
+    result = knnclassify(test2C(:, features),training2C(:, features),trainingClasses2C,k);
+    eval = result == testClasses2C;
     correct=0;
     for j = 1 : size(eval)
         if eval(j)==1
@@ -111,11 +66,14 @@ features=[12 17 19 20]; % 92.2078 Prozent (bei k = 53)
     %end
     
     %error rate in percent
-    successRate(1,k)=correct/size(srTest,1)*100;  
+    successRate(1,k)=correct/size(test2C,1)*100;  
     
     end
     end
-    %maximum=max(successRate,[],2);
+    maximum=max(successRate);
+    maxk=find(successRate==maximum);
+    fprintf('k-NN: %3.2f%%(with k=1) were correctly classified!\n',  successRate(1,1));
+    fprintf(' %3.2f%%(with k=%d)!\n', maximum, maxk(1));   
     
     %% Mahalanobis
     % Type of covariance matrix you want
@@ -124,48 +82,18 @@ features=[12 17 19 20]; % 92.2078 Prozent (bei k = 53)
     % 2 = full covariance matrix
     % 3 = matlab implementation of mahab
     covMatType = 1;
-    
- 
-    
 
     %result = zeros(size(srTest,1));
     addpath('mahalanobis');
 
-    result = classifyWithMahalanobis2(trainingClasses, srTraining, testClasses, srTest, covMatType);
-   
+    result = classifyWithMahalanobis2(trainingClasses2C, training2C, testClasses2C, test2C, covMatType);
+     
+    fprintf('Mahalanobis: %3.2f%% were correctly classified!\n',result); 
   
    
 
     
 %% 6 Class Problem  
-    %FIND training set
-    stroketraining= strokefeatures(1:12,1:end);
-    stroketraining=[stroketraining;strokefeatures(25:40,:)];
-    stroketraining=[stroketraining;strokefeatures(57:69,:)];
-    stroketraining=[stroketraining;strokefeatures(83:92,:)];
-    stroketraining=[stroketraining;strokefeatures(103:111,:)];
-    stroketraining=[stroketraining;strokefeatures(121:138,:)];
-    
-    training=stroketraining(:,1:20); 
-    trainingClasses=stroketraining(:,21); 
-    
-    %FIND test set
-    stroketest= strokefeatures(13:24,:);   
-    stroketest=[stroketest;strokefeatures(41:56,:)];
-    stroketest=[stroketest;strokefeatures(70:82,:)];    
-    stroketest=[stroketest;strokefeatures(93:102,:)];  
-    stroketest=[stroketest;strokefeatures(112:120,:)];
-    stroketest=[stroketest;strokefeatures(139:155,:)];
-    
-    test=stroketest(:,1:20); 
-    testClasses=stroketest(:,21);
-    
-    %RUN methods
-    
-   % standardize the data by dividing each column by its standard deviation.
-   srTest = test./repmat(std(test),size(test,1),1);
-   srTraining = training./repmat(std(training),size(training,1),1);
-
 %% K-NN
 %Calculate classsizes
 classSize = zeros(6,1);
@@ -177,21 +105,14 @@ end
 trainingSize = ceil(min(classSize)*0.5);
 
 fprintf('The trainingset has %d values per class! That means We should use %d feature(s)\n',trainingSize,round(trainingSize/10));
-   
-   
-    %features=[1:20]; % 64.9351 Prozent bei k = 20    
+     
     features=[1:5 16:20]; % 64.9351 Prozent bei k = 4
-    %features=[6:10 11:15]; %63.6364 Prozent bei k = 17;61.0390 bei k = 1
-   
-    %features=[1:5 11:15]; % 62.3377 Prozent bei k = 1
-    %features=[6:10 16:20]; % 63.6364 Prozent bei k = 6; 55.8442 Prozent bei k = 1
-    
-   %result = zeros(size(srTest,1));
-    successRate=zeros(1,size(srTraining,1));
-    for k=1:size(srTraining,1)
+
+    successRate=zeros(1,size(training6C,1));
+    for k=1:size(training6C,1)
     %for features=1:20 % 57.1429 Prozent bei k = 23 und feature 3  
-    result = knnclassify(srTest(:, features),srTraining(:, features),trainingClasses,k);
-    eval = result == testClasses;
+    result = knnclassify(test6C(:, features),training6C(:, features),trainingClasses6C,k);
+    eval = result == testClasses6C;
     correct=0;
     for j = 1 : size(eval)
         if eval(j)==1
@@ -200,10 +121,15 @@ fprintf('The trainingset has %d values per class! That means We should use %d fe
     %end
     
     %error rate in percent
-    successRate(1,k)=correct/size(srTest,1)*100;  
+    successRate(1,k)=correct/size(test6C,1)*100;  
     
     end
     end
+    
+    maximum=max(successRate);
+    maxk=find(successRate==maximum);
+    fprintf('k-NN: %3.2f%%(with k=1) were correctly classified!\n',  successRate(1,1));
+    fprintf(' %3.2f%%(with k=%d)!\n', maximum, maxk(1));
     
     %% Mahalanobis
     % Type of covariance matrix you want
@@ -216,7 +142,9 @@ fprintf('The trainingset has %d values per class! That means We should use %d fe
     %result = zeros(size(srTest,1));
     addpath('mahalanobis');
 
-    result = classifyWithMahalanobis6(trainingClasses, srTraining, testClasses, srTest, covMatType);
+    result = classifyWithMahalanobis6(trainingClasses6C, training6C, testClasses6C, test6C, covMatType);
+    
+     fprintf('Mahalanobis: %3.2f%% were correctly classified!\n',result);  
     
     %% Neural Network
     % defines data to use for the NN

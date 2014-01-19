@@ -140,6 +140,41 @@ Instead of letting the algorithm run until all patterns are correctly classified
 
 First we calculate the lineal discriminant function for the data provided by the Exercise (\texttt{perceptrondata.dat}) with the two different target data sets and plot the results (See Figure~\ref{fig:decisionBoundary1} and Figure~\ref{fig:decisionBoundary2} for 10 epochs and Figure~\ref{fig:decisionBoundary1100} and Figure~\ref{fig:decisionBoundary2100} for 100 epochs)
 
+The calculation of the perceptron weight vector (see Equation~\ref{eq:w1}) for the first target data set terminated after 9 epoches, because the whole training data set was classified correctly.
+
+\begin{equation}
+w_1 = 
+	\begin{bmatrix}
+      -4.0000\\
+			6.2628\\
+			3.3863\\
+	\end{bmatrix}
+	\label{eq:w1}
+\end{equation}
+
+The calculation of the perceptron weight vector (see Equation~\ref{eq:w2}) for the second target data set did not terminate after 100 epoches.
+
+\begin{equation}
+w_2 = 
+	\begin{bmatrix}
+      -2.0000\\
+			2.9205\\
+			1.5864\\
+	\end{bmatrix}
+	\label{eq:w2}
+\end{equation}
+
+The linear function for the separation of the two classes for the first target data is calculated in Equation~\ref{eq:fSpecial}or for a more general case see Equation~\ref{eq:fGeneral}
+
+\begin{equation}
+	f(x,y) = w_1 +w_2 x+w_3 y 
+	\label{eq:fSpecial}
+\end{equation}
+\begin{equation}
+	f(\vec{w},\vec{y}) = \vec{w} \cdot \vec{y}
+	\label{eq:fGeneral}
+\end{equation}
+
 \begin{figure}
 	\centering
 	\newlength\figureheight 
@@ -268,25 +303,6 @@ To demonstrate the convergence of the perceptron it is only useful to look at th
 	\label{fig:epochs}
 \end{figure}
 
-\part{The second Report}
-\label{cha:secondReport}
-
-\section{Practical Application}
-
-\subsection{TODO}
-
-\section{Neural Network optional exercise}
-\label{sec:neuralNetwork}
-
-
-
-\pagebreak
-% Biblography
-
-
-\fontsize{9}{10pt}
-\bibliographystyle{plain}
-\bibliography{literatur}
 
 \end{document}
 

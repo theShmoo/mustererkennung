@@ -19,7 +19,7 @@ function [ w ] = perco( X,t,maxEpoches )
 sX = size(X);
 
 w = zeros(sX(1),1);
-l = 0.5; %Learningrate
+l = 1; %Learningrate
 n = 0; %iteration of the epoche
 failClass = true; %number of errors in one iteration
 
@@ -35,7 +35,7 @@ while n < maxEpoches && failClass == true
         if w'*y <= 0
             w = w + l*y;
             failClass = true;
-            %l = l*exp(-n/10); Maybe make a better learing function
+            %l = l*exp(-n/10); Maybe make a better learin
         end
     end
 end
