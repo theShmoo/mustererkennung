@@ -2,8 +2,6 @@ function [ training, trainingClasses, test, testClasses ] = getSets( data, mode 
 %GETSETS Summary of this function goes here
 %   Detailed explanation goes here
 
-    rng(123401234);
-
     if mode == 2
         
         %dryStrokes = data(1:82, :);
