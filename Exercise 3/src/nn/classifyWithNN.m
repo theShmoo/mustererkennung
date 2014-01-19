@@ -1,4 +1,5 @@
-function [ errorRate, performance, percentErrors ] = classifyWithNN( testData, testTarget, trainData, trainTarget )
+%function [ errorRate, performance, percentErrors ] = classifyWithNN( testData, testTarget, trainData, trainTarget )
+function [ result ] = classifyWithNN( testData, testTarget, trainData, trainTarget )
 %classifyWithNN Summary of this function goes here
 %   For a in-depth Explanation please follow the link to the MATHWORKS 
 %   documentation at: http://www.mathworks.de/de/help/nnet/gs/classify-patterns-with-a-neural-network.html
@@ -29,12 +30,13 @@ function [ errorRate, performance, percentErrors ] = classifyWithNN( testData, t
       
       %test the network error rate and performance
       result = nnet(testData);
-      errorRate = gsubtract(testTarget, result);
-      percentErrors = sum(vec2ind(testTarget) ~= vec2ind(result))/numel(vec2ind(testTarget));
-      performance = perform(nnet, testTarget, result);
+      result = sum(vec2ind(testTarget) == vec2ind(result));
+      %errorRate = gsubtract(testTarget, result);
+      %percentErrors = sum(vec2ind(testTarget) ~= vec2ind(result))/numel(vec2ind(testTarget));
+      %performance = perform(nnet, testTarget, result);
       
-      figure, plotperform(tr)
-      figure, plottrainstate(tr)
-      figure, ploterrhist(errorRate)
+      %figure, plotperform(tr)
+      %figure, plottrainstate(tr)
+      %figure, ploterrhist(errorRate)
       
 end
