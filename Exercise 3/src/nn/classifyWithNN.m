@@ -35,7 +35,6 @@ function [ errorRate, performance, percentErrors ] = classifyWithNN( testData, t
       
       figure, plotperform(tr)
       figure, plottrainstate(tr)
-      figure, plotconfusion(testTarget,testData)
       figure, ploterrhist(errorRate)
       
 end
