@@ -30,7 +30,7 @@ function [ result ] = classifyWithNN( testData, testTarget, trainData, trainTarg
       
       %test the network error rate and performance
       result = nnet(testData);
-      result = sum(vec2ind(testTarget) == vec2ind(result));
+      result =  (1 - (sum(vec2ind(testTarget) ~= vec2ind(result))/numel(vec2ind(testTarget)))) * 100;
       %errorRate = gsubtract(testTarget, result);
       %percentErrors = sum(vec2ind(testTarget) ~= vec2ind(result))/numel(vec2ind(testTarget));
       %performance = perform(nnet, testTarget, result);
