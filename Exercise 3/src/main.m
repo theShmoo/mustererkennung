@@ -221,14 +221,15 @@ fprintf('The trainingset has %d values per class! That means We should use %d fe
     %% Neural Network
     % defines data to use for the NN
     % then runs classification with NN
+    addpath('nn');
     data = features_class(:, 1:(end-1));
     target2Classes = features_class(:, end);
     target2Classes(target2Classes < 4) = 1;
     target2Classes(target2Classes > 3) = 2;
     target6Classes = features_class(:, end);
     
-    [error2C performance2C, result2C] = classifyWithNN(test2C, testClasses2C, training2C, trainingClasses2C);
-    [error6C performance6C, result6C] = classifyWithNN(test6C, testClasses6C, training6C, trainingClasses6C);
+    [error2C performance2C, percent2CError] = classifyWithNN(test2C, prepareTargets(testClasses2C, 2), training2C, prepareTargets(trainingClasses2C, 2));
+    [error6C performance6C, percent6CError] = classifyWithNN(test6C, prepareTargets(testClasses6C, 6), training6C, prepareTargets(trainingClasses6C, 6));
     
     %do NN plotting here
     
