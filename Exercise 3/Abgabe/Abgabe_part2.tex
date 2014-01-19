@@ -164,11 +164,6 @@ function [ result ] = classifyWithNN( testData, testTarget, trainData, trainTarg
 	%set trainings algorithm
 	nnet.trainFcn = 'trainrp'; %resilient backpropagation
       
-	%%set up the ammount of training-, validation- and testdata
-	%nnet.divideParam.trainRatio = 70/100; %70percent of the data is used for training
-	%nnet.divideParam.valRatio = 15/100; %15percent for validation
-	%nnet.divideParam.testRatio = 15/100; %15percent for testing
-      
 	%prepare data
 	trainData = trainData';
 	testData = testData';
@@ -179,6 +174,8 @@ function [ result ] = classifyWithNN( testData, testTarget, trainData, trainTarg
 	%test the network error rate and performance
 	result = nnet(testData);
 	result =  (1 - (sum(vec2ind(testTarget) ~= vec2ind(result))/ numel(vec2ind(testTarget)))) * 100;
+	
+end
 
 \end{lstlisting}
 ~\\ ~\\
