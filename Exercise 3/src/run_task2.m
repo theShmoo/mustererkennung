@@ -6,7 +6,20 @@ function run_task2()
     maxI = 4;
     load strokefeatures.mat;  
     strokefeatures=features_class;
-        
+%% Analyse Data:
+% BoxPlot Features
+srStroke = strokefeatures(:,1:end-1)./repmat(std(strokefeatures(:,1:end-1)),size(strokefeatures(:,1:end-1),1),1);
+figure('name','The Features');
+boxplot( srStroke, 'orientation','horizontal', 'labels',[1:20]);
+    featureNames = {'1';'2';'3';'4';'5';'6';'7';'8';'9';'10';'11';'12';'13';
+                    '14';'15'; '16';'17';'18';'19';'20';
+    };
+labels=strokefeatures(:,21);
+    labels(labels<4)=1;
+    labels(labels>3)=2;
+plotPrincipalComponents(srStroke,labels,strokefeatures(:,21), featureNames);
+
+%% Classify Data:
     result = zeros(8,1);
     
     for i = 1:maxI

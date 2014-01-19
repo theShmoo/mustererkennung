@@ -28,23 +28,10 @@ function [resultMahalanobis2C, resultMahalanobis6C, resultkNN2C, resultkNN6C, re
     %% K-NN   
    
     % 2 Class
-    %Calculate classsizes
-    classSize = zeros(2,1);
-    for i = 1:2
-        classSize(i) = length(find([trainingClasses2C;testClasses2C] == i));
-    end
-
-    %Find smallest class and define trainingset size
-    %trainingSize = ceil(min(classSize)*0.5);
-
-    %fprintf('The trainingset has %d values per class! That means We should use %d feature(s)\n',trainingSize,round(trainingSize/10));   
-
-    features=[12 17 19 20]; % 92.2078 Prozent (bei k = 53)
-
+    features=[18 16 1 6]; % 67.90%(with k=1) 76.54%(with k=11)
 
     successRate=zeros(1,size(training2C,1));
     for k=1:size(training2C,1)
-        %for features=1:20 % 57.1429 Prozent bei k = 23 und feature 3  
         result = knnclassify(test2C(:, features),training2C(:, features),trainingClasses2C,k);
         eval = result == testClasses2C;
         correct=0;
@@ -52,36 +39,22 @@ function [resultMahalanobis2C, resultMahalanobis6C, resultkNN2C, resultkNN6C, re
             if eval(j)==1
                 correct=correct+1;
             end
-        %end
 
         %error rate in percent
         successRate(1,k)=correct/size(test2C,1)*100;  
         end
     end
     
-    
-    
     resultkNN2C=max(successRate);
-%     maxk=find(successRate==maximum);
-%     fprintf('k-NN: %3.2f%%(with k=1) were correctly classified!\n',  successRate(1,1));
-%     fprintf(' %3.2f%%(with k=%d)!\n', maximum, maxk(1));   
+    %maxk=find(successRate==maximum);
+    %fprintf('k-NN: %3.2f%%(with k=1) were correctly classified!\n',  successRate(1,1));
+    %fprintf(' %3.2f%%(with k=%d)!\n', maximum, maxk(1));   
     
-    %Calculate classsizes
-    classSize = zeros(6,1);
-    for i = 1:6
-        classSize(i) = length(find(strokefeatures(:,21) == i));
-    end    
-
-    %Find smallest class and define trainingset size
-    %trainingSize = ceil(min(classSize)*0.5);
-
-    %fprintf('The trainingset has %d values per class! That means We should use %d feature(s)\n',trainingSize,round(trainingSize/10));
-     
-    features=[1:5 16:20]; % 64.9351 Prozent bei k = 4
+    % 6 Class   
+    features=[18];
 
     successRate=zeros(1,size(training6C,1));
-    for k=1:size(training6C,1)
-        %for features=1:20 % 57.1429 Prozent bei k = 23 und feature 3  
+    for k=1:size(training6C,1)  
         result = knnclassify(test6C(:, features),training6C(:, features),trainingClasses6C,k);
         eval = result == testClasses6C;
         correct=0;
@@ -89,18 +62,17 @@ function [resultMahalanobis2C, resultMahalanobis6C, resultkNN2C, resultkNN6C, re
             if eval(j)==1
                 correct=correct+1;
             end
-        %end
 
-        %error rate in percent
+        %Success rate in percent
         successRate(1,k)=correct/size(test6C,1)*100;  
 
         end
     end
     
-      resultkNN6C=max(successRate);
-%     maxk=find(successRate==maximum);
-%     fprintf('k-NN: %3.2f%%(with k=1) were correctly classified!\n',  successRate(1,1));
-%     fprintf(' %3.2f%%(with k=%d)!\n', maximum, maxk(1));
+    resultkNN6C=max(successRate);
+    %maxk=find(successRate==maximum);
+    %fprintf('k-NN: %3.2f%%(with k=1) were correctly classified!\n',  successRate(1,1));
+    %fprintf(' %3.2f%%(with k=%d)!\n', maximum, maxk(1)); 
     
     %% Mahalanobis
     % Type of covariance matrix you want
