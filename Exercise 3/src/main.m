@@ -4,7 +4,7 @@ function main()
 %   * David Pfahler
 %   * Matthias Gusenbauer
 %   * Matthias Vigele
-%    run_perceptron(10);
+    run_perceptron(10);
     run_perceptron(100);
     
     %LOAD stroke data
@@ -34,8 +34,6 @@ function main()
     training2C = training2C./repmat(std(training2C),size(training2C,1),1);
     test6C = test6C./repmat(std(test6C),size(test6C,1),1);
     training6C = training6C./repmat(std(training6C),size(training6C,1),1);
-    
-    features=[12 17 19 20];
     
 %% 2 Class Problem
     %"dry strokes"=1 (row 1-82) 82
