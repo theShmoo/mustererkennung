@@ -8,7 +8,7 @@ function [ trainingSize ] = calculateTrainingSize( data, anz )
     %Calculate classsizes
     classSize = zeros(anz,1);
     for i = 1:anz
-        classSize(i) = length(find(data(:,21) == i));
+        classSize(i) = length(find(data(:,end) == i));
     end    
 
     %Find smallest class and define trainingset size

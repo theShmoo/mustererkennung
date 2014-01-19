@@ -6,8 +6,8 @@ function [ training, trainingClasses, test, testClasses ] = getSets( data, mode 
         
         %dryStrokes = data(1:82, :);
         %wetStrokes = data(83:end, :);
-        data(1:82, 21) = 1;
-        data(83:end, 21) = 2;
+        data(1:82, end) = 1;
+        data(83:end, end) = 2;
         
         trainSize = calculateTrainingSize(data, 2);
         

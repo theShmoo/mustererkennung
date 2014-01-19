@@ -2,8 +2,6 @@ function run_task2()
 %% Run Task2 1    
 
     rng(123401234);
-
-    maxI = 4;
     load strokefeatures.mat;  
     strokefeatures=features_class;
 %% Analyse Data:
@@ -19,13 +17,24 @@ labels=strokefeatures(:,21);
     labels(labels>3)=2;
 plotPrincipalComponents(srStroke,labels,strokefeatures(:,21), featureNames);
 
-%% Classify Data:
+goodFeatures = [18,16,1,6,21]; %Features plus labels
+
+%% Evaluate
+
+evaluateAll(strokefeatures);
+evaluateAll(strokefeatures(:,goodFeatures));
+    
+
+end
+
+function evaluateAll(strokeFeatures)
+    maxI = 4;
     result = zeros(8,1);
     
     for i = 1:maxI
         [resultMahalanobis2C, resultMahalanobis6C, resultkNN2C, ...
             resultkNN6C, resultPerceptron2C, resultPerceptron6C,...
-            resultNN2C, resultNN6C] = classifyWithAll(strokefeatures);
+            resultNN2C, resultNN6C] = classifyWithAll(strokeFeatures);
         result(1) = result(1) + resultMahalanobis2C;
         result(2) = result(2) + resultMahalanobis6C;
         result(3) = result(3) + resultkNN2C;
@@ -37,5 +46,4 @@ plotPrincipalComponents(srStroke,labels,strokefeatures(:,21), featureNames);
     end
     
     result = result / maxI
-
 end

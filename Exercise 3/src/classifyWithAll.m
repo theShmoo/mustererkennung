@@ -28,11 +28,11 @@ function [resultMahalanobis2C, resultMahalanobis6C, resultkNN2C, resultkNN6C, re
     %% K-NN   
    
     % 2 Class
-    features=[18 16 1 6]; % 67.90%(with k=1) 76.54%(with k=11)
+    % features=[18 16 1 6]; % 67.90%(with k=1) 76.54%(with k=11)
 
     successRate=zeros(1,size(training2C,1));
     for k=1:size(training2C,1)
-        result = knnclassify(test2C(:, features),training2C(:, features),trainingClasses2C,k);
+        result = knnclassify(test2C,training2C,trainingClasses2C,k);
         eval = result == testClasses2C;
         correct=0;
         for j = 1 : size(eval)
@@ -51,11 +51,9 @@ function [resultMahalanobis2C, resultMahalanobis6C, resultkNN2C, resultkNN6C, re
     %fprintf(' %3.2f%%(with k=%d)!\n', maximum, maxk(1));   
     
     % 6 Class   
-    features=[18];
-
     successRate=zeros(1,size(training6C,1));
     for k=1:size(training6C,1)  
-        result = knnclassify(test6C(:, features),training6C(:, features),trainingClasses6C,k);
+        result = knnclassify(test6C,training6C,trainingClasses6C,k);
         eval = result == testClasses6C;
         correct=0;
         for j = 1 : size(eval)
