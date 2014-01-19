@@ -7,7 +7,7 @@ function run_perceptron(maxEpoches)
 %RUN_PERCEPTRON Runs the code for the first report
 
 %% Load data
-
+maxEpoches = 100;
 % For training
 training = load('dataperceptron/perceptrondata.dat');
 

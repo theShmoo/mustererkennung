@@ -5,7 +5,7 @@ function main()
 %   * Matthias Gusenbauer
 %   * Matthias Vigele
 %    run_perceptron(10);
-%    run_perceptron(100);
+    run_perceptron(100);
     
     %LOAD stroke data
     %strokefeatures.mat is a matrix consisting of 21 columns and 155 rows. 
@@ -28,6 +28,14 @@ function main()
 
     [training2C, trainingClasses2C, test2C, testClasses2C] = getSets(strokefeatures, 2);
     [training6C, trainingClasses6C, test6C, testClasses6C] = getSets(strokefeatures, 6);
+    
+    % standardize the data by dividing each column by its standard deviation.
+    test2C = test2C./repmat(std(test2C),size(test2C,1),1);
+    training2C = training2C./repmat(std(training2C),size(training2C,1),1);
+    test6C = test6C./repmat(std(test6C),size(test6C,1),1);
+    training6C = training6C./repmat(std(training6C),size(training6C,1),1);
+    
+    features=[12 17 19 20];
     
 %% 2 Class Problem
     %"dry strokes"=1 (row 1-82) 82
@@ -226,11 +234,11 @@ fprintf('The trainingset has %d values per class! That means We should use %d fe
     
     %% Perceptron
     % classify with the perceptron
-    resultPerceptron2C = classifyWithPerceptron( training2C, trainingClasses2C, test2C, testClasses2C, 20);
-    resultPerceptron6C = classifyWithPerceptron( training6C, trainingClasses6C, test6C, testClasses6C, 20);
+    resultPerceptron2C = classifyWithPerceptron( training2C, trainingClasses2C, test2C, testClasses2C, 100);
+    resultPerceptron6C = classifyWithPerceptron( training6C, trainingClasses6C, test6C, testClasses6C, 100);
     
-    sum(resultPerceptron2C)
-    sum(resultPerceptron6C)
+    fprintf('%d from %d correct classified! That are %3.2f%%\n',sum(resultPerceptron2C),size(resultPerceptron2C,1),sum(resultPerceptron2C)/size(resultPerceptron2C,1)*100);
+    fprintf('%d from %d correct classified! That are %3.2f%%\n',sum(resultPerceptron6C),size(resultPerceptron6C,1),sum(resultPerceptron6C)/size(resultPerceptron6C,1)*100);
 
 end
 

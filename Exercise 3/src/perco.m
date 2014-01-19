@@ -19,11 +19,11 @@ function [ w ] = perco( X,t,maxEpoches )
 sX = size(X);
 
 w = zeros(sX(1),1);
-y = 1; %Learningrate
+l = 0.5; %Learningrate
 n = 0; %iteration of the epoche
 failClass = true; %number of errors in one iteration
 
-assert(y > 0);
+assert(l > 0);
 
 %%Iterate until all patterns correctly classified or maxEpoches is reached
 while n < maxEpoches && failClass == true
@@ -31,9 +31,11 @@ while n < maxEpoches && failClass == true
     failClass = false;
     
     for i = 1:sX(2)
-        if w'*(X(:,i)*t(i)) <= 0
-            w = w + y*X(:,i)*t(i);
+        y = X(:,i)*t(i);
+        if w'*y <= 0
+            w = w + l*y;
             failClass = true;
+            %l = l*exp(-n/10); Maybe make a better learing function
         end
     end
 end
